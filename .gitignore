@@ -7,3 +7,6 @@ Thumbs.db
 
 # Local preview tooling (not part of the deployed site)
 .claude/
+
+# Internal marketing brief — kept locally, not deployed publicly
+FEATURES.md
