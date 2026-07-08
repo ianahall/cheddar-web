@@ -1,0 +1,9 @@
+.DS_Store
+*.log
+node_modules/
+.vercel/
+.cache/
+Thumbs.db
+
+# Local preview tooling (not part of the deployed site)
+.claude/

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script>document.documentElement.classList.add("js");</script>
+  <title>Cheddar — A Safe Kids' Camera App for Ages 3–6</title>
+  <meta name="description" content="Cheddar is a safe, playful first camera app for kids ages 3–6. Giant buttons, no reading required, photos stay on the device, and parents stay in control." />
+  <meta name="theme-color" content="#FFD54A" />
+  <link rel="canonical" href="https://cheddarcam.com/" />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="assets/img/icon-192.png" />
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Cheddar" />
+  <meta property="og:title" content="Cheddar — A Safe Kids' Camera App for Ages 3–6" />
+  <meta property="og:description" content="A safe, playful first camera for kids ages 3–6. Photos stay on the device; parents stay in control." />
+  <meta property="og:url" content="https://cheddarcam.com/" />
+  <meta property="og:image" content="https://cheddarcam.com/assets/img/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Cheddar — A Safe Kids' Camera App for Ages 3–6" />
+  <meta name="twitter:description" content="A safe, playful first camera for kids ages 3–6. Photos stay on the device; parents stay in control." />
+  <meta name="twitter:image" content="https://cheddarcam.com/assets/img/og-image.png" />
+
+  <link rel="preload" href="fonts/nunito-latin.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://cheddarcam.com/#org",
+        "name": "Snacks Design",
+        "url": "https://cheddarcam.com/",
+        "logo": "https://cheddarcam.com/assets/img/icon-512.png"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://cheddarcam.com/#website",
+        "name": "Cheddar",
+        "url": "https://cheddarcam.com/",
+        "publisher": { "@id": "https://cheddarcam.com/#org" }
+      },
+      {
+        "@type": "MobileApplication",
+        "name": "Cheddar",
+        "alternateName": "Cheddar Cam",
+        "operatingSystem": "Android",
+        "applicationCategory": "PhotographyApplication",
+        "url": "https://cheddarcam.com/",
+        "description": "Cheddar is a safe, playful first camera app for kids ages 3–6. Kids take photos by saying “cheese,” hear them described in silly character voices, and record their own stories. No ads, no accounts, no tracking — photos stay on the device and parents set the limits.",
+        "image": "https://cheddarcam.com/assets/img/icon-512.png",
+        "screenshot": "https://cheddarcam.com/assets/img/og-image.png",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "publisher": { "@id": "https://cheddarcam.com/#org" }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Reusable illustration set (Cheddar's little visual language) -->
+  <svg class="svg-sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="ill-cheese" viewBox="0 0 120 100">
+      <path d="M12 82 Q7 90 15 90 L106 90 Q114 90 110 82 L64 20 Q60 13 56 20 Z" fill="#FFD54A" stroke="#E0A800" stroke-width="4" stroke-linejoin="round"/>
+      <circle cx="50" cy="68" r="6" fill="#EAB308" opacity="0.55"/>
+      <circle cx="74" cy="74" r="5" fill="#EAB308" opacity="0.55"/>
+      <circle cx="62" cy="50" r="4" fill="#EAB308" opacity="0.55"/>
+    </symbol>
+    <symbol id="ill-sparkle" viewBox="0 0 24 24">
+      <path d="M12 0C13 7 17 11 24 12C17 13 13 17 12 24C11 17 7 13 0 12C7 11 11 7 12 0Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="ill-star" viewBox="0 0 24 24">
+      <path d="M12 1l3.1 6.8 7.4.7-5.6 4.9 1.7 7.2L12 18.9 5.4 21.6l1.7-7.2L1.5 9.5l7.4-.7z" fill="currentColor"/>
+    </symbol>
+    <symbol id="ill-cloud" viewBox="0 0 64 40">
+      <path d="M15 36h34a10 10 0 0 0 1-20 13 13 0 0 0-25-4A11 11 0 0 0 15 36Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="ill-rainbow" viewBox="0 0 64 36">
+      <path d="M5 35a27 27 0 0 1 54 0" fill="none" stroke="#E45B4E" stroke-width="6"/>
+      <path d="M14 35a18 18 0 0 1 36 0" fill="none" stroke="#FFD54A" stroke-width="6"/>
+      <path d="M23 35a9 9 0 0 1 18 0" fill="none" stroke="#3E9BD1" stroke-width="6"/>
+    </symbol>
+  </svg>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="/">
+        <img src="assets/img/icon-192.webp" width="40" height="40" alt="" />
+        <span>Cheddar</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu" data-nav-toggle>
+        <span class="bars" aria-hidden="true"></span>
+      </button>
+      <nav class="nav-links" id="primary-nav" aria-label="Primary">
+        <a class="nav-text" href="#features">Features</a>
+        <a class="nav-text" href="#parents">For parents</a>
+        <a class="nav-text" href="faq.html">FAQ</a>
+        <a class="nav-download toy-btn" href="#download">Download</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- HERO — a playful little world -->
+    <section class="hero band" aria-labelledby="hero-title">
+      <div class="cheese-holes" aria-hidden="true">
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+      </div>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <h1 id="hero-title">
+            <span class="ln">A camera app</span>
+            <span class="ln">built for little</span>
+            <span class="ln">imaginations.</span>
+          </h1>
+          <p class="subline">
+            Cheddar turns “say cheese!” into real magic. Kids snap photos with
+            their voice, hear them come alive in silly character voices, and record
+            their own stories — simple enough for a three-year-old, calm enough to
+            just hand over.
+          </p>
+          <div class="cta-row">
+            <a class="toy-btn" href="#download">
+              <span class="btn-emoji" aria-hidden="true">▶</span> Get it on Google Play
+            </a>
+            <span class="chip is-ghost"> iOS coming soon</span>
+          </div>
+          <div class="hero-trust">
+            <span><span class="dot" aria-hidden="true"></span> No ads</span>
+            <span><span class="dot" aria-hidden="true"></span> No tracking</span>
+            <span><span class="dot" aria-hidden="true"></span> Photos stay on the device</span>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="bubble hero-say say-1" aria-hidden="true"><span class="em">🏴‍☠️</span>Nice shot, matey!</div>
+          <div class="bubble hero-say say-2 b-right" aria-hidden="true"><span class="em">🧙</span>Abracada-snap!</div>
+          <div class="bubble hero-say say-3" aria-hidden="true"><span class="em">🤖</span>Photo. Acquired.</div>
+          <div class="bubble hero-say say-4 b-right" aria-hidden="true"><span class="em">🦸</span>Super smile!</div>
+
+          <div class="phone hero-phone">
+            <div class="phone-screen">
+              <div class="appcam" data-hero-cam>
+                <div class="appcam-view">
+                  <!-- Placeholder photo frames — swap the .hf-* gradients for real photos later -->
+                  <div class="hcam-frame hf-1 is-current"></div>
+                  <div class="hcam-frame hf-2"></div>
+                  <div class="hcam-frame hf-3"></div>
+                  <div class="hcam-frame hf-4"></div>
+                  <button class="appcam-flip" type="button" aria-label="Flip camera" tabindex="-1">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg>
+                  </button>
+                  <div class="appcam-flash" data-hero-flash aria-hidden="true"></div>
+                </div>
+                <div class="appcam-controls">
+                  <button class="appcam-side appcam-settings" type="button" aria-label="Grown-up settings" tabindex="-1">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.14 12.94a7.5 7.5 0 0 0 .05-.94 7.5 7.5 0 0 0-.05-.94l2.03-1.58a.5.5 0 0 0 .12-.61l-1.92-3.32a.5.5 0 0 0-.59-.22l-2.39.96a7 7 0 0 0-1.62-.94l-.36-2.54a.5.5 0 0 0-.5-.42h-3.84a.5.5 0 0 0-.5.42l-.36 2.54a7 7 0 0 0-1.62.94l-2.39-.96a.5.5 0 0 0-.59.22L2.71 8.87a.5.5 0 0 0 .12.61l2.03 1.58a7.5 7.5 0 0 0 0 1.88l-2.03 1.58a.5.5 0 0 0-.12.61l1.92 3.32a.5.5 0 0 0 .59.22l2.39-.96a7 7 0 0 0 1.62.94l.36 2.54a.5.5 0 0 0 .5.42h3.84a.5.5 0 0 0 .5-.42l.36-2.54a7 7 0 0 0 1.62-.94l2.39.96a.5.5 0 0 0 .59-.22l1.92-3.32a.5.5 0 0 0-.12-.61zM12 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z"/></svg>
+                  </button>
+                  <button class="appcam-shutter" type="button" data-hero-shutter aria-label="Take a photo"></button>
+                  <button class="appcam-side appcam-gallery" type="button" aria-label="Gallery" tabindex="-1">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="15" rx="2.5"/><circle cx="8.5" cy="9.5" r="1.6"/><path d="M4 17l5-5 3.5 3.5L16 11l4 4"/></svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURE PANELS — one clear panel per main feature -->
+
+    <!-- 1. Say Cheese -->
+    <section id="features" class="fp-section band band--cream reveal">
+      <div class="container">
+        <div class="fpanel">
+          <div class="fpanel-media">
+            <div class="phone"><div class="phone-screen"><img src="assets/screenshots/say-cheese.webp" width="280" height="600" alt="Cheddar's camera counting down to snap a photo when the child says cheese" loading="lazy" /></div></div>
+          </div>
+          <div class="fpanel-copy">
+            <span class="eyebrow">Say Cheese</span>
+            <h2>Take a photo by saying the magic word</h2>
+            <p class="fp-problem">Little kids can't juggle a self-timer, a tripod, and “everybody hold still.”</p>
+            <p class="fp-desc">Long-press the giant shutter and just say “cheese!” Cheddar hears the word, counts down out loud, and snaps the shot — completely hands-free. Perfect for group photos and wobbly hands.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Cheddar Says (with the voice picker folded in) -->
+    <section class="fp-section band band--purple reveal">
+      <div class="container">
+        <div class="fpanel reverse">
+          <div class="fpanel-media">
+            <div class="phone"><div class="phone-screen"><img src="assets/screenshots/cheddar-says.webp" width="280" height="600" alt="A photo of a dog with a Cheddar Says description read aloud in the Wizard's voice" loading="lazy" /></div></div>
+          </div>
+          <div class="fpanel-copy">
+            <span class="eyebrow">Cheddar Says</span>
+            <h2>Photos that talk back — in silly voices</h2>
+            <p class="fp-problem">Kids ask a hundred questions about every picture they take.</p>
+            <p class="fp-desc">Tap a photo and Cheddar describes what it sees out loud, in a goofy character voice — Robot, Pirate, Wizard and more. Optional, and a grown-up switches it on.</p>
+          </div>
+        </div>
+        <div class="cs-voices">
+          <p class="cs-voices-label">These are the real voices from the app — tap a character to hear it:</p>
+          <div class="voice-strip" role="group" aria-label="Character voice samples">
+            <button class="voice-chip accent-yellow" type="button" data-audio="assets/voices/voice_preview_kore.m4a"><span class="vc-emoji" aria-hidden="true">🧀</span> Cheddar</button>
+            <button class="voice-chip accent-coral" type="button" data-audio="assets/voices/voice_preview_sulafat.m4a"><span class="vc-emoji" aria-hidden="true">🎅</span> Santa</button>
+            <button class="voice-chip accent-sky" type="button" data-audio="assets/voices/voice_preview_schedar.m4a"><span class="vc-emoji" aria-hidden="true">🤖</span> Robot</button>
+            <button class="voice-chip accent-purple" type="button" data-audio="assets/voices/voice_preview_charon.m4a"><span class="vc-emoji" aria-hidden="true">🧙</span> Wizard</button>
+            <button class="voice-chip accent-ink" type="button" data-audio="assets/voices/voice_preview_algenib.m4a"><span class="vc-emoji" aria-hidden="true">🧛</span> Vampire</button>
+            <button class="voice-chip accent-orange" type="button" data-audio="assets/voices/voice_preview_orus.m4a"><span class="vc-emoji" aria-hidden="true">🏴‍☠️</span> Pirate</button>
+            <button class="voice-chip accent-pink" type="button" data-audio="assets/voices/voice_preview_fenrir.m4a"><span class="vc-emoji" aria-hidden="true">🦸</span> Superhero</button>
+            <button class="voice-chip accent-splash" type="button" data-audio="assets/voices/voice_preview_achernar.m4a"><span class="vc-emoji" aria-hidden="true">👑</span> Royal</button>
+            <button class="voice-chip accent-mint" type="button" data-audio="assets/voices/voice_preview_zephyr.m4a"><span class="vc-emoji" aria-hidden="true">👽</span> Alien</button>
+            <button class="voice-chip accent-purple" type="button" data-audio="assets/voices/voice_preview_puck.m4a"><span class="vc-emoji" aria-hidden="true">🎭</span> Poet</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Stories -->
+    <section class="fp-section band band--pink-tint reveal">
+      <div class="container">
+        <div class="fpanel">
+          <div class="fpanel-media">
+            <div class="phone"><div class="phone-screen"><img src="assets/screenshots/gallery.webp" width="280" height="600" alt="Cheddar's gallery, where photos with recorded stories are collected" loading="lazy" /></div></div>
+          </div>
+          <div class="fpanel-copy">
+            <span class="eyebrow">Stories</span>
+            <h2>Kids record their own storybook</h2>
+            <p class="fp-problem">Your kid tells the world's best story about a photo… then forgets it by dinner.</p>
+            <p class="fp-desc">Tap record and let them narrate — up to 20 seconds in their own voice. It replays in a cosy “storytime mode” with a slow cinematic zoom, like a tiny movie they made themselves.</p>
+          </div>
+        </div>
+        <div class="story-strip">
+          <p class="story-label">Hear a story a kid recorded — tap to play:</p>
+          <div class="story-cards">
+            <button class="story-card" type="button" data-audio="assets/stories/story-1.m4a" aria-label="Play story: The dragon who ate my sandwich">
+              <span class="story-photo sp-1"><span class="story-subj" aria-hidden="true">🐉</span><span class="story-play" aria-hidden="true"></span></span>
+              <span class="story-cap"><b>“The dragon who ate my sandwich”</b><span>narrated very seriously · age 4</span></span>
+            </button>
+            <button class="story-card" type="button" data-audio="assets/stories/story-2.m4a" aria-label="Play story: My best friend Biscuit">
+              <span class="story-photo sp-2"><span class="story-subj" aria-hidden="true">🐶</span><span class="story-play" aria-hidden="true"></span></span>
+              <span class="story-cap"><b>“My best friend Biscuit”</b><span>told at top speed · age 5</span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Easy UI -->
+    <section class="fp-section band band--white reveal">
+      <div class="container">
+        <div class="fpanel reverse">
+          <div class="fpanel-media">
+            <div class="phone"><div class="phone-screen"><img src="assets/screenshots/camera.webp" width="280" height="600" alt="Cheddar's camera screen — one giant yellow shutter and a couple of big buttons" loading="lazy" /></div></div>
+          </div>
+          <div class="fpanel-copy">
+            <span class="eyebrow">Made for little hands</span>
+            <h2>So simple a three-year-old runs it</h2>
+            <p class="fp-problem">Tiny buttons and menus full of words are a non-starter for pre-readers.</p>
+            <p class="fp-desc">One giant shutter, a few chunky color-coded buttons, and zero text to read. Portrait-locked, one-hand friendly, and nothing to set up — kids just point and press.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. For parents (safety folded in) -->
+    <section id="parents" class="fp-section band band--blue clip reveal">
+      <div class="container">
+        <div class="fpanel">
+          <div class="fpanel-media">
+            <div class="phone"><div class="phone-screen"><img src="assets/screenshots/settings.webp" width="280" height="600" alt="Cheddar's grown-up settings, behind a math gate" loading="lazy" /></div></div>
+          </div>
+          <div class="fpanel-copy">
+            <span class="eyebrow">For parents</span>
+            <h2>You set the limits. Hand it over and relax.</h2>
+            <p class="fp-problem">It's a walled garden — no internet to wander onto, no ads to tap, nothing to buy.</p>
+            <p class="fp-desc">Everything that changes a setting, shares, or deletes sits behind a quick math gate only grown-ups can pass.</p>
+            <ul class="fp-list">
+              <li><span class="fp-tick" aria-hidden="true">✓</span> Per-hour photo caps &amp; gentle break timers</li>
+              <li><span class="fp-tick" aria-hidden="true">✓</span> Selfie &amp; gallery locks, delete protection</li>
+              <li><span class="fp-tick" aria-hidden="true">✓</span> Cheddar Says on/off — fully private when off</li>
+              <li><span class="fp-tick" aria-hidden="true">✓</span> No ads, no accounts, no tracking, no “just one more”</li>
+            </ul>
+            <a class="toy-btn fp-privacy" href="privacy.html">Read our privacy promise</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MORE COOL STUFF -->
+    <section class="more-section band band--cream reveal">
+      <div class="container">
+        <div class="section-head center">
+          <span class="eyebrow">And lots of little delights</span>
+          <h2>Plus a few more tricks up its sleeve</h2>
+        </div>
+        <div class="more-grid">
+          <div class="more-card accent-sky"><span class="more-emoji" aria-hidden="true">📤</span><h3>Share the magic</h3><p>Turn a Story or Cheddar Says into a little video — photo, gentle zoom and narration — to send to Grandma.</p></div>
+          <div class="more-card accent-mint"><span class="more-emoji" aria-hidden="true">🐮</span><h3>Silly sounds</h3><p>Swap the shutter click for a random goofy noise — a moo, a ribbit, a honk.</p></div>
+          <div class="more-card accent-pink"><span class="more-emoji" aria-hidden="true">❤️</span><h3>Favorites</h3><p>Kids heart the photos they love, and a Faves filter rounds them all up.</p></div>
+          <div class="more-card accent-orange"><span class="more-emoji" aria-hidden="true">🖼️</span><h3>Friendly gallery</h3><p>Big thumbnails, “Today” date headers, and filters for Faves, Voices &amp; Stories.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FULL-WIDTH PHOTO BAND -->
+    <section class="band band--photo photo-band reveal" data-photo="assets/img/dad.jpg" aria-label="Cheddar in real life">
+      <div class="pb-inner">
+        <span class="pb-eyebrow">Made for real kids</span>
+        <h2>Happiest in little hands</h2>
+        <p>Wobbly taps, silly faces, and very short attention spans — Cheddar is built for exactly how little kids really use a camera.</p>
+      </div>
+    </section>
+
+    <!-- DOWNLOAD / GET CHEDDAR -->
+    <section id="download" class="download band band--yellow reveal" aria-labelledby="download-title">
+      <div class="container download-grid">
+        <div class="download-copy">
+          <span class="eyebrow">Get Cheddar</span>
+          <h2 id="download-title">Give them a really cool camera, not the internet.</h2>
+          <p class="lede">Free, no ads, no accounts. Download Cheddar and let the snapping (and giggling) begin.</p>
+          <div class="store-row">
+            <a class="store-badge store-badge--lg" href="#" data-play-store aria-label="Get Cheddar on Google Play">
+              <svg viewBox="0 0 512 512" aria-hidden="true"><path d="M325.3 234.3 104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>
+              <span class="sb-text"><span class="sb-top">Get it on</span><span class="sb-name">Google Play</span></span>
+            </a>
+            <a class="store-badge store-badge--lg is-soon" href="#" aria-label="Cheddar for iOS is coming soon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.51 4.09zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
+              <span class="sb-text"><span class="sb-top">Coming soon</span><span class="sb-name">App Store</span></span>
+            </a>
+          </div>
+          <p class="download-note">Android now · iPhone &amp; iPad coming soon</p>
+        </div>
+        <div class="download-visual">
+          <div class="phone">
+            <div class="phone-screen">
+              <img src="assets/screenshots/say-cheese.webp" width="280" height="600" alt="Cheddar's voice shutter counting down to snap a photo" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer site-footer--dark">
+    <div class="container">
+      <div class="footer-cols">
+        <div class="footer-brand-col">
+          <a class="foot-brand" href="/">
+            <img src="assets/img/icon-192.webp" width="46" height="46" alt="" />
+            Cheddar
+          </a>
+          <p class="foot-tag">A simple camera built for your creative kid. Made with ❤ (and cheese) by a dad and a patient dog.</p>
+        </div>
+        <div class="footer-col">
+          <h3>Free download</h3>
+          <ul>
+            <li><a href="#" data-play-store>Google Play</a></li>
+            <li><a href="#">App Store (soon)</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>About</h3>
+          <ul>
+            <li><a href="index.html#features">Features</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Legal</h3>
+          <ul>
+            <li><a href="privacy.html">Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Snacks Design. All rights reserved.</span>
+        <span class="made">Say cheeeeese! 🧀</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
