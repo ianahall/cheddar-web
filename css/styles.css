@@ -254,15 +254,15 @@ section { padding-block: var(--section-gap); }
   align-items: center;
   gap: 11px;
   font-weight: 800;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   text-decoration: none;
   letter-spacing: -0.01em;
   background: #fff;
-  padding: 8px 20px 8px 10px;
+  padding: 8px 22px 8px 11px;
   border-radius: var(--r-pill);
   box-shadow: 0 12px 28px -16px rgba(47, 42, 38, 0.45);
 }
-.brand img { width: 40px; height: 40px; border-radius: 12px; }
+.brand img { width: 46px; height: 46px; border-radius: 13px; }
 
 /* Right-hand cluster: nav links + store badges inside one rounded pill */
 .nav-links {
@@ -399,6 +399,10 @@ section { padding-block: var(--section-gap); }
 }
 .hero-phone {
   width: clamp(220px, 30vw, 300px);
+  /* Smooths the cursor-parallax drift added in main.js ("Hero parallax").
+     Roll back by deleting that JS block; this transition is harmless alone. */
+  transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: transform;
 }
 @keyframes float-soft {
   0%, 100% { transform: translateY(0) rotate(-1.5deg); }
@@ -456,7 +460,7 @@ section { padding-block: var(--section-gap); }
 .hcam-shutter:active { transform: translateY(4px); box-shadow: 0 1px 0 var(--gold), 0 4px 10px -6px rgba(0,0,0,0.5); }
 
 /* Character speech bubbles floating around the phone */
-.hero-say { z-index: 4; }
+.hero-say { z-index: 4; transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1); will-change: transform; }
 .hero-say .em { font-size: 1.15em; margin-right: 5px; }
 .hero-visual .say-1 { top: 2%;  left: -8%; }
 .hero-visual .say-2 { top: 20%; right: -10%; }
@@ -1203,6 +1207,9 @@ section { padding-block: var(--section-gap); }
   position: relative;
   z-index: 1;
   padding: clamp(28px, 5vw, 56px);
+  /* Lift the text off the very bottom edge so it sits in the lower third
+     (over the darkest part of the scrim, clear of the faces in the photo). */
+  padding-bottom: clamp(44px, 7vw, 88px);
   max-width: 760px;
 }
 .photo-band .pb-eyebrow {

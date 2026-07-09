@@ -7,19 +7,19 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://cheddarcam.com/faq.html</loc>
+    <loc>https://cheddarcam.com/faq</loc>
     <lastmod>2026-07-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://cheddarcam.com/privacy.html</loc>
+    <loc>https://cheddarcam.com/privacy</loc>
     <lastmod>2026-07-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://cheddarcam.com/contact.html</loc>
+    <loc>https://cheddarcam.com/contact</loc>
     <lastmod>2026-07-08</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>

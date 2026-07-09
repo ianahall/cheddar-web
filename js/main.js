@@ -457,6 +457,50 @@
   })();
 
   /* --------------------------------------------------------
+     Hero parallax: the phone and the character speech bubbles
+     drift subtly toward the cursor, in the same mouse-driven
+     language as the feature-phone tilt above. Layered depths
+     give the bubbles a gentle sense of float. Purely an
+     enhancement — to roll it back, delete this whole block;
+     the CSS transitions are harmless on their own.
+     -------------------------------------------------------- */
+  (function () {
+    if (prefersReduced) return;
+    var hero = document.querySelector(".hero");
+    if (!hero) return;
+    var phone = hero.querySelector(".hero-phone");
+    var bubbles = Array.prototype.slice.call(hero.querySelectorAll(".hero-say"));
+    if (!phone && !bubbles.length) return;
+
+    var raf = null, nx = 0, ny = 0;
+    function apply() {
+      raf = null;
+      if (phone) {
+        phone.style.transform =
+          "translate(" + (nx * 6).toFixed(1) + "px, " + (ny * 5).toFixed(1) +
+          "px) rotate(" + (nx * 2.2).toFixed(2) + "deg)";
+      }
+      bubbles.forEach(function (b, i) {
+        var depth = 9 + (i % 2) * 7; // alternating 9 / 16px for a layered feel
+        b.style.transform =
+          "translate(" + (nx * depth).toFixed(1) + "px, " +
+          (ny * depth * 0.6).toFixed(1) + "px)";
+      });
+    }
+    hero.addEventListener("mousemove", function (e) {
+      var r = hero.getBoundingClientRect();
+      nx = Math.max(-1, Math.min(1, (e.clientX - (r.left + r.width / 2)) / (r.width / 2)));
+      ny = Math.max(-1, Math.min(1, (e.clientY - (r.top + r.height / 2)) / (r.height / 2)));
+      if (!raf) raf = window.requestAnimationFrame(apply);
+    });
+    hero.addEventListener("mouseleave", function () {
+      nx = ny = 0;
+      if (phone) phone.style.transform = "";
+      bubbles.forEach(function (b) { b.style.transform = ""; });
+    });
+  })();
+
+  /* --------------------------------------------------------
      Scroll-in reveal (skipped entirely under reduced motion).
      -------------------------------------------------------- */
   var reveals = document.querySelectorAll(".reveal");
