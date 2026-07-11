@@ -439,7 +439,7 @@
      -------------------------------------------------------- */
   (function () {
     if (prefersReduced) return;
-    var MAX_TILT = 3; // degrees at the far left/right edge
+    var MAX_TILT = 2; // degrees at the far left/right edge
     Array.prototype.forEach.call(
       document.querySelectorAll(".fpanel-media .phone, .download-visual .phone"),
       function (el) {
@@ -447,7 +447,7 @@
           var r = el.getBoundingClientRect();
           var x = Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)); // 0=left, 1=right
           var tilt = (x - 0.5) * 2 * MAX_TILT;
-          el.style.transform = "translateY(-3px) rotate(" + tilt.toFixed(2) + "deg)";
+          el.style.transform = "translateY(-2px) rotate(" + tilt.toFixed(2) + "deg)";
         });
         el.addEventListener("mouseleave", function () {
           el.style.transform = "";
@@ -478,8 +478,8 @@
       if (phone) {
         // The phone barely drifts — it's the calm anchor behind the bubbles.
         phone.style.transform =
-          "translate(" + (nx * 3).toFixed(1) + "px, " + (ny * 2.5).toFixed(1) +
-          "px) rotate(" + (nx * 1.1).toFixed(2) + "deg)";
+          "translate(" + (nx * 2).toFixed(1) + "px, " + (ny * 1.6).toFixed(1) +
+          "px) rotate(" + (nx * 0.7).toFixed(2) + "deg)";
       }
       // Each bubble reacts in its own direction, so they splay apart on cursor
       // move rather than sliding as a group. Their individual idle float lives
