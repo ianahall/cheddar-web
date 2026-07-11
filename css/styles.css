@@ -460,12 +460,34 @@ section { padding-block: var(--section-gap); }
 .hcam-shutter:active { transform: translateY(4px); box-shadow: 0 1px 0 var(--gold), 0 4px 10px -6px rgba(0,0,0,0.5); }
 
 /* Character speech bubbles floating around the phone */
-.hero-say { z-index: 4; transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1); will-change: transform; }
+.hero-say { z-index: 4; transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1); will-change: transform, translate, rotate; }
 .hero-say .em { font-size: 1.15em; margin-right: 5px; }
 .hero-visual .say-1 { top: 2%;  left: -8%; }
 .hero-visual .say-2 { top: 20%; right: -10%; }
 .hero-visual .say-3 { bottom: 20%; left: -10%; }
 .hero-visual .say-4 { bottom: 2%; right: -7%; }
+
+/* Each bubble drifts on its own gentle rhythm — individual, not as a group.
+   Uses the standalone translate/rotate properties so it layers on top of the
+   cursor-parallax transform set in main.js. Disabled under reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-visual .say-1 { animation: bubble-float-a 5.6s ease-in-out infinite; }
+  .hero-visual .say-2 { animation: bubble-float-b 6.9s ease-in-out infinite 0.5s; }
+  .hero-visual .say-3 { animation: bubble-float-c 6.3s ease-in-out infinite 0.9s; }
+  .hero-visual .say-4 { animation: bubble-float-b 7.6s ease-in-out infinite 0.3s; }
+}
+@keyframes bubble-float-a {
+  0%, 100% { translate: 0 0;      rotate: -1.2deg; }
+  50%      { translate: 0 -9px;   rotate:  1.2deg; }
+}
+@keyframes bubble-float-b {
+  0%, 100% { translate: 0 -2px;   rotate:  1.4deg; }
+  50%      { translate: 2px 8px;  rotate: -1.2deg; }
+}
+@keyframes bubble-float-c {
+  0%, 100% { translate: 0 2px;    rotate:  0.8deg; }
+  50%      { translate: -2px -8px; rotate: -1.5deg; }
+}
 @media (max-width: 820px) {
   .hero-visual .say-1 { top: -3%; left: 0%; }
   .hero-visual .say-2 { top: 12%; right: 0%; }
@@ -2137,9 +2159,9 @@ section { padding-block: var(--section-gap); }
 }
 .fp-privacy { margin-top: 22px; }
 /* Bold-band panels (grape / blue) — light text */
-.band--purple .fp-problem, .band--blue .fp-problem { color: rgba(255, 255, 255, 0.8); }
-.band--purple .fp-desc, .band--blue .fp-desc,
-.band--purple .fp-list li, .band--blue .fp-list li { color: rgba(255, 255, 255, 0.95); }
+.band--purple .fp-problem, .band--blue .fp-problem, .band--green .fp-problem { color: rgba(255, 255, 255, 0.8); }
+.band--purple .fp-desc, .band--blue .fp-desc, .band--green .fp-desc,
+.band--purple .fp-list li, .band--blue .fp-list li, .band--green .fp-list li { color: rgba(255, 255, 255, 0.95); }
 .band--blue .fp-privacy { --btn-face: #fff; --btn-edge: rgba(0, 0, 0, 0.22); --btn-text: var(--ink); }
 /* Cheddar Says voice picker, folded into its panel */
 .cs-voices { text-align: center; margin-top: clamp(28px, 4vw, 44px); }

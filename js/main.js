@@ -481,14 +481,15 @@
           "translate(" + (nx * 3).toFixed(1) + "px, " + (ny * 2.5).toFixed(1) +
           "px) rotate(" + (nx * 1.1).toFixed(2) + "deg)";
       }
-      // The bubbles float a lot more, at staggered depths, so they feel alive
-      // and clearly independent of the phone.
-      var depths = [28, 20, 32, 23];
+      // Each bubble reacts in its own direction, so they splay apart on cursor
+      // move rather than sliding as a group. Their individual idle float lives
+      // in CSS (translate/rotate), which composes with this transform.
+      var vecs = [[26, 14], [-18, 22], [22, -16], [-24, 12]];
       bubbles.forEach(function (b, i) {
-        var depth = depths[i % depths.length];
+        var v = vecs[i % vecs.length];
         b.style.transform =
-          "translate(" + (nx * depth).toFixed(1) + "px, " +
-          (ny * depth * 0.7).toFixed(1) + "px)";
+          "translate(" + (nx * v[0]).toFixed(1) + "px, " +
+          (ny * v[1]).toFixed(1) + "px)";
       });
     }
     hero.addEventListener("mousemove", function (e) {
