@@ -476,15 +476,19 @@
     function apply() {
       raf = null;
       if (phone) {
+        // The phone barely drifts — it's the calm anchor behind the bubbles.
         phone.style.transform =
-          "translate(" + (nx * 6).toFixed(1) + "px, " + (ny * 5).toFixed(1) +
-          "px) rotate(" + (nx * 2.2).toFixed(2) + "deg)";
+          "translate(" + (nx * 3).toFixed(1) + "px, " + (ny * 2.5).toFixed(1) +
+          "px) rotate(" + (nx * 1.1).toFixed(2) + "deg)";
       }
+      // The bubbles float a lot more, at staggered depths, so they feel alive
+      // and clearly independent of the phone.
+      var depths = [28, 20, 32, 23];
       bubbles.forEach(function (b, i) {
-        var depth = 9 + (i % 2) * 7; // alternating 9 / 16px for a layered feel
+        var depth = depths[i % depths.length];
         b.style.transform =
           "translate(" + (nx * depth).toFixed(1) + "px, " +
-          (ny * depth * 0.6).toFixed(1) + "px)";
+          (ny * depth * 0.7).toFixed(1) + "px)";
       });
     }
     hero.addEventListener("mousemove", function (e) {
