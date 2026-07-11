@@ -457,12 +457,13 @@
   })();
 
   /* --------------------------------------------------------
-     Hero parallax: the phone and the character speech bubbles
-     drift subtly toward the cursor, in the same mouse-driven
-     language as the feature-phone tilt above. Layered depths
-     give the bubbles a gentle sense of float. Purely an
-     enhancement — to roll it back, delete this whole block;
-     the CSS transitions are harmless on their own.
+     Hero cursor interaction. Each speech bubble reacts on its
+     own, purely to how near the cursor is to THAT bubble: a
+     bubble the cursor is close to leans gently toward it, while
+     bubbles further away don't move at all — so they behave as
+     separate little characters, not one group. The phone keeps
+     a barely-there whole-hero drift as a calm anchor. Purely an
+     enhancement — delete this block to roll it back.
      -------------------------------------------------------- */
   (function () {
     if (prefersReduced) return;
@@ -472,34 +473,37 @@
     var bubbles = Array.prototype.slice.call(hero.querySelectorAll(".hero-say"));
     if (!phone && !bubbles.length) return;
 
-    var raf = null, nx = 0, ny = 0;
+    var mx = 0, my = 0, raf = null;
+    var RADIUS = 220; // px: how near the cursor must be before a bubble reacts
+    var PULL = 6;     // px: max lean toward the cursor — deliberately tiny
+
     function apply() {
       raf = null;
+      var hr = hero.getBoundingClientRect();
       if (phone) {
-        // The phone barely drifts — it's the calm anchor behind the bubbles.
+        var pnx = Math.max(-1, Math.min(1, (mx - (hr.left + hr.width / 2)) / (hr.width / 2)));
+        var pny = Math.max(-1, Math.min(1, (my - (hr.top + hr.height / 2)) / (hr.height / 2)));
         phone.style.transform =
-          "translate(" + (nx * 2).toFixed(1) + "px, " + (ny * 1.6).toFixed(1) +
-          "px) rotate(" + (nx * 0.7).toFixed(2) + "deg)";
+          "translate(" + (pnx * 2).toFixed(1) + "px, " + (pny * 1.6).toFixed(1) +
+          "px) rotate(" + (pnx * 0.7).toFixed(2) + "deg)";
       }
-      // Each bubble reacts in its own direction, so they splay apart on cursor
-      // move rather than sliding as a group. Their individual idle float lives
-      // in CSS (translate/rotate), which composes with this transform.
-      var vecs = [[26, 14], [-18, 22], [22, -16], [-24, 12]];
-      bubbles.forEach(function (b, i) {
-        var v = vecs[i % vecs.length];
+      bubbles.forEach(function (b) {
+        var r = b.getBoundingClientRect();
+        var dx = mx - (r.left + r.width / 2);
+        var dy = my - (r.top + r.height / 2);
+        var dist = Math.sqrt(dx * dx + dy * dy) || 1;
+        var influence = Math.max(0, 1 - dist / RADIUS);
+        influence *= influence; // ease in — only really reacts when genuinely near
         b.style.transform =
-          "translate(" + (nx * v[0]).toFixed(1) + "px, " +
-          (ny * v[1]).toFixed(1) + "px)";
+          "translate(" + ((dx / dist) * PULL * influence).toFixed(1) + "px, " +
+          ((dy / dist) * PULL * influence).toFixed(1) + "px)";
       });
     }
     hero.addEventListener("mousemove", function (e) {
-      var r = hero.getBoundingClientRect();
-      nx = Math.max(-1, Math.min(1, (e.clientX - (r.left + r.width / 2)) / (r.width / 2)));
-      ny = Math.max(-1, Math.min(1, (e.clientY - (r.top + r.height / 2)) / (r.height / 2)));
+      mx = e.clientX; my = e.clientY;
       if (!raf) raf = window.requestAnimationFrame(apply);
     });
     hero.addEventListener("mouseleave", function () {
-      nx = ny = 0;
       if (phone) phone.style.transform = "";
       bubbles.forEach(function (b) { b.style.transform = ""; });
     });
