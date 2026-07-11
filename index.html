@@ -54,7 +54,7 @@
         "operatingSystem": "Android",
         "applicationCategory": "PhotographyApplication",
         "url": "https://cheddarcam.com/",
-        "description": "Cheddar is a safe, playful first camera app for kids ages 3–6. Kids take photos by saying “cheese,” hear them described in silly character voices, and record their own stories. No ads, no accounts, no tracking — photos stay on the device and parents set the limits.",
+        "description": "Cheddar is a safe, playful first camera app for kids ages 3–6. Kids take photos by saying “cheese,” hear them described in silly character voices, record their own stories, and go on on-device photo scavenger hunts. No ads, no accounts, no tracking — photos stay on the device and parents set the limits.",
         "image": "https://cheddarcam.com/assets/img/icon-512.png",
         "screenshot": "https://cheddarcam.com/assets/img/og-image.png",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
@@ -265,8 +265,14 @@
       <div class="container">
         <div class="fpanel reverse">
           <div class="fpanel-media">
-            <!-- TODO(web): add assets/screenshots/hunt.webp (the Photo Hunt briefing or camera). -->
-            <div class="phone"><div class="phone-screen"><img src="assets/screenshots/hunt.webp" width="280" height="600" alt="Cheddar's Photo Hunt — a mission to find three comfy chairs, with the target and progress slots" loading="lazy" /></div></div>
+            <!-- Real screenshot swaps in automatically once assets/screenshots/hunt.webp exists (data-shot probe). -->
+            <div class="phone"><div class="phone-screen accent-mint" data-shot="assets/screenshots/hunt.webp" data-shot-alt="Cheddar's Photo Hunt — a mission to find three comfy chairs, with the target and progress slots">
+              <div class="screenshot-placeholder" aria-hidden="true">
+                <span class="ph-emoji">🔎</span>
+                <span class="ph-label">Photo Hunt</span>
+                <span class="ph-note">Find 3 comfy chairs!</span>
+              </div>
+            </div></div>
           </div>
           <div class="fpanel-copy">
             <span class="eyebrow">Photo Hunt</span>
@@ -281,7 +287,7 @@
     <!-- 4. Easy UI -->
     <section class="fp-section band band--white reveal">
       <div class="container">
-        <div class="fpanel reverse">
+        <div class="fpanel">
           <div class="fpanel-media">
             <div class="phone"><div class="phone-screen"><img src="assets/screenshots/camera.webp" width="280" height="600" alt="Cheddar's camera screen — one giant yellow shutter and a couple of big buttons" loading="lazy" /></div></div>
           </div>
@@ -298,7 +304,7 @@
     <!-- 5. For parents (safety folded in) -->
     <section id="parents" class="fp-section band band--blue clip reveal">
       <div class="container">
-        <div class="fpanel">
+        <div class="fpanel reverse">
           <div class="fpanel-media">
             <div class="phone"><div class="phone-screen"><img src="assets/screenshots/settings.webp" width="280" height="600" alt="Cheddar's grown-up settings, behind a math gate" loading="lazy" /></div></div>
           </div>
