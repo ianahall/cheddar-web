@@ -288,7 +288,8 @@ section { padding-block: var(--section-gap); }
    ============================================================ */
 .toy-btn {
   --btn-face: var(--btn-primary);
-  --btn-edge: var(--btn-primary-edge);
+  /* Edge = the face graded 24% toward black — matches the app's toyEdge(). */
+  --btn-edge: color-mix(in srgb, var(--btn-face) 76%, #000);
   --btn-text: #fff;
   display: inline-flex;
   align-items: center;
@@ -299,22 +300,31 @@ section { padding-block: var(--section-gap); }
   font-size: 1.08rem;
   line-height: 1;
   color: var(--btn-text);
-  background: var(--btn-face);
+  /* Face + a soft top-left dome highlight (the app's white sheen). */
+  background:
+    radial-gradient(85% 150% at 30% 16%, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0) 60%),
+    var(--btn-face);
   border: none;
   border-radius: var(--r-pill);
   padding: 16px 30px;
   cursor: pointer;
   text-decoration: none;
-  box-shadow: 0 5px 0 0 var(--btn-edge), var(--shadow-soft);
-  transition: transform 0.12s var(--ease-toy),
-              box-shadow 0.12s var(--ease-toy);
+  /* 4px solid edge + a soft shadow tinted with the button's OWN color. */
+  box-shadow:
+    0 4px 0 0 var(--btn-edge),
+    0 9px 18px -6px color-mix(in srgb, var(--btn-face) 42%, transparent);
+  transition: transform 0.11s var(--ease-toy),
+              box-shadow 0.11s var(--ease-toy);
   will-change: transform;
 }
-.toy-btn:hover { transform: translateY(-1px) rotate(-0.6deg) scale(1.02); }
+.toy-btn:hover { transform: translateY(-1px); }
+/* Press sinks the face the full edge so the button goes flush — a key pressed all the way down. */
 .toy-btn:active,
 .toy-btn.is-pressed {
-  transform: translateY(3px);
-  box-shadow: 0 2px 0 0 var(--btn-edge), var(--shadow-soft);
+  transform: translateY(4px);
+  box-shadow:
+    0 0 0 0 var(--btn-edge),
+    0 4px 10px -6px color-mix(in srgb, var(--btn-face) 40%, transparent);
 }
 .toy-btn .btn-emoji { font-size: 1.15em; }
 
