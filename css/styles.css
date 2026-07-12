@@ -1926,21 +1926,12 @@ section { padding-block: var(--section-gap); }
 /* ============================================================
    CTA / ToyButton polish — shine, spring, thicker edge
    ============================================================ */
-.toy-btn {
-  position: relative;
-  overflow: hidden;
-  border-radius: 26px;
-  box-shadow: 0 7px 0 0 var(--btn-edge), 0 12px 22px -10px rgba(47,42,38,0.5);
-  background-image: linear-gradient(180deg, rgba(255,255,255,0.22), rgba(255,255,255,0) 46%);
-}
-.toy-btn::before {
-  content: ""; position: absolute; top: 6%; left: 8%; right: 40%; height: 34%;
-  border-radius: 999px; background: rgba(255,255,255,0.35); filter: blur(1px);
-  pointer-events: none;
-}
-/* NOTE: .toy-btn hover/active live in the main button block above (clean vertical
-   lift + press-to-flush). A duplicate here used to add a crooked rotate + scale
-   that fought the press animation and looked misaligned — removed. */
+/* NOTE: The single source of truth for .toy-btn is the main block near the top of
+   this file (app-matched: 4px color-graded edge, color-tinted shadow, radial dome
+   highlight, full-pill radius, press-to-flush). An older second definition +
+   ::before gloss used to live here and overrode it with a 7px edge / neutral
+   shadow / 26px radius; that edge-vs-press mismatch is what made the pressed state
+   look crooked. Removed. */
 
 /* ============================================================
    CSS APP SCREENS — the product itself as artwork
@@ -2266,9 +2257,7 @@ section { padding-block: var(--section-gap); }
   font-size: 0.95rem;
   border-radius: var(--r-pill);
   margin-left: 6px;
-  box-shadow: 0 4px 0 0 var(--btn-edge), var(--shadow-soft);
 }
-.nav-links .nav-download.toy-btn::before { display: none; }
 
 .nav-toggle {
   display: none;
