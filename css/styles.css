@@ -2257,6 +2257,10 @@ section { padding-block: var(--section-gap); }
   font-size: 0.95rem;
   border-radius: var(--r-pill);
   margin-left: 6px;
+  /* The 4px edge is a box-shadow (no layout height), so flex-centering ignores
+     it and the button sits low. Reserve the edge height so the whole visual
+     (face + edge) centers in the nav pill. */
+  margin-bottom: 4px;
 }
 
 .nav-toggle {
