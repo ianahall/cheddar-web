@@ -409,10 +409,6 @@ section { padding-block: var(--section-gap); }
 }
 .hero-phone {
   width: clamp(220px, 30vw, 300px);
-  /* Smooths the cursor-parallax drift added in main.js ("Hero parallax").
-     Roll back by deleting that JS block; this transition is harmless alone. */
-  transition: transform 0.4s cubic-bezier(0.22, 0.61, 0.36, 1);
-  will-change: transform;
 }
 @keyframes float-soft {
   0%, 100% { transform: translateY(0) rotate(-1.5deg); }
@@ -1942,11 +1938,9 @@ section { padding-block: var(--section-gap); }
   border-radius: 999px; background: rgba(255,255,255,0.35); filter: blur(1px);
   pointer-events: none;
 }
-.toy-btn:hover { transform: translateY(-2px) rotate(-1deg) scale(1.035); }
-.toy-btn:active, .toy-btn.is-pressed {
-  transform: translateY(4px) scale(0.99);
-  box-shadow: 0 2px 0 0 var(--btn-edge), 0 6px 12px -8px rgba(47,42,38,0.5);
-}
+/* NOTE: .toy-btn hover/active live in the main button block above (clean vertical
+   lift + press-to-flush). A duplicate here used to add a crooked rotate + scale
+   that fought the press animation and looked misaligned — removed. */
 
 /* ============================================================
    CSS APP SCREENS — the product itself as artwork
@@ -2343,12 +2337,12 @@ section { padding-block: var(--section-gap); }
 /* Showcase phones lift + tilt toward the cursor, pivoting from the base.
    The JS tilt (js/main.js "Mouse-tilt") enhances this; the :hover lift is the
    no-JS fallback. To roll back the tilt entirely, delete the main.js block. */
-.fpanel-media .phone, .download-visual .phone {
+.fpanel-media .phone, .download-visual .phone, .hero-phone {
   transform-origin: bottom center;
   transition: transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1), box-shadow 0.3s var(--ease-toy);
   will-change: transform;
 }
-.fpanel-media .phone:hover, .download-visual .phone:hover {
+.fpanel-media .phone:hover, .download-visual .phone:hover, .hero-phone:hover {
   transform: translateY(-2px);
   box-shadow: 0 40px 74px -26px rgba(47, 42, 38, 0.55), inset 0 0 0 2px rgba(255, 255, 255, 0.06);
 }

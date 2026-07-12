@@ -441,7 +441,7 @@
     if (prefersReduced) return;
     var MAX_TILT = 2; // degrees at the far left/right edge
     Array.prototype.forEach.call(
-      document.querySelectorAll(".fpanel-media .phone, .download-visual .phone"),
+      document.querySelectorAll(".fpanel-media .phone, .download-visual .phone, .hero-phone"),
       function (el) {
         el.addEventListener("mousemove", function (e) {
           var r = el.getBoundingClientRect();
@@ -461,32 +461,23 @@
      own, purely to how near the cursor is to THAT bubble: a
      bubble the cursor is close to leans gently toward it, while
      bubbles further away don't move at all — so they behave as
-     separate little characters, not one group. The phone keeps
-     a barely-there whole-hero drift as a calm anchor. Purely an
-     enhancement — delete this block to roll it back.
+     separate little characters, not one group. (The phone itself
+     tilts via the shared mouse-tilt block above, like the other
+     phones.) Purely an enhancement — delete this block to roll it back.
      -------------------------------------------------------- */
   (function () {
     if (prefersReduced) return;
     var hero = document.querySelector(".hero");
     if (!hero) return;
-    var phone = hero.querySelector(".hero-phone");
     var bubbles = Array.prototype.slice.call(hero.querySelectorAll(".hero-say"));
-    if (!phone && !bubbles.length) return;
+    if (!bubbles.length) return;
 
     var mx = 0, my = 0, raf = null;
     var RADIUS = 220; // px: how near the cursor must be before a bubble reacts
-    var PULL = 6;     // px: max lean toward the cursor — deliberately tiny
+    var PULL = 8;     // px: max lean toward the cursor
 
     function apply() {
       raf = null;
-      var hr = hero.getBoundingClientRect();
-      if (phone) {
-        var pnx = Math.max(-1, Math.min(1, (mx - (hr.left + hr.width / 2)) / (hr.width / 2)));
-        var pny = Math.max(-1, Math.min(1, (my - (hr.top + hr.height / 2)) / (hr.height / 2)));
-        phone.style.transform =
-          "translate(" + (pnx * 2).toFixed(1) + "px, " + (pny * 1.6).toFixed(1) +
-          "px) rotate(" + (pnx * 0.7).toFixed(2) + "deg)";
-      }
       bubbles.forEach(function (b) {
         var r = b.getBoundingClientRect();
         var dx = mx - (r.left + r.width / 2);
@@ -504,7 +495,6 @@
       if (!raf) raf = window.requestAnimationFrame(apply);
     });
     hero.addEventListener("mouseleave", function () {
-      if (phone) phone.style.transform = "";
       bubbles.forEach(function (b) { b.style.transform = ""; });
     });
   })();
