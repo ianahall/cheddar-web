@@ -16,7 +16,9 @@
   Cache-Control: public, max-age=31536000, immutable
 /assets/voices/*
   Cache-Control: public, max-age=31536000, immutable
+# Unversioned app code — revalidate every load so deploys show up immediately
+# (ETag still yields cheap 304s when nothing changed).
 /css/*
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=0, must-revalidate
 /js/*
-  Cache-Control: public, max-age=86400
+  Cache-Control: public, max-age=0, must-revalidate
