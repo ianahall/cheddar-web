@@ -176,6 +176,19 @@
   );
 
   /* --------------------------------------------------------
+     Storytime cards: each card's data-kb (seconds, roughly the
+     clip length) becomes the --kb-dur CSS variable that paces
+     the Ken Burns zoom while its story plays. Set via CSSOM
+     because our CSP blocks inline style attributes.
+     -------------------------------------------------------- */
+  Array.prototype.forEach.call(
+    document.querySelectorAll(".story-card[data-kb]"),
+    function (card) {
+      card.style.setProperty("--kb-dur", card.getAttribute("data-kb") + "s");
+    }
+  );
+
+  /* --------------------------------------------------------
      Hero camera: pressing the shutter flashes the screen white
      and advances to the next photo frame (placeholders for now).
      -------------------------------------------------------- */

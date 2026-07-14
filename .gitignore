@@ -11,3 +11,6 @@ Thumbs.db
 # Internal marketing brief — kept locally, not deployed publicly
 FEATURES.md
 .gstack/
+
+# Source material for web assets (converted copies live in assets/stories/)
+assets/Audio/
