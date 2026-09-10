@@ -27,7 +27,7 @@
   <meta name="twitter:image" content="https://cheddarcam.com/assets/img/og-image.png" />
 
   <link rel="preload" href="fonts/nunito-latin.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="css/styles.css?v=202609101027" />
+  <link rel="stylesheet" href="css/styles.css?v=202609101100" />
 
   <script type="application/ld+json">
   {
@@ -145,9 +145,10 @@
 
         <div class="hero-visual">
           <div class="bubble hero-say say-1" aria-hidden="true"><span class="em">🏴‍☠️</span>Nice shot, matey!</div>
-          <div class="bubble hero-say say-2 b-right" aria-hidden="true"><span class="em">🧙</span>Abracada-snap!</div>
-          <div class="bubble hero-say say-3" aria-hidden="true"><span class="em">🤖</span>Photo. Acquired.</div>
           <div class="bubble hero-say say-4 b-right" aria-hidden="true"><span class="em">🦸</span>Super smile!</div>
+          <!-- Cheddar mascot on a Poster-blue spotlight disc. Hidden until
+               assets/img/mascot.png exists (data-shot swaps it in). -->
+          <div class="hero-mascot" data-shot="assets/img/mascot.png" data-shot-alt="Cheddar the cheese mascot, waving with a camera" aria-hidden="true"></div>
 
           <div class="phone hero-phone">
             <div class="phone-screen">
@@ -383,6 +384,7 @@
 
   <footer class="site-footer site-footer--dark">
     <div class="container">
+      <div class="foot-mascot" data-shot="assets/img/mascot-footer.png" data-shot-alt="" aria-hidden="true"></div>
       <div class="footer-cols">
         <div class="footer-brand-col">
           <a class="foot-brand" href="/">
@@ -420,6 +422,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=202609101027" defer></script>
+  <script src="js/main.js?v=202609101100" defer></script>
 </body>
 </html>
