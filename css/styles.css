@@ -461,6 +461,23 @@ section { padding-block: var(--section-gap); }
 .foot-mascot img { width: 100%; height: auto; filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.45)); }
 /* Reserve a bottom "floor" so the sitting mascot lives below the footer content. */
 .site-footer .container { position: relative; padding-bottom: clamp(172px, 18vw, 224px); }
+
+/* Middle-section mascot — sits in the left gutter of the blue "For parents" band
+   (pops on blue, no disc). Hidden until the image exists; hidden on narrow screens
+   where the centered content fills the band and would collide. */
+.mid-mascot {
+  display: none;
+  position: absolute;
+  left: clamp(12px, 6vw, 96px);
+  bottom: clamp(8px, 1.5vw, 22px);
+  width: clamp(168px, 20vw, 248px);
+  z-index: 2;
+  pointer-events: none;
+}
+.mid-mascot.has-shot { display: block; }
+.mid-mascot img { width: 100%; height: auto; filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.3)); }
+/* Reserve a floor at the bottom of the "For parents" band for the sitting mascot. */
+#parents .container { padding-bottom: clamp(150px, 15vw, 205px); }
 @keyframes float-soft {
   0%, 100% { transform: translateY(0) rotate(-1.5deg); }
   50%      { transform: translateY(-16px) rotate(1.5deg); }
