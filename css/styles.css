@@ -451,15 +451,16 @@ section { padding-block: var(--section-gap); }
 .foot-mascot {
   display: none;
   position: absolute;
-  right: clamp(10px, 3vw, 44px);
-  bottom: 0;
-  width: clamp(92px, 12vw, 148px);
-  z-index: 3;
+  right: clamp(8px, 3vw, 48px);
+  bottom: 4px;
+  width: clamp(158px, 20vw, 240px);   /* wide sitting-with-photos scene */
+  z-index: 1;
   pointer-events: none;
 }
 .foot-mascot.has-shot { display: block; }
 .foot-mascot img { width: 100%; height: auto; filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.45)); }
-.site-footer .container { position: relative; }
+/* Reserve a bottom "floor" so the sitting mascot lives below the footer content. */
+.site-footer .container { position: relative; padding-bottom: clamp(172px, 18vw, 224px); }
 @keyframes float-soft {
   0%, 100% { transform: translateY(0) rotate(-1.5deg); }
   50%      { transform: translateY(-16px) rotate(1.5deg); }
