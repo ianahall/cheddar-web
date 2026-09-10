@@ -29,36 +29,39 @@
 
 /* ---------- Design tokens ---------- */
 :root {
-  /* Soft Toybox palette (exact app values) */
+  /* "Poster" palette — 2026-09 blue-forward rebrand (see palette board) */
   --bg-center: #FFF8E8;
   --bg-edge:   #F5E7C5;
-  --cream:     #FBF3DC;
-  --ink:       #2F2A26;
+  --cream:     #F3EED6;   /* paper on fields */
+  --ink:       #1E1B18;   /* near-black — text + icon strokes */
   --ink-soft:  #6B6157;   /* muted ink for secondary text (AA on cream) */
-  /* App "Painted Toy" palette — the four brand colors (exact values) */
-  --yellow:    #FFD54A;   /* yellow — dominant brand color        */
-  --gold:      #E0A800;   /* pressed edge for yellow button */
-  --splash:    #FECA31;
-  --sky:       #3E9BD1;   /* denim — confident painted blue        */
-  --orange:    #EE9A17;   /* Settings */
-  --mint:      #2CB283;   /* jade — natural botanical green         */
-  --purple:    #7A67D9;   /* grape — rich purple                   */
-  --coral:     #E45B4E;   /* Delete   */
-  --pink:      #F06BA3;   /* Favorite */
+  /* Brand pair */
+  --yellow:    #F0C840;   /* Cheddar yellow — cheese / accent pop      */
+  --gold:      #D0A828;   /* Gold — pressed edge for the yellow button */
+  --splash:    #F7D64E;   /* lighter yellow highlight */
+  --sky:       #326AAC;   /* Poster blue — dominant brand blue         */
+  --navy:      #1F3F6B;   /* Navy — pressed edge / deep blue           */
+  --cocoa:     #8F5A2B;   /* warm neutral (was khaki) */
+  /* Action accents (re-tuned) */
+  --orange:    #E8891E;   /* Amber — settings/close */
+  --mint:      #2A9D74;   /* Jade — flip/explorer   */
+  --purple:    #6A5AC4;   /* Grape — timer/tell me  */
+  --coral:     #D9503F;   /* Brick — delete */
+  --pink:      #E3628A;   /* Rose — favorites */
   --inactive:  #E8D5A0;
 
   /* Page + section tints (white page, pastel rounded panels) */
   --page:        #FFFFFF;
-  --tint-cream:  #FBF3DC;
-  --tint-sky:    #E7F3FB;
-  --tint-mint:   #E4F6EE;
-  --tint-purple: #EFEBFC;
-  --tint-pink:   #FDEAF3;
-  --tint-yellow: #FFF3CE;
+  --tint-cream:  #F3EED6;
+  --tint-sky:    #E7F1FB;
+  --tint-mint:   #E4F4EC;
+  --tint-purple: #ECE9FA;
+  --tint-pink:   #FBE9F0;
+  --tint-yellow: #FBF0C8;
 
-  /* Primary CTA (ToyButton) — purple on the yellow hero */
-  --btn-primary:      #7A67D9;
-  --btn-primary-edge: #5A48B2;
+  /* Primary CTA (ToyButton) — yellow "cheese" button; pops on the blue hero */
+  --btn-primary:      var(--yellow);
+  --btn-primary-edge: var(--gold);
 
   /* Shape — bigger, rounder (Optimizely feel) */
   --r-card: 28px;
@@ -288,9 +291,8 @@ section { padding-block: var(--section-gap); }
    ============================================================ */
 .toy-btn {
   --btn-face: var(--btn-primary);
-  /* Edge = the face graded 24% toward black — matches the app's toyEdge(). */
-  --btn-edge: color-mix(in srgb, var(--btn-face) 76%, #000);
-  --btn-text: #fff;
+  --btn-edge: var(--btn-primary-edge);   /* yellow → gold pressed edge */
+  --btn-text: var(--ink);                /* dark "charcoal" text on the yellow face */
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -361,10 +363,11 @@ section { padding-block: var(--section-gap); }
   overflow: hidden;
   padding-top: clamp(128px, 16vw, 200px);
   padding-bottom: clamp(56px, 8vw, 96px);
+  color: #fff;
   background:
-    radial-gradient(90% 70% at 82% 12%, color-mix(in srgb, var(--splash) 70%, var(--yellow)) 0%, transparent 55%),
-    radial-gradient(80% 80% at 10% 100%, color-mix(in srgb, var(--orange) 32%, var(--yellow)) 0%, transparent 60%),
-    var(--yellow);
+    radial-gradient(70% 60% at 80% 6%, color-mix(in srgb, #fff 16%, var(--sky)) 0%, transparent 58%),  /* lighter-blue glow, top-right */
+    radial-gradient(92% 82% at 8% 108%, var(--navy) 0%, transparent 60%),                              /* navy depth, bottom-left */
+    var(--sky);
 }
 .hero-grid {
   display: grid;
@@ -373,20 +376,20 @@ section { padding-block: var(--section-gap); }
   gap: clamp(28px, 5vw, 72px);
 }
 .hero-copy { position: relative; z-index: 2; }
-.hero h1 { margin-bottom: 0.32em; max-width: 13ch; }
+.hero h1 { margin-bottom: 0.32em; max-width: 13ch; color: #fff; }
 .hero .subline {
   max-width: 42ch;
   margin-bottom: 1.5em;
   font-size: clamp(1.12rem, 1.5vw, 1.38rem);
-  color: color-mix(in srgb, var(--ink) 84%, transparent);
+  color: rgba(255, 255, 255, 0.92);
   font-weight: 700;
 }
 .hero .cta-row { justify-content: flex-start; }
-/* On the yellow hero, the quiet secondary CTA is an ink outline pill */
+/* On the blue hero, the quiet secondary CTA is a white outline pill */
 .hero .chip.is-ghost {
-  color: var(--ink);
+  color: #fff;
   padding: 14px 24px;
-  box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--ink) 26%, transparent);
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.5);
 }
 .hero-trust {
   display: flex;
@@ -395,7 +398,7 @@ section { padding-block: var(--section-gap); }
   margin-top: 22px;
   font-weight: 800;
   font-size: 0.9rem;
-  color: color-mix(in srgb, var(--ink) 72%, transparent);
+  color: rgba(255, 255, 255, 0.85);
 }
 .hero-trust span { display: inline-flex; align-items: center; gap: 7px; }
 .hero-trust .dot { width: 9px; height: 9px; border-radius: 50%; background: currentColor; }
@@ -1002,12 +1005,13 @@ section { padding-block: var(--section-gap); }
   pointer-events: none;
   z-index: 0;
 }
+/* On the blue hero these read as soft dimples "punched" into the blue field. */
 .cheese-holes span {
   position: absolute;
   border-radius: 50%;
-  background: color-mix(in srgb, var(--yellow) 70%, #d39b12);
-  box-shadow: inset 2px 4px 9px rgba(120, 84, 12, 0.28),
-              0 1px 0 rgba(255, 255, 255, 0.35);
+  background: color-mix(in srgb, var(--navy) 55%, var(--sky));
+  box-shadow: inset 2px 4px 9px rgba(0, 0, 0, 0.22),
+              0 1px 0 rgba(255, 255, 255, 0.12);
 }
 @keyframes hole-bob {
   0%, 100% { transform: translateY(0); }
