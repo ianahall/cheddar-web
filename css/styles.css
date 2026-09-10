@@ -59,9 +59,10 @@
   --tint-pink:   #FBE9F0;
   --tint-yellow: #FBF0C8;
 
-  /* Primary CTA (ToyButton) — yellow "cheese" button; pops on the blue hero */
-  --btn-primary:      var(--yellow);
-  --btn-primary-edge: var(--gold);
+  /* Primary CTA (ToyButton) — Poster-blue button; pops on the yellow hero and
+     locks in the blue+yellow brand pair. (Yellow button is used on blue areas.) */
+  --btn-primary:      var(--sky);
+  --btn-primary-edge: var(--navy);
 
   /* Shape — bigger, rounder (Optimizely feel) */
   --r-card: 28px;
@@ -291,8 +292,8 @@ section { padding-block: var(--section-gap); }
    ============================================================ */
 .toy-btn {
   --btn-face: var(--btn-primary);
-  --btn-edge: var(--btn-primary-edge);   /* yellow → gold pressed edge */
-  --btn-text: var(--ink);                /* dark "charcoal" text on the yellow face */
+  --btn-edge: var(--btn-primary-edge);   /* blue → navy pressed edge */
+  --btn-text: #fff;                      /* white text on the blue face */
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -363,11 +364,10 @@ section { padding-block: var(--section-gap); }
   overflow: hidden;
   padding-top: clamp(128px, 16vw, 200px);
   padding-bottom: clamp(56px, 8vw, 96px);
-  color: #fff;
   background:
-    radial-gradient(70% 60% at 80% 6%, color-mix(in srgb, #fff 16%, var(--sky)) 0%, transparent 58%),  /* lighter-blue glow, top-right */
-    radial-gradient(92% 82% at 8% 108%, var(--navy) 0%, transparent 60%),                              /* navy depth, bottom-left */
-    var(--sky);
+    radial-gradient(90% 70% at 82% 12%, color-mix(in srgb, var(--splash) 70%, var(--yellow)) 0%, transparent 55%),
+    radial-gradient(80% 80% at 10% 100%, color-mix(in srgb, var(--orange) 32%, var(--yellow)) 0%, transparent 60%),
+    var(--yellow);
 }
 .hero-grid {
   display: grid;
@@ -376,20 +376,20 @@ section { padding-block: var(--section-gap); }
   gap: clamp(28px, 5vw, 72px);
 }
 .hero-copy { position: relative; z-index: 2; }
-.hero h1 { margin-bottom: 0.32em; max-width: 13ch; color: #fff; }
+.hero h1 { margin-bottom: 0.32em; max-width: 13ch; }
 .hero .subline {
   max-width: 42ch;
   margin-bottom: 1.5em;
   font-size: clamp(1.12rem, 1.5vw, 1.38rem);
-  color: rgba(255, 255, 255, 0.92);
+  color: color-mix(in srgb, var(--ink) 84%, transparent);
   font-weight: 700;
 }
 .hero .cta-row { justify-content: flex-start; }
-/* On the blue hero, the quiet secondary CTA is a white outline pill */
+/* On the yellow hero, the quiet secondary CTA is an ink outline pill */
 .hero .chip.is-ghost {
-  color: #fff;
+  color: var(--ink);
   padding: 14px 24px;
-  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.5);
+  box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--ink) 26%, transparent);
 }
 .hero-trust {
   display: flex;
@@ -398,7 +398,7 @@ section { padding-block: var(--section-gap); }
   margin-top: 22px;
   font-weight: 800;
   font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.85);
+  color: color-mix(in srgb, var(--ink) 72%, transparent);
 }
 .hero-trust span { display: inline-flex; align-items: center; gap: 7px; }
 .hero-trust .dot { width: 9px; height: 9px; border-radius: 50%; background: currentColor; }
@@ -1005,13 +1005,12 @@ section { padding-block: var(--section-gap); }
   pointer-events: none;
   z-index: 0;
 }
-/* On the blue hero these read as soft dimples "punched" into the blue field. */
 .cheese-holes span {
   position: absolute;
   border-radius: 50%;
-  background: color-mix(in srgb, var(--navy) 55%, var(--sky));
-  box-shadow: inset 2px 4px 9px rgba(0, 0, 0, 0.22),
-              0 1px 0 rgba(255, 255, 255, 0.12);
+  background: color-mix(in srgb, var(--yellow) 62%, var(--gold));
+  box-shadow: inset 2px 4px 9px rgba(120, 84, 12, 0.28),
+              0 1px 0 rgba(255, 255, 255, 0.35);
 }
 @keyframes hole-bob {
   0%, 100% { transform: translateY(0); }
