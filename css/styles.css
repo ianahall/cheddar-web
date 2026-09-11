@@ -423,7 +423,7 @@ section { padding-block: var(--section-gap); }
   position: absolute;
   left: 2%;
   bottom: -5%;
-  width: clamp(200px, 24vw, 320px);
+  width: clamp(190px, 22vw, 292px);
   z-index: 3;
   pointer-events: none;
 }
@@ -445,7 +445,7 @@ section { padding-block: var(--section-gap); }
   right: clamp(8px, 4vw, 64px);
   top: 0;
   transform: translateY(-32%);
-  width: clamp(185px, 20vw, 258px);
+  width: clamp(195px, 22vw, 278px);
   z-index: 5;
   pointer-events: none;
 }
