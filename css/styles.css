@@ -267,6 +267,7 @@ section { padding-block: var(--section-gap); }
   box-shadow: 0 12px 28px -16px rgba(47, 42, 38, 0.45);
 }
 .brand img { width: 56px; height: 56px; border-radius: 15px; }
+.brand .brand-cam { width: 54px; height: 46px; display: block; }
 
 /* Right-hand cluster: nav links + store badges inside one rounded pill */
 .nav-links {
