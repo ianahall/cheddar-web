@@ -423,8 +423,7 @@ section { padding-block: var(--section-gap); }
   position: absolute;
   left: 2%;
   bottom: -5%;
-  /* Sized so the cheese CHARACTER matches the others (~250px tall). */
-  width: clamp(165px, 19vw, 240px);
+  width: clamp(190px, 22vw, 288px);
   z-index: 3;
   pointer-events: none;
 }
@@ -435,65 +434,24 @@ section { padding-block: var(--section-gap); }
   filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.22));
 }
 @media (max-width: 820px) {
-  .hero-mascot { width: clamp(150px, 38vw, 210px); left: 0; bottom: -6%; }
+  .hero-mascot { width: clamp(160px, 42vw, 230px); left: 0; bottom: -6%; }
 }
 
-/* Same mascot, different pose, tucked into the dark footer (pops on the dark
-   ground, no disc needed). Hidden until assets/img/mascot-footer.png exists. */
-/* Footer mascot (cheesy 5) — a grid item to the RIGHT of the footer link columns. */
+/* Footer mascot (the walking cheesy-2 pose) — sits on the footer's top ledge,
+   rising up to overlap the yellow band above. Hidden until the image loads. */
 .foot-mascot {
   display: none;
   position: absolute;
-  right: clamp(8px, 3vw, 50px);
+  right: clamp(8px, 4vw, 64px);
   top: 0;
-  /* Sit on the footer's top ledge, rising up to overlap the panel above.
-     Wider than the others because this sitting pose is short — sizes the
-     cheese CHARACTER to ~250px tall to match the rest. */
-  transform: translateY(-26%);
-  width: clamp(240px, 27vw, 348px);
+  transform: translateY(-34%);
+  width: clamp(180px, 21vw, 268px);
   z-index: 5;
   pointer-events: none;
 }
 .foot-mascot.has-shot { display: block; }
 .foot-mascot img { width: 100%; height: auto; filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.4)); }
 @media (max-width: 900px) { .foot-mascot { display: none !important; } }
-
-/* Middle-section mascot (cheesy 3) — on a reserved floor at the bottom-left of the
-   blue "For parents" band. Hidden until the image exists. */
-.mid-mascot {
-  display: none;
-  position: absolute;
-  left: clamp(8px, 4vw, 76px);
-  top: 0;
-  /* Sit on the cream panel's top ledge: most of the body rises above it into
-     the blue band, legs/feet dangle just over the edge onto the cream. */
-  transform: translateY(-63%);
-  width: clamp(200px, 23vw, 298px);
-  z-index: 4;
-  pointer-events: none;
-}
-.mid-mascot.has-shot { display: block; }
-.mid-mascot img { width: 100%; height: auto; filter: drop-shadow(0 14px 18px rgba(0, 0, 0, 0.22)); }
-.more-section { position: relative; }
-@media (max-width: 620px) {
-  .mid-mascot { width: clamp(150px, 40vw, 200px); transform: translateY(-58%); }
-}
-
-/* Story-strip mascot (cheesy 2) — to the right of the "Hear a story..." cards. */
-.story-strip { position: relative; }
-.story-mascot {
-  display: none;
-  position: absolute;
-  right: clamp(-10px, 0vw, 20px);
-  bottom: clamp(-8px, 1vw, 20px);
-  /* Cheese character matched to ~250px tall (this pose is short & wide). */
-  width: clamp(190px, 22vw, 286px);
-  z-index: 2;
-  pointer-events: none;
-}
-.story-mascot.has-shot { display: block; }
-.story-mascot img { width: 100%; height: auto; filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.16)); }
-@media (max-width: 940px) { .story-mascot { display: none !important; } }
 @keyframes float-soft {
   0%, 100% { transform: translateY(0) rotate(-1.5deg); }
   50%      { transform: translateY(-16px) rotate(1.5deg); }
