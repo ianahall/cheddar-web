@@ -30,34 +30,37 @@
 /* ---------- Design tokens ---------- */
 :root {
   /* "Poster" palette — 2026-09 blue-forward rebrand (see palette board) */
-  --bg-center: #FFF8E8;
-  --bg-edge:   #F5E7C5;
-  --cream:     #F3EED6;   /* paper on fields */
-  --ink:       #1E1B18;   /* near-black — text + icon strokes */
-  --ink-soft:  #6B6157;   /* muted ink for secondary text (AA on cream) */
+  /* "Warm Camera" palette — 2026-09 rebrand: yellow · navy · cream · caramel
+     + two poppers (sea-glass teal = calm cues, coral = lively cues).
+     Token NAMES kept for cascade; old rainbow collapsed onto the 6 colours. */
+  --bg-center: #FFF7E4;
+  --bg-edge:   #F6E9C6;
+  --cream:     #FFF0CE;   /* Warm cream — light grounds / lens ring */
+  --ink:       #20283A;   /* Midnight-navy near-black — text + icon strokes */
+  --ink-soft:  #5F6472;   /* muted cool ink for secondary text (AA on cream) */
   /* Brand pair */
-  --yellow:    #F0C840;   /* Cheddar yellow — cheese / accent pop      */
-  --gold:      #D0A828;   /* Gold — pressed edge for the yellow button */
-  --splash:    #F7D64E;   /* lighter yellow highlight */
-  --sky:       #326AAC;   /* Poster blue — dominant brand blue         */
-  --navy:      #1F3F6B;   /* Navy — pressed edge / deep blue           */
-  --cocoa:     #8F5A2B;   /* warm neutral (was khaki) */
-  /* Action accents (re-tuned) */
-  --orange:    #E8891E;   /* Amber — settings/close */
-  --mint:      #2A9D74;   /* Jade — flip/explorer   */
-  --purple:    #6A5AC4;   /* Grape — timer/tell me  */
-  --coral:     #D9503F;   /* Brick — delete */
-  --pink:      #E3628A;   /* Rose — favorites */
-  --inactive:  #E8D5A0;
+  --yellow:    #FFD43B;   /* Cheddar yellow — main brand */
+  --gold:      #E9B91E;   /* pressed edge for the yellow button / cheese holes */
+  --splash:    #FFE27A;   /* lighter yellow highlight */
+  --sky:       #293B59;   /* Midnight navy — dominant dark ground / primary CTA */
+  --navy:      #1C2A42;   /* deeper navy — pressed edge / depth */
+  --cocoa:     #986747;   /* Caramel brown — warm neutral accent */
+  /* Action accents (mapped onto the 6-colour system) */
+  --orange:    #986747;   /* → caramel */
+  --mint:      #2BAF9E;   /* Sea-glass teal — cool pop (calm cues) */
+  --purple:    #293B59;   /* → navy */
+  --coral:     #E56A4F;   /* Coral — warm pop (lively cues) */
+  --pink:      #E56A4F;   /* → coral */
+  --inactive:  #E7DCC0;
 
-  /* Page + section tints (white page, pastel rounded panels) */
+  /* Page + section tints (light rounded panels) */
   --page:        #FFFFFF;
-  --tint-cream:  #F3EED6;
-  --tint-sky:    #E7F1FB;
-  --tint-mint:   #E4F4EC;
-  --tint-purple: #ECE9FA;
-  --tint-pink:   #FBE9F0;
-  --tint-yellow: #FBF0C8;
+  --tint-cream:  #FFF4DD;
+  --tint-sky:    #E8ECF4;   /* navy tint */
+  --tint-mint:   #DCF1EE;   /* teal tint */
+  --tint-purple: #E8ECF4;   /* navy tint */
+  --tint-pink:   #FBE7DF;   /* coral tint */
+  --tint-yellow: #FFF3CC;
 
   /* Primary CTA (ToyButton) — Poster-blue button; pops on the yellow hero and
      locks in the blue+yellow brand pair. (Yellow button is used on blue areas.) */
@@ -197,7 +200,7 @@ main > .band:first-child {
 .band--yellow { background: var(--yellow); }
 .band--blue   { background: var(--sky);    color: #fff; }
 .band--purple { background: var(--purple); color: #fff; }
-.band--green  { background: var(--mint);   color: #fff; }
+.band--green  { background: #15736A;       color: #fff; }  /* deep teal (AA white text) */
 .band--blue .eyebrow, .band--purple .eyebrow, .band--green .eyebrow { color: rgba(255,255,255,0.85); }
 .band--blue h2, .band--blue h3, .band--blue .lede,
 .band--purple h2, .band--purple h3, .band--purple .lede,
@@ -2295,7 +2298,7 @@ section { padding-block: var(--section-gap); }
 /* ============================================================
    Dark footer — anchors the page under the yellow download panel
    ============================================================ */
-.site-footer--dark { background: #2A2724; }
+.site-footer--dark { background: #293B59; }  /* midnight navy */
 .site-footer--dark,
 .site-footer--dark .footer-col a,
 .site-footer--dark .foot-tag { color: rgba(255, 255, 255, 0.62); }
