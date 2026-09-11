@@ -422,7 +422,8 @@ section { padding-block: var(--section-gap); }
   position: absolute;
   left: 2%;
   bottom: -5%;
-  width: clamp(180px, 21vw, 258px);
+  /* Sized so the cheese CHARACTER matches the others (~250px tall). */
+  width: clamp(165px, 19vw, 240px);
   z-index: 3;
   pointer-events: none;
 }
@@ -444,9 +445,11 @@ section { padding-block: var(--section-gap); }
   position: absolute;
   right: clamp(8px, 3vw, 50px);
   top: 0;
-  /* Sit on the footer's top ledge, rising up to overlap the panel above. */
+  /* Sit on the footer's top ledge, rising up to overlap the panel above.
+     Wider than the others because this sitting pose is short — sizes the
+     cheese CHARACTER to ~250px tall to match the rest. */
   transform: translateY(-26%);
-  width: clamp(210px, 24vw, 320px);
+  width: clamp(240px, 27vw, 348px);
   z-index: 5;
   pointer-events: none;
 }
@@ -464,7 +467,7 @@ section { padding-block: var(--section-gap); }
   /* Sit on the cream panel's top ledge: most of the body rises above it into
      the blue band, legs/feet dangle just over the edge onto the cream. */
   transform: translateY(-63%);
-  width: clamp(200px, 23vw, 312px);
+  width: clamp(200px, 23vw, 298px);
   z-index: 4;
   pointer-events: none;
 }
@@ -482,7 +485,8 @@ section { padding-block: var(--section-gap); }
   position: absolute;
   right: clamp(-10px, 0vw, 20px);
   bottom: clamp(-8px, 1vw, 20px);
-  width: clamp(150px, 18vw, 240px);
+  /* Cheese character matched to ~250px tall (this pose is short & wide). */
+  width: clamp(190px, 22vw, 286px);
   z-index: 2;
   pointer-events: none;
 }
