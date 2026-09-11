@@ -407,7 +407,7 @@ section { padding-block: var(--section-gap); }
 .hero-visual {
   position: relative;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   z-index: 1;
 }
 .hero-phone {
@@ -420,7 +420,7 @@ section { padding-block: var(--section-gap); }
 .hero-mascot {
   display: none;
   position: absolute;
-  left: -12%;
+  left: 2%;
   bottom: -5%;
   width: clamp(180px, 21vw, 258px);
   z-index: 3;
@@ -439,9 +439,19 @@ section { padding-block: var(--section-gap); }
 /* Same mascot, different pose, tucked into the dark footer (pops on the dark
    ground, no disc needed). Hidden until assets/img/mascot-footer.png exists. */
 /* Footer mascot (cheesy 5) — a grid item to the RIGHT of the footer link columns. */
-.foot-mascot { display: none; align-self: center; justify-self: end; z-index: 1; pointer-events: none; width: clamp(230px, 26vw, 360px); }
+.foot-mascot {
+  display: none;
+  position: absolute;
+  right: clamp(8px, 3vw, 50px);
+  top: 0;
+  /* Sit on the footer's top ledge, rising up to overlap the panel above. */
+  transform: translateY(-26%);
+  width: clamp(210px, 24vw, 320px);
+  z-index: 5;
+  pointer-events: none;
+}
 .foot-mascot.has-shot { display: block; }
-.foot-mascot img { width: 100%; height: auto; filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.45)); }
+.foot-mascot img { width: 100%; height: auto; filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.4)); }
 @media (max-width: 900px) { .foot-mascot { display: none !important; } }
 
 /* Middle-section mascot (cheesy 3) — on a reserved floor at the bottom-left of the
@@ -449,15 +459,21 @@ section { padding-block: var(--section-gap); }
 .mid-mascot {
   display: none;
   position: absolute;
-  left: clamp(6px, 3vw, 64px);
-  bottom: clamp(6px, 1.2vw, 16px);
-  width: clamp(190px, 22vw, 300px);
-  z-index: 2;
+  left: clamp(8px, 4vw, 76px);
+  top: 0;
+  /* Sit on the cream panel's top ledge: most of the body rises above it into
+     the blue band, legs/feet dangle just over the edge onto the cream. */
+  transform: translateY(-63%);
+  width: clamp(200px, 23vw, 312px);
+  z-index: 4;
   pointer-events: none;
 }
 .mid-mascot.has-shot { display: block; }
-.mid-mascot img { width: 100%; height: auto; filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.3)); }
-#parents .container { position: relative; padding-bottom: clamp(210px, 22vw, 320px); }
+.mid-mascot img { width: 100%; height: auto; filter: drop-shadow(0 14px 18px rgba(0, 0, 0, 0.22)); }
+.more-section { position: relative; }
+@media (max-width: 620px) {
+  .mid-mascot { width: clamp(150px, 40vw, 200px); transform: translateY(-58%); }
+}
 
 /* Story-strip mascot (cheesy 2) — to the right of the "Hear a story..." cards. */
 .story-strip { position: relative; }
@@ -1691,7 +1707,7 @@ section { padding-block: var(--section-gap); }
 }
 .footer-cols {
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr auto;
+  grid-template-columns: 1.4fr 1fr 1fr minmax(230px, auto);
   gap: clamp(28px, 5vw, 56px);
   align-items: start;
 }
