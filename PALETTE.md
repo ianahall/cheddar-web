@@ -102,6 +102,6 @@ val DeepTeal       = Color(0xFF15736A)
 val Coral          = Color(0xFFE56A4F)
 val Ink            = Color(0xFF20283A)
 val InkSoft        = Color(0xFF5F6472)
-val Gold           = Color(0xFFE9B91E)
-val Splash         = Color(0xFFFFE27A)
+val Gold           = Color(0xFFE5A81C)
+val Splash         = Color(0xFFFFDB63)
 ```
