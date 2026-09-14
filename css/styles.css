@@ -39,9 +39,9 @@
   --ink:       #20283A;   /* Midnight-navy near-black — text + icon strokes */
   --ink-soft:  #5F6472;   /* muted cool ink for secondary text (AA on cream) */
   /* Brand pair */
-  --yellow:    #FFD43B;   /* Cheddar yellow — main brand */
-  --gold:      #E9B91E;   /* pressed edge for the yellow button / cheese holes */
-  --splash:    #FFE27A;   /* lighter yellow highlight */
+  --yellow:    #FFCB33;   /* Cheddar yellow — main brand (warmed golden to sit with peach) */
+  --gold:      #E5A81C;   /* pressed edge for the yellow button / cheese holes */
+  --splash:    #FFDB63;   /* lighter yellow highlight */
   --sky:       #243C6C;   /* Indigo navy (matched to the logo body) — dominant dark / primary CTA */
   --navy:      #1A2B52;   /* deeper indigo — pressed edge / depth */
   --peach:     #FCE4CC;   /* soft warm peach (from the logo's lens ring) — light accent */

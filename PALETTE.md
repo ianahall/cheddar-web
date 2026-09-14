@@ -12,7 +12,7 @@ from the old system for cascade — see the mapping notes below).
 
 | Color | Hex | Role |
 |---|---|---|
-| Cheddar yellow | `#FFD43B` | Main brand / hero ground / the shutter / highlights |
+| Cheddar yellow | `#FFCB33` | Main brand / hero ground / the shutter / highlights |
 | Indigo navy | `#243C6C` | Dominant dark ground, primary buttons, camera body, strong text (matched to the logo) |
 | Deeper navy | `#1A2B52` | Pressed/bottom edge under navy, depth, deepest shadow |
 | Warm cream | `#FFF0CE` | Light grounds, cards on dark, lens ring |
@@ -28,8 +28,8 @@ from the old system for cascade — see the mapping notes below).
 |---|---|---|
 | Ink (near-black) | `#20283A` | Primary text + icon strokes on light grounds |
 | Ink-soft | `#5F6472` | Secondary / muted text (AA on cream & white) |
-| Gold (yellow-deep) | `#E9B91E` | Pressed edge under the yellow button / cheese-hole shadows |
-| Splash (light yellow) | `#FFE27A` | Lighter yellow highlight / hero glow |
+| Gold (yellow-deep) | `#E5A81C` | Pressed edge under the yellow button / cheese-hole shadows |
+| Splash (light yellow) | `#FFDB63` | Lighter yellow highlight / hero glow |
 
 ## Soft tints (pastel panels / chips on light UI)
 
@@ -65,9 +65,9 @@ from the old system for cascade — see the mapping notes below).
 
 ## Website band rhythm ("navy-anchored", chosen 2026-09-12)
 
-hero **yellow** → features **cream** → voices **navy** → stories **coral-tint** →
+hero **yellow** → features **peach** → voices **navy** → stories **coral-tint** →
 Photo Hunt **deep teal `#15736A`** → "so simple" **peach** → for-parents **navy** →
-more tricks **cream** → download **yellow** → footer **navy `#243C6C`**.
+more tricks **peach** → download **yellow** → footer **navy `#243C6C`**.
 
 ## CSS token mapping (website)
 
@@ -76,7 +76,7 @@ longer match their color:
 
 | Token | Value | Note |
 |---|---|---|
-| `--yellow` | `#FFD43B` | |
+| `--yellow` | `#FFCB33` | |
 | `--sky` | `#243C6C` | now **navy** (still named `--sky`); drives `--btn-primary` |
 | `--navy` | `#1A2B52` | deeper navy edge |
 | `--cream` | `#FFF0CE` | |
@@ -91,7 +91,7 @@ longer match their color:
 ## Jetpack Compose values (app)
 
 ```kotlin
-val CheddarYellow  = Color(0xFFFFD43B)
+val CheddarYellow  = Color(0xFFFFCB33)
 val IndigoNavy     = Color(0xFF243C6C)
 val NavyDeep       = Color(0xFF1A2B52)
 val WarmCream      = Color(0xFFFFF0CE)
