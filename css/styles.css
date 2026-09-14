@@ -42,13 +42,14 @@
   --yellow:    #FFD43B;   /* Cheddar yellow — main brand */
   --gold:      #E9B91E;   /* pressed edge for the yellow button / cheese holes */
   --splash:    #FFE27A;   /* lighter yellow highlight */
-  --sky:       #293B59;   /* Midnight navy — dominant dark ground / primary CTA */
-  --navy:      #1C2A42;   /* deeper navy — pressed edge / depth */
+  --sky:       #243C6C;   /* Indigo navy (matched to the logo body) — dominant dark / primary CTA */
+  --navy:      #1A2B52;   /* deeper indigo — pressed edge / depth */
+  --peach:     #FCE4CC;   /* soft warm peach (from the logo's lens ring) — light accent */
   --cocoa:     #986747;   /* Caramel brown — warm neutral accent */
   /* Action accents (mapped onto the 6-colour system) */
   --orange:    #986747;   /* → caramel */
   --mint:      #2BAF9E;   /* Sea-glass teal — cool pop (calm cues) */
-  --purple:    #293B59;   /* → navy */
+  --purple:    #243C6C;   /* → navy */
   --coral:     #E56A4F;   /* Coral — warm pop (lively cues) */
   --pink:      #E56A4F;   /* → coral */
   --inactive:  #E7DCC0;
@@ -195,6 +196,7 @@ main > .band:first-child {
 .band--purple-tint { background: var(--tint-purple); }
 .band--pink-tint   { background: var(--tint-pink); }
 .band--cream       { background: var(--tint-cream); }
+.band--peach       { background: var(--peach); }
 .band--white       { background: var(--page); }
 /* Bold, saturated color blocks (toy-like moments) */
 .band--yellow { background: var(--yellow); }
@@ -2313,7 +2315,7 @@ section { padding-block: var(--section-gap); }
 /* ============================================================
    Dark footer — anchors the page under the yellow download panel
    ============================================================ */
-.site-footer--dark { background: #293B59; }  /* midnight navy */
+.site-footer--dark { background: #243C6C; }  /* indigo navy */
 .site-footer--dark,
 .site-footer--dark .footer-col a,
 .site-footer--dark .foot-tag { color: rgba(255, 255, 255, 0.62); }

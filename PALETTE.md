@@ -13,9 +13,10 @@ from the old system for cascade — see the mapping notes below).
 | Color | Hex | Role |
 |---|---|---|
 | Cheddar yellow | `#FFD43B` | Main brand / hero ground / the shutter / highlights |
-| Midnight navy | `#293B59` | Dominant dark ground, primary buttons, camera body, strong text |
-| Deeper navy | `#1C2A42` | Pressed/bottom edge under navy, depth, deepest shadow |
+| Indigo navy | `#243C6C` | Dominant dark ground, primary buttons, camera body, strong text (matched to the logo) |
+| Deeper navy | `#1A2B52` | Pressed/bottom edge under navy, depth, deepest shadow |
 | Warm cream | `#FFF0CE` | Light grounds, cards on dark, lens ring |
+| Peach | `#FCE4CC` | Soft warm light accent / panel (from the logo's lens ring) |
 | Caramel brown | `#986747` | Warm supporting accent (small doses) |
 | Sea-glass teal | `#2BAF9E` | **Pop #1 (cool)** — "calm" cues: privacy / on-device, secondary actions |
 | Deep teal | `#15736A` | Teal for surfaces carrying **white text** (bright teal fails contrast) |
@@ -65,8 +66,8 @@ from the old system for cascade — see the mapping notes below).
 ## Website band rhythm ("navy-anchored", chosen 2026-09-12)
 
 hero **yellow** → features **cream** → voices **navy** → stories **coral-tint** →
-Photo Hunt **deep teal `#15736A`** → "so simple" **white** → for-parents **navy** →
-more tricks **cream** → download **yellow** → footer **navy `#293B59`**.
+Photo Hunt **deep teal `#15736A`** → "so simple" **peach** → for-parents **navy** →
+more tricks **cream** → download **yellow** → footer **navy `#243C6C`**.
 
 ## CSS token mapping (website)
 
@@ -76,13 +77,13 @@ longer match their color:
 | Token | Value | Note |
 |---|---|---|
 | `--yellow` | `#FFD43B` | |
-| `--sky` | `#293B59` | now **navy** (still named `--sky`); drives `--btn-primary` |
-| `--navy` | `#1C2A42` | deeper navy edge |
+| `--sky` | `#243C6C` | now **navy** (still named `--sky`); drives `--btn-primary` |
+| `--navy` | `#1A2B52` | deeper navy edge |
 | `--cream` | `#FFF0CE` | |
 | `--cocoa` / `--orange` | `#986747` | caramel |
 | `--mint` | `#2BAF9E` | sea-glass teal |
 | `--coral` / `--pink` | `#E56A4F` | coral |
-| `--purple` | `#293B59` | → navy |
+| `--purple` | `#243C6C` | → navy |
 | `--ink` | `#20283A` | |
 
 `.band--green` is overridden to deep teal `#15736A` for white-text contrast.
@@ -91,9 +92,10 @@ longer match their color:
 
 ```kotlin
 val CheddarYellow  = Color(0xFFFFD43B)
-val MidnightNavy   = Color(0xFF293B59)
-val NavyDeep       = Color(0xFF1C2A42)
+val IndigoNavy     = Color(0xFF243C6C)
+val NavyDeep       = Color(0xFF1A2B52)
 val WarmCream      = Color(0xFFFFF0CE)
+val Peach          = Color(0xFFFCE4CC)
 val Caramel        = Color(0xFF986747)
 val SeaGlassTeal   = Color(0xFF2BAF9E)
 val DeepTeal       = Color(0xFF15736A)
