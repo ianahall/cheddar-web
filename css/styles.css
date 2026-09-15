@@ -256,20 +256,20 @@ section { padding-block: var(--section-gap); }
   align-items: center;
   justify-content: space-between;
   gap: 14px;
-  max-width: 1240px;
+  max-width: var(--maxw);   /* match the hero width so the logo aligns with the headline */
 }
 /* Open lockup — camera + wordmark sit directly on the ground (no pill). */
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 14px;
+  gap: 9px;
   font-weight: 900;
-  font-size: clamp(1.75rem, 2.2vw, 2.05rem);
+  font-size: clamp(1.85rem, 2.4vw, 2.2rem);
   text-decoration: none;
   letter-spacing: -0.02em;
   color: var(--sky);   /* indigo wordmark, tied to the camera body */
 }
-.brand img { height: 47px; width: auto; border-radius: 0; transform: translateY(-6%); }
+.brand img { height: 48px; width: auto; border-radius: 0; transform: translateY(-6%); }
 
 /* Right-hand nav — open links + the navy Download button (no pill). */
 .nav-links {
