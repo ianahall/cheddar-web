@@ -2369,7 +2369,7 @@ section { padding-block: var(--section-gap); }
 .nav-links .nav-download.toy-btn {
   padding: 10px 22px;
   font-size: 0.95rem;
-  border-radius: var(--r-pill);
+  border-radius: 13px;   /* match the flat .toy-btn shape (not a pill) */
   margin-left: 6px;
   /* The 4px edge is a box-shadow (no layout height), so flex-centering ignores
      it and the button sits low. Reserve the edge height so the whole visual
