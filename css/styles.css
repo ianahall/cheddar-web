@@ -8,7 +8,7 @@
 @font-face {
   font-family: "Nunito";
   font-style: normal;
-  font-weight: 500 800;      /* variable range */
+  font-weight: 500 900;      /* variable range */
   font-display: swap;
   src: url("../fonts/nunito-latin.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6,
@@ -18,7 +18,7 @@
 @font-face {
   font-family: "Nunito";
   font-style: normal;
-  font-weight: 500 800;
+  font-weight: 500 900;
   font-display: swap;
   src: url("../fonts/nunito-latin-ext.woff2") format("woff2");
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7,
@@ -258,7 +258,8 @@ section { padding-block: var(--section-gap); }
   gap: 14px;
   max-width: var(--maxw);   /* match the hero width so the logo aligns with the headline */
 }
-/* Open lockup — camera + wordmark sit directly on the ground (no pill). */
+/* White "sticker" lockup — camera + wordmark on a compact white shape with a
+   subtle navy offset shadow. The yellow still runs behind the whole header. */
 .brand {
   display: inline-flex;
   align-items: center;
@@ -268,8 +269,12 @@ section { padding-block: var(--section-gap); }
   text-decoration: none;
   letter-spacing: -0.02em;
   color: var(--sky);   /* indigo wordmark, tied to the camera body */
+  background: #fff;
+  padding: 10px 22px 10px 15px;
+  border-radius: 18px;
+  box-shadow: 4px 6px 0 0 rgba(36, 60, 108, 0.92);   /* navy offset */
 }
-.brand img { height: 48px; width: auto; border-radius: 0; transform: translateY(-6%); }
+.brand img { height: 46px; width: auto; border-radius: 0; transform: translateY(-6%); }
 
 /* Right-hand nav — open links + the navy Download button (no pill). */
 .nav-links {
