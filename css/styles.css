@@ -422,6 +422,14 @@ section { padding-block: var(--section-gap); }
   height: auto;
   filter: drop-shadow(0 18px 24px rgba(120, 86, 10, 0.24));
 }
+/* In-tone mascot on the indigo "For parents" band */
+.parents-mascot {
+  display: block;
+  width: min(330px, 80%);
+  height: auto;
+  margin: 0 auto;
+  filter: drop-shadow(0 18px 28px rgba(0, 0, 0, 0.38));
+}
 
 /* Cheddar mascot greeter (cheesy 1) — stands on the hero floor to the left of the
    phone, presenting it. Hidden until assets/img/mascot.webp exists
@@ -1872,8 +1880,9 @@ section { padding-block: var(--section-gap); }
 .voice-chip {
   padding: 12px 20px 12px 12px;
   font-size: 1.02rem;
-  box-shadow: 0 5px 0 0 color-mix(in srgb, var(--accent, var(--purple)) 70%, #000),
-              var(--shadow-soft);
+  /* Unified warm-gold edge (was a per-character rainbow) — the character
+     colour survives only as a subtle tint on the emoji dot. */
+  box-shadow: 0 5px 0 0 #C99A1E, var(--shadow-soft);
 }
 .voice-chip .vc-emoji { width: 36px; height: 36px; font-size: 1.15rem; }
 .voice-chip:nth-child(even) { transform: rotate(-2deg); }
