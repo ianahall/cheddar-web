@@ -362,10 +362,12 @@ section { padding-block: var(--section-gap); }
   padding-top: clamp(128px, 16vw, 200px);
   padding-bottom: clamp(56px, 8vw, 96px);
   background:
-    radial-gradient(90% 70% at 82% 12%, color-mix(in srgb, var(--splash) 70%, var(--yellow)) 0%, transparent 55%),
-    radial-gradient(80% 80% at 10% 100%, color-mix(in srgb, var(--orange) 32%, var(--yellow)) 0%, transparent 60%),
+    radial-gradient(115% 90% at 74% 6%, #FFDD6B 0%, rgba(255, 221, 107, 0) 50%),
+    radial-gradient(130% 120% at 12% 116%, #EDAF20 0%, rgba(237, 175, 32, 0) 52%),
     var(--yellow);
 }
+/* Hero eyebrow — warm deep-gold, tonal with the field */
+.hero .hero-eyebrow { color: #8A6510; }
 .hero-grid {
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
