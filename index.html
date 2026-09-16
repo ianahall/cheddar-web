@@ -27,7 +27,7 @@
   <meta name="twitter:image" content="https://cheddarcam.com/assets/img/og-image.png?v=202609121222" />
 
   <link rel="preload" href="fonts/nunito-latin.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="css/styles.css?v=202609161623" />
+  <link rel="stylesheet" href="css/styles.css?v=202609161811" />
 
   <script type="application/ld+json">
   {
@@ -144,39 +144,7 @@
         </div>
 
         <div class="hero-visual">
-          <div class="bubble hero-say say-1" aria-hidden="true"><span class="em">🏴‍☠️</span>Nice shot, matey!</div>
-          <div class="bubble hero-say say-2 b-right" aria-hidden="true"><span class="em">🤖</span>Beep — cheese!</div>
-          <div class="bubble hero-say say-3" aria-hidden="true"><span class="em">🧙</span>Magical shot!</div>
-          <!-- Cheddar mascot (cheesy 1) standing on the hero floor, left of the phone.
-               Hidden until assets/img/mascot.webp exists (data-shot swaps it in). -->
-          <div class="hero-mascot" data-shot="assets/img/mascot.webp?v=202609110934" data-shot-alt="Cheddar the cheese mascot, waving with a camera" aria-hidden="true"></div>
-
-          <div class="phone hero-phone">
-            <div class="phone-screen">
-              <div class="appcam" data-hero-cam>
-                <div class="appcam-view">
-                  <!-- Placeholder photo frames — swap the .hf-* gradients for real photos later -->
-                  <div class="hcam-frame hf-1 is-current"></div>
-                  <div class="hcam-frame hf-2"></div>
-                  <div class="hcam-frame hf-3"></div>
-                  <div class="hcam-frame hf-4"></div>
-                  <button class="appcam-flip" type="button" aria-label="Flip camera" tabindex="-1">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg>
-                  </button>
-                  <div class="appcam-flash" data-hero-flash aria-hidden="true"></div>
-                </div>
-                <div class="appcam-controls">
-                  <button class="appcam-side appcam-settings" type="button" aria-label="Grown-up settings" tabindex="-1">
-                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.14 12.94a7.5 7.5 0 0 0 .05-.94 7.5 7.5 0 0 0-.05-.94l2.03-1.58a.5.5 0 0 0 .12-.61l-1.92-3.32a.5.5 0 0 0-.59-.22l-2.39.96a7 7 0 0 0-1.62-.94l-.36-2.54a.5.5 0 0 0-.5-.42h-3.84a.5.5 0 0 0-.5.42l-.36 2.54a7 7 0 0 0-1.62.94l-2.39-.96a.5.5 0 0 0-.59.22L2.71 8.87a.5.5 0 0 0 .12.61l2.03 1.58a7.5 7.5 0 0 0 0 1.88l-2.03 1.58a.5.5 0 0 0-.12.61l1.92 3.32a.5.5 0 0 0 .59.22l2.39-.96a7 7 0 0 0 1.62.94l.36 2.54a.5.5 0 0 0 .5.42h3.84a.5.5 0 0 0 .5-.42l.36-2.54a7 7 0 0 0 1.62-.94l2.39.96a.5.5 0 0 0 .59-.22l1.92-3.32a.5.5 0 0 0-.12-.61zM12 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z"/></svg>
-                  </button>
-                  <button class="appcam-shutter" type="button" data-hero-shutter aria-label="Take a photo"></button>
-                  <button class="appcam-side appcam-gallery" type="button" aria-label="Gallery" tabindex="-1">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="15" rx="2.5"/><circle cx="8.5" cy="9.5" r="1.6"/><path d="M4 17l5-5 3.5 3.5L16 11l4 4"/></svg>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+          <img class="hero-mascot-main" src="assets/img/mascot.webp?v=202609110934" alt="Cheddar the cheese mascot, waving with a camera" />
         </div>
       </div>
     </section>
@@ -376,7 +344,27 @@
         <div class="download-visual">
           <div class="phone">
             <div class="phone-screen">
-              <img src="assets/screenshots/say-cheese.webp" width="280" height="600" alt="Cheddar's voice shutter counting down to snap a photo" loading="lazy" />
+              <div class="appcam" data-hero-cam>
+                <div class="appcam-view">
+                  <div class="hcam-frame hf-1 is-current"></div>
+                  <div class="hcam-frame hf-2"></div>
+                  <div class="hcam-frame hf-3"></div>
+                  <div class="hcam-frame hf-4"></div>
+                  <button class="appcam-flip" type="button" aria-label="Flip camera" tabindex="-1">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg>
+                  </button>
+                  <div class="appcam-flash" data-hero-flash aria-hidden="true"></div>
+                </div>
+                <div class="appcam-controls">
+                  <button class="appcam-side appcam-settings" type="button" aria-label="Grown-up settings" tabindex="-1">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.14 12.94a7.5 7.5 0 0 0 .05-.94 7.5 7.5 0 0 0-.05-.94l2.03-1.58a.5.5 0 0 0 .12-.61l-1.92-3.32a.5.5 0 0 0-.59-.22l-2.39.96a7 7 0 0 0-1.62-.94l-.36-2.54a.5.5 0 0 0-.5-.42h-3.84a.5.5 0 0 0-.5.42l-.36 2.54a7 7 0 0 0-1.62.94l-2.39-.96a.5.5 0 0 0-.59.22L2.71 8.87a.5.5 0 0 0 .12.61l2.03 1.58a7.5 7.5 0 0 0 0 1.88l-2.03 1.58a.5.5 0 0 0-.12.61l1.92 3.32a.5.5 0 0 0 .59.22l2.39-.96a7 7 0 0 0 1.62.94l.36 2.54a.5.5 0 0 0 .5.42h3.84a.5.5 0 0 0 .5-.42l.36-2.54a7 7 0 0 0 1.62-.94l2.39.96a.5.5 0 0 0 .59-.22l1.92-3.32a.5.5 0 0 0-.12-.61zM12 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z"/></svg>
+                  </button>
+                  <button class="appcam-shutter" type="button" data-hero-shutter aria-label="Take a photo"></button>
+                  <button class="appcam-side appcam-gallery" type="button" aria-label="Gallery" tabindex="-1">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="15" rx="2.5"/><circle cx="8.5" cy="9.5" r="1.6"/><path d="M4 17l5-5 3.5 3.5L16 11l4 4"/></svg>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -420,6 +408,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=202609161623" defer></script>
+  <script src="js/main.js?v=202609161811" defer></script>
 </body>
 </html>
