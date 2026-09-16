@@ -2311,7 +2311,7 @@ section { padding-block: var(--section-gap); }
 /* ============================================================
    Dark footer — anchors the page under the yellow download panel
    ============================================================ */
-.site-footer--dark { background: #243C6C; }  /* indigo navy */
+.site-footer--dark { background: #20283A; }  /* deep ink — grounds below the indigo bands */
 .site-footer--dark,
 .site-footer--dark .footer-col a,
 .site-footer--dark .foot-tag { color: rgba(255, 255, 255, 0.62); }
