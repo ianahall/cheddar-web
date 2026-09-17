@@ -359,7 +359,7 @@ section { padding-block: var(--section-gap); }
    ============================================================ */
 .hero {
   overflow: hidden;
-  padding-top: clamp(128px, 16vw, 200px);
+  padding-top: clamp(100px, 12vw, 148px);
   padding-bottom: clamp(56px, 8vw, 96px);
   background:
     radial-gradient(115% 90% at 74% 6%, #FFDD6B 0%, rgba(255, 221, 107, 0) 50%),
