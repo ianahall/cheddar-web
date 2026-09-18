@@ -375,7 +375,7 @@ section { padding-block: var(--section-gap); }
   gap: clamp(28px, 5vw, 72px);
 }
 .hero-copy { position: relative; z-index: 2; }
-.hero h1 { margin-bottom: 0.3em; max-width: 13ch; font-weight: 900; letter-spacing: -0.03em; line-height: 1.0; }
+.hero h1 { margin-bottom: 0.3em; max-width: 13ch; font-weight: 800; letter-spacing: -0.03em; line-height: 1.0; }
 .hero .subline {
   max-width: 42ch;
   margin-bottom: 1.5em;
