@@ -465,12 +465,12 @@ section { padding-block: var(--section-gap); }
   right: clamp(8px, 4vw, 64px);
   top: 0;
   transform: translateY(-32%);
-  width: clamp(195px, 22vw, 278px);
+  width: clamp(212px, 24vw, 306px);
   z-index: 5;
   pointer-events: none;
 }
 .foot-mascot.has-shot { display: block; }
-.foot-mascot img { width: 100%; height: auto; filter: drop-shadow(0 10px 16px rgba(0, 0, 0, 0.4)); }
+.foot-mascot img { width: 100%; height: auto; filter: drop-shadow(0 16px 22px rgba(0, 0, 0, 0.55)); }
 @media (max-width: 900px) { .foot-mascot { display: none !important; } }
 @keyframes float-soft {
   0%, 100% { transform: translateY(0) rotate(-1.5deg); }
