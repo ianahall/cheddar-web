@@ -1491,7 +1491,7 @@ section { padding-block: var(--section-gap); }
   box-shadow: 0 4px 0 var(--side-edge, rgba(0, 0, 0, 0.18)), 0 8px 14px -6px rgba(47, 42, 38, 0.4);
 }
 .appcam-side svg { width: 22px; height: 22px; }
-.appcam-settings { background: var(--orange); --side-edge: color-mix(in srgb, var(--orange) 78%, #000); }
+.appcam-settings { background: #15736A; --side-edge: color-mix(in srgb, #15736A 78%, #000); }  /* deep teal — matches the app's parent-gear */
 .appcam-gallery { background: var(--sky); --side-edge: color-mix(in srgb, var(--sky) 78%, #000); }
 /* Big yellow shutter: white ring on a raised gold base + a lighter-yellow
    highlight, matching the real app's pressable shutter. */
@@ -1506,7 +1506,7 @@ section { padding-block: var(--section-gap); }
 /* Gentle "tap me" pulse — a ring blooms outward every few seconds */
 .appcam-shutter::after {
   content: ""; position: absolute; inset: -5px; border-radius: 50%;
-  border: 3px solid var(--yellow); opacity: 0; pointer-events: none;
+  border: 3px solid var(--mint); opacity: 0; pointer-events: none;  /* teal — the app's "listening for cheese" ring */
   animation: shutter-hint 3.8s var(--ease-toy) infinite;
 }
 @keyframes shutter-hint {
