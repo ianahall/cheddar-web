@@ -1706,7 +1706,7 @@ section { padding-block: var(--section-gap); }
 }
 .footer-cols {
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr minmax(230px, auto);
+  grid-template-columns: 1.4fr 1fr 1fr 1fr minmax(200px, auto);
   gap: clamp(28px, 5vw, 56px);
   align-items: start;
 }
