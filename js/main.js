@@ -11,6 +11,60 @@
   ).matches;
 
   /* --------------------------------------------------------
+     Animated mascots: each [data-mascot-video] swaps its still
+     for a transparent loop. Safari/iOS only render alpha from
+     HEVC (.mov); everyone else gets VP9 (.webm). Nothing loads
+     until the page has finished and the mascot is near the
+     viewport and actually displayed (the footer one is hidden
+     on phones). Reduced-motion users keep the stills.
+     -------------------------------------------------------- */
+  (function () {
+    var stages = document.querySelectorAll("[data-mascot-video]");
+    if (!stages.length || prefersReduced || !("IntersectionObserver" in window)) return;
+    var ua = navigator.userAgent;
+    var isWebKit = /AppleWebKit/.test(ua) && !/Chrome|Chromium|Edg|Android/.test(ua);
+
+    function play(v) { var p = v.play(); if (p && p.catch) p.catch(function () {}); } // refused: still stays
+
+    function attach(stage) {
+      var v = document.createElement("video");
+      v.className = "mascot-video";
+      v.muted = true;
+      v.loop = true;
+      v.autoplay = true;
+      v.playsInline = true;
+      v.setAttribute("muted", "");
+      v.setAttribute("playsinline", "");
+      v.setAttribute("aria-hidden", "true");
+      v.addEventListener("playing", function () { stage.classList.add("is-playing"); });
+      v.src = stage.getAttribute(isWebKit ? "data-mov" : "data-webm");
+      stage.appendChild(v);
+      play(v);
+      return v;
+    }
+
+    function init() {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          var stage = e.target;
+          if (e.isIntersecting) {
+            if (!stage._mascotVideo) {
+              if (!stage.offsetWidth) return; // display:none (e.g. footer on phones)
+              stage._mascotVideo = attach(stage);
+            } else play(stage._mascotVideo);
+          } else if (stage._mascotVideo) {
+            stage._mascotVideo.pause(); // don't burn battery looping off-screen
+          }
+        });
+      }, { rootMargin: "300px 0px" });
+      Array.prototype.forEach.call(stages, function (s) { io.observe(s); });
+    }
+
+    if (document.readyState === "complete") init();
+    else window.addEventListener("load", init);
+  })();
+
+  /* --------------------------------------------------------
      Play Store link — single source of truth. When the
      listing is live, paste the URL here and every "Get the
      app" button updates. Until then they stay inert ("#").
