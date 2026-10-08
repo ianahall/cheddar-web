@@ -1,6 +1,6 @@
 # Cheddar — cheddarcam.com
 
-Marketing + compliance site for **Cheddar**, a kids' camera app (ages 3–6).
+Marketing + compliance site for **Cheddar**, a kids' camera app (ages 3 and up).
 Plain static HTML/CSS/vanilla JS. **No build step. No framework. No trackers.**
 
 ```
