@@ -16,7 +16,10 @@
      HEVC (.mov); everyone else gets VP9 (.webm). Nothing loads
      until the page has finished and the mascot is near the
      viewport and actually displayed (the footer one is hidden
-     on phones). Reduced-motion users keep the stills.
+     on phones). A [data-mascot-eager] stage (the hero) attaches
+     at once and shows the video from the start, no crossfade:
+     the still is only a fallback for when playback is refused.
+     Reduced-motion users keep the stills.
      -------------------------------------------------------- */
   (function () {
     var stages = document.querySelectorAll("[data-mascot-video]");
@@ -26,20 +29,39 @@
 
     function play(v) { var p = v.play(); if (p && p.catch) p.catch(function () {}); } // refused: still stays
 
+    // Playback refused or the file failed: drop the video and put the still back.
+    function fallback(stage, v) {
+      if (stage._mascotVideo !== v) return;
+      stage._mascotVideo = null;
+      stage.classList.remove("has-video", "is-playing");
+      if (v.parentNode) v.parentNode.removeChild(v);
+    }
+
     function attach(stage) {
+      var eager = stage.hasAttribute("data-mascot-eager");
       var v = document.createElement("video");
       v.className = "mascot-video";
       v.muted = true;
       v.loop = true;
       v.autoplay = true;
       v.playsInline = true;
+      v.preload = eager ? "auto" : "metadata";
       v.setAttribute("muted", "");
       v.setAttribute("playsinline", "");
       v.setAttribute("aria-hidden", "true");
       v.addEventListener("playing", function () { stage.classList.add("is-playing"); });
+      v.addEventListener("error", function () { fallback(stage, v); });
       v.src = stage.getAttribute(isWebKit ? "data-mov" : "data-webm");
       stage.appendChild(v);
-      play(v);
+      stage._mascotVideo = v;
+      if (eager) stage.classList.add("has-video"); // hide the still now; no fade
+      var p = v.play();
+      if (p && p.catch) p.catch(function (err) {
+        // Only a genuine refusal (autoplay policy, unsupported file) brings the still
+        // back. An AbortError just means the browser paused us mid-start, e.g. a
+        // background tab: the video is fine and resumes with the tab.
+        if (eager && err && (err.name === "NotAllowedError" || err.name === "NotSupportedError")) fallback(stage, v);
+      });
       return v;
     }
 
@@ -50,7 +72,7 @@
           if (e.isIntersecting) {
             if (!stage._mascotVideo) {
               if (!stage.offsetWidth) return; // display:none (e.g. footer on phones)
-              stage._mascotVideo = attach(stage);
+              attach(stage);
             } else play(stage._mascotVideo);
           } else if (stage._mascotVideo) {
             stage._mascotVideo.pause(); // don't burn battery looping off-screen
@@ -60,6 +82,16 @@
       Array.prototype.forEach.call(stages, function (s) { io.observe(s); });
     }
 
+    // Browsers pause silent videos in background tabs; pick them back up on return.
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) return;
+      Array.prototype.forEach.call(stages, function (s) { if (s._mascotVideo) play(s._mascotVideo); });
+    });
+
+    // The hero doesn't wait for window load — that delay is what made the swap visible.
+    Array.prototype.forEach.call(stages, function (s) {
+      if (s.hasAttribute("data-mascot-eager") && s.offsetWidth) attach(s);
+    });
     if (document.readyState === "complete") init();
     else window.addEventListener("load", init);
   })();
@@ -69,7 +101,7 @@
      listing is live, paste the URL here and every "Get the
      app" button updates. Until then they stay inert ("#").
      -------------------------------------------------------- */
-  var PLAY_STORE_URL = ""; // e.g. "https://play.google.com/store/apps/details?id=com.snacksdesign.cheddar"
+  var PLAY_STORE_URL = ""; // live listing: "https://play.google.com/store/apps/details?id=com.cheddarcam.android"
   if (PLAY_STORE_URL) {
     Array.prototype.forEach.call(
       document.querySelectorAll("[data-play-store]"),

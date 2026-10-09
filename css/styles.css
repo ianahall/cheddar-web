@@ -456,6 +456,10 @@ section { padding-block: var(--section-gap); }
 }
 [data-mascot-video].is-playing .mascot-video { opacity: 1; }
 [data-mascot-video].is-playing > img { visibility: hidden; }
+/* Eager stages (the hero): the video is the mascot from the first paint — no
+   crossfade, no still underneath. The still only comes back if playback is refused. */
+[data-mascot-video].has-video .mascot-video { opacity: 1; transition: none; }
+[data-mascot-video].has-video > img { visibility: hidden; }
 /* Hero: smile pose over mascot.webp (738×774) */
 .hero-mascot-stage {
   --mv-left: -31.3%; --mv-top: -29.0%; --mv-width: 150.6%;
@@ -1084,7 +1088,8 @@ section { padding-block: var(--section-gap); }
 .store-badge .sb-text { display: flex; flex-direction: column; text-align: left; }
 .store-badge .sb-top { font-size: 0.62rem; font-weight: 600; opacity: 0.85; letter-spacing: 0.02em; }
 .store-badge .sb-name { font-size: 0.98rem; font-weight: 800; }
-.store-badge.is-soon { position: relative; opacity: 0.9; }
+.store-badge.is-soon { position: relative; opacity: 0.9; cursor: default; }
+.store-badge.is-soon:hover { transform: none; }
 .store-badge.is-soon .sb-top { color: var(--yellow); opacity: 1; }
 
 /* ============================================================
