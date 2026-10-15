@@ -1,4 +1,4 @@
-# Cheddar — cheddarcam.com
+# Cheddar — cheddar.cam
 
 Marketing + compliance site for **Cheddar**, a kids' camera app (ages 3 and up).
 Plain static HTML/CSS/vanilla JS. **No build step. No framework. No trackers.**
@@ -51,12 +51,12 @@ python3 -m http.server 8000
 2. Cloudflare dashboard → **Workers & Pages → Create → Pages → Connect to Git**.
 3. Build settings: **Framework preset = None**, **Build command = (empty)**,
    **Build output directory = `/`** (the repo root is the site).
-4. After the first deploy, **Custom domains → Set up `cheddarcam.com`**. DNS is
+4. After the first deploy, **Custom domains → Set up `cheddar.cam` (cheddarcam.com stays attached and 301-redirects to it via a zone Redirect Rule)**. DNS is
    already on Cloudflare, so it's one click.
 
 ### Support email (contact page)
 
-The contact page links `mailto:support@cheddarcam.com`. Set up free
+The contact page links `mailto:support@cheddar.cam` (support@cheddarcam.com keeps routing too; both land in the same inbox). Set up free
 **Cloudflare Email Routing** (dashboard → Email → Email Routing) to forward that
 address to Ian's real inbox. If you'd rather not, change the address in
 `contact.html` to a real inbox.

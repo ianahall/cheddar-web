@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://cheddarcam.com/sitemap.xml
+Sitemap: https://cheddar.cam/sitemap.xml
