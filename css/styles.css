@@ -395,11 +395,11 @@ section { padding-block: var(--section-gap); }
 /* On the yellow hero, the quiet secondary CTA is an ink outline pill */
 /* Quiet secondary — a plain text link, not a pill */
 .hero .chip.is-ghost {
-  color: var(--ink);
+  color: var(--ink-on-yellow);
   background: none;
   padding: 0 2px;
   box-shadow: none;
-  opacity: 0.68;
+  opacity: 1;
   font-weight: 800;
 }
 .hero-trust {
@@ -2523,7 +2523,7 @@ section { padding-block: var(--section-gap); }
 .store-badge--lg svg { width: 26px; height: 26px; }
 .store-badge--lg .sb-top { font-size: 0.75rem; }
 .store-badge--lg .sb-name { font-size: 1.08rem; }
-.download-note { margin-top: 16px; font-weight: 800; font-size: 0.9rem; color: color-mix(in srgb, var(--ink) 66%, transparent); }
+.download-note { margin-top: 16px; font-weight: 800; font-size: 0.9rem; color: var(--ink-on-yellow); }
 .download-visual { display: flex; justify-content: center; }
 .download-visual .phone { width: clamp(200px, 30vw, 280px); }
 /* Showcase phones lift + tilt toward the cursor, pivoting from the base.
