@@ -2521,7 +2521,7 @@ section { padding-block: var(--section-gap); }
 .store-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 26px; }
 .store-badge--lg { padding: 14px 22px; border-radius: 16px; }
 .store-badge--lg svg { width: 26px; height: 26px; }
-.store-badge--lg .sb-top { font-size: 0.68rem; }
+.store-badge--lg .sb-top { font-size: 0.75rem; }
 .store-badge--lg .sb-name { font-size: 1.08rem; }
 .download-note { margin-top: 16px; font-weight: 800; font-size: 0.9rem; color: color-mix(in srgb, var(--ink) 66%, transparent); }
 .download-visual { display: flex; justify-content: center; }
