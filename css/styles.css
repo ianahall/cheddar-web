@@ -2366,14 +2366,13 @@ section { padding-block: var(--section-gap); }
 .more-card {
   background: #fff; border-radius: var(--r-card);
   padding: clamp(20px, 2.4vw, 28px); box-shadow: var(--shadow-card);
-  border-top: 5px solid var(--accent, var(--yellow));
 }
 .more-emoji { font-size: 2rem; display: block; margin-bottom: 10px; }
 
 /* "Things to do" shelf — chunkier cards with the emoji in an accent tile */
 /* Nine games (Explorer has its own section): three across, so no card is left alone on a row. */
 .shelf-grid { grid-template-columns: repeat(3, 1fr); }
-.shelf-grid .more-card { border-top: none; padding: clamp(22px, 2.4vw, 30px); }
+.shelf-grid .more-card { padding: clamp(22px, 2.4vw, 30px); }
 .shelf-grid .more-emoji {
   font-size: 2.15rem; line-height: 1;
   width: 62px; height: 62px; margin-bottom: 16px;
