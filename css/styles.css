@@ -301,6 +301,8 @@ section { padding-block: var(--section-gap); }
   border-radius: 8px;
 }
 .nav-links a.nav-text:hover { color: var(--purple); }
+/* "You are here": the current page keeps a navy underline in the nav. */
+.nav-links a.nav-text[aria-current="page"] { color: var(--purple); text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 0.28em; }
 .nav-badges { display: inline-flex; align-items: center; gap: 7px; margin-left: 4px; }
 
 /* ============================================================
