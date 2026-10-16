@@ -1026,7 +1026,7 @@ section { padding-block: var(--section-gap); }
 .page-hero .lede { max-width: 46ch; margin-inline: auto; }
 
 .prose {
-  max-width: 70ch;   /* ~72 characters a line at the body size (was 860px, ~95) */
+  max-width: 56ch;   /* ~75 characters a line in Nunito at 19px (860px ran ~95) */
   margin-inline: auto;
   padding-block: clamp(28px, 4vw, 48px);
 }
