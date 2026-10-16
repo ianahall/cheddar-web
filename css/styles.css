@@ -138,6 +138,11 @@ p { margin: 0 0 1em; }
 /* Text selection takes the palette: navy with white text reads on yellow, cream and white alike. */
 ::selection { background: var(--sky); color: #fff; }
 
+/* On dark surfaces an ink outline vanishes (1:1 on the footer, 1.4:1 on navy), so the
+   focus ring switches to Cheddar yellow there. */
+.band--blue :focus-visible, .band--purple :focus-visible, .band--green :focus-visible,
+.band--photo :focus-visible, .site-footer--dark :focus-visible { outline-color: var(--yellow); }
+
 .skip-link {
   position: absolute;
   left: 50%;
