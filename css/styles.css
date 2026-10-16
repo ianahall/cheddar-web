@@ -1041,14 +1041,13 @@ section { padding-block: var(--section-gap); }
   font-weight: 700;
 }
 .prose .callout {
-  border-left: 6px solid var(--sky);
+  /* Flat cream panel, like the FAQ items: no side tab. */
   background: var(--cream);
   border-radius: 14px;
   padding: 16px 20px;
   margin: 22px 0;
 }
 .prose .callout.warn {
-  border-left-color: var(--orange);
   background: color-mix(in srgb, var(--orange) 12%, var(--cream));
 }
 .prose a { font-weight: 700; }
