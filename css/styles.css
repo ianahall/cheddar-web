@@ -38,6 +38,7 @@
   --cream:     #FFF0CE;   /* Warm cream — light grounds / lens ring */
   --ink:       #20283A;   /* Midnight-navy near-black — text + icon strokes */
   --ink-soft:  #5F6472;   /* muted cool ink for secondary text (AA on cream) */
+  --ink-on-yellow: #514C38; /* secondary text on the yellow ground (ink-soft is only 3.9:1 there; this is 5.7:1) */
   /* Brand pair */
   --yellow:    #FFCB33;   /* Cheddar yellow — main brand (warmed golden to sit with peach) */
   --gold:      #E5A81C;   /* pressed edge for the yellow button / cheese holes */
@@ -236,6 +237,10 @@ section { padding-block: var(--section-gap); }
   color: var(--ink-soft);
   font-weight: 600;
 }
+/* Secondary text on the yellow ground: ink-soft reaches only 3.9:1 on #FFCB33,
+   so yellow bands and page heroes use a yellow-tinted dark instead (WCAG AA). */
+.band--yellow .eyebrow, .band--yellow .lede,
+.page-hero .eyebrow, .page-hero .lede { color: var(--ink-on-yellow); }
 
 /* ============================================================
    Header / nav
@@ -418,7 +423,7 @@ section { padding-block: var(--section-gap); }
 .mascot-intro {
   text-align: center;
   font-weight: 700;
-  color: #6A5B36;
+  color: #4F4426;   /* 4.9:1 on the gold corner of the hero, 6.3:1 on yellow */
   font-size: 0.92rem;
   line-height: 1.4;
   max-width: 30ch;
