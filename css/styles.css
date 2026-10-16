@@ -1,7 +1,7 @@
 /* ============================================================
    Cheddar — cheddarcam.com
    Plain static CSS. No build step. Self-hosted fonts.
-   Design system mirrors the app's "Soft Toybox" palette.
+   Design system mirrors the app's "Warm Camera" palette (see PALETTE.md).
    ============================================================ */
 
 /* ---------- Self-hosted Nunito (variable, latin) ---------- */
@@ -728,9 +728,6 @@ section { padding-block: var(--section-gap); }
 }
 
 /* ============================================================
-   Features carousel — one phone frame { text-align: center; }
-
-/* ============================================================
    Full-width photo band (lifestyle image, edge to edge)
    ============================================================ */
 .photo-band {
@@ -846,7 +843,7 @@ section { padding-block: var(--section-gap); }
   38%  { transform: scale(1.32); opacity: 0; }
   100% { transform: scale(1.32); opacity: 0; }
 }
-@media.appcam-shutter:hover { transform: translateY(-1px); }
+.appcam-shutter:hover { transform: translateY(-1px); }
 .appcam-shutter:active { transform: translateY(5px); box-shadow: 0 2px 0 -1px var(--gold), 0 6px 12px -7px rgba(47, 42, 38, 0.5); }
 
 /* ============================================================
@@ -959,9 +956,6 @@ section { padding-block: var(--section-gap); }
 .voice-chip:nth-child(even) { transform: rotate(-2deg); }
 .voice-chip:nth-child(3n) { transform: rotate(1.5deg); }
 .voice-chip:hover { transform: translateY(-3px) rotate(0deg) scale(1.04); }
-
-/* ============================================================
-   DELIGHT LAYER — mascot, illustrations { display: inline-block; line-height: 0; }
 
 /* ============================================================
    Bigger, more confident hero typography + world
