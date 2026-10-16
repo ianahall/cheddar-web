@@ -29,7 +29,6 @@
 
 /* ---------- Design tokens ---------- */
 :root {
-  /* "Poster" palette — 2026-09 blue-forward rebrand (see palette board) */
   /* "Warm Camera" palette — 2026-09 rebrand: yellow · navy · cream · caramel
      + two poppers (sea-glass teal = calm cues, coral = lively cues).
      Token NAMES kept for cascade; old rainbow collapsed onto the 6 colours. */
@@ -45,6 +44,7 @@
   --splash:    #FFDB63;   /* lighter yellow highlight */
   --sky:       #243C6C;   /* Indigo navy (matched to the logo body) — dominant dark / primary CTA */
   --navy:      #1A2B52;   /* deeper indigo — pressed edge / depth */
+  --teal-deep: #15736A;   /* Deep teal — teal surfaces that carry white text (bright teal fails) */
   --peach:     #FCE4CC;   /* soft warm peach (from the logo's lens ring) — light accent */
   --cocoa:     #986747;   /* Caramel brown — warm neutral accent */
   /* Action accents (mapped onto the 6-colour system) */
@@ -64,7 +64,7 @@
   --tint-pink:   #FBE7DF;   /* coral tint */
   --tint-yellow: #FFF3CC;
 
-  /* Primary CTA (ToyButton) — Poster-blue button; pops on the yellow hero and
+  /* Primary CTA (ToyButton) — navy button; pops on the yellow hero and
      locks in the blue+yellow brand pair. (Yellow button is used on blue areas.) */
   --btn-primary:      var(--sky);
   --btn-primary-edge: var(--navy);
@@ -198,7 +198,7 @@ main > .band:first-child {
 .band--yellow { background: var(--yellow); }
 .band--blue { background: var(--sky);    color: #fff; }
 .band--purple { background: var(--purple); color: #fff; }
-.band--green { background: #15736A;       color: #fff; }  /* deep teal (AA white text) */
+.band--green { background: var(--teal-deep); color: #fff; }
 .band--blue .eyebrow, .band--purple .eyebrow, .band--green .eyebrow { color: rgba(255,255,255,0.85); }
 .band--blue h2, .band--blue h3, .band--blue .lede,
 .band--purple h2, .band--purple h3, .band--purple .lede,
@@ -942,7 +942,7 @@ section { padding-block: var(--section-gap); }
   box-shadow: 0 4px 0 var(--side-edge, rgba(0, 0, 0, 0.18)), 0 8px 14px -6px rgba(47, 42, 38, 0.4);
 }
 .appcam-side svg { width: 22px; height: 22px; }
-.appcam-settings { background: #15736A; --side-edge: color-mix(in srgb, #15736A 78%, #000); }  /* deep teal — matches the app's parent-gear */
+.appcam-settings { background: var(--teal-deep); --side-edge: color-mix(in srgb, var(--teal-deep) 78%, #000); }  /* deep teal — matches the app's parent-gear */
 .appcam-gallery { background: var(--sky); --side-edge: color-mix(in srgb, var(--sky) 78%, #000); }
 /* Big yellow shutter: white ring on a raised gold base + a lighter-yellow
    highlight, matching the real app's pressable shutter. */
@@ -1317,7 +1317,7 @@ section { padding-block: var(--section-gap); }
 /* ============================================================
    Dark footer — anchors the page under the yellow download panel
    ============================================================ */
-.site-footer--dark { background: #20283A; }  /* deep ink — grounds below the indigo bands */
+.site-footer--dark { background: var(--ink); }  /* deep ink — grounds below the indigo bands */
 .site-footer--dark,
 .site-footer--dark .footer-col a,
 .site-footer--dark .foot-tag { color: rgba(255, 255, 255, 0.62); }
