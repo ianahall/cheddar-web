@@ -135,6 +135,9 @@ p { margin: 0 0 1em; }
   border-radius: 6px;
 }
 
+/* Text selection takes the palette: navy with white text reads on yellow, cream and white alike. */
+::selection { background: var(--sky); color: #fff; }
+
 .skip-link {
   position: absolute;
   left: 50%;
