@@ -1119,7 +1119,6 @@ section { padding-block: var(--section-gap); }
 /* ============================================================
    DELIGHT LAYER — mascot, illustrations, ambient motion
    ============================================================ */
-.svg-sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
 
 .mascot { display: inline-block; line-height: 0; }
 .mascot svg { width: 100%; height: 100%; display: block; }
