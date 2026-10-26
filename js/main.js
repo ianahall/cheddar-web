@@ -97,11 +97,10 @@
   })();
 
   /* --------------------------------------------------------
-     Play Store link — single source of truth. When the
-     listing is live, paste the URL here and every "Get the
-     app" button updates. Until then they stay inert ("#").
+     Play Store link — single source of truth. The HTML carries the same
+     URL as a no-JS fallback; change both when the listing moves.
      -------------------------------------------------------- */
-  var PLAY_STORE_URL = ""; // live listing: "https://play.google.com/store/apps/details?id=com.cheddarcam.android"
+  var PLAY_STORE_URL = "https://play.google.com/store/apps/details?id=com.cheddarcam.android"; // live since 2026-10-26
   if (PLAY_STORE_URL) {
     Array.prototype.forEach.call(
       document.querySelectorAll("[data-play-store]"),

@@ -104,12 +104,13 @@ from its `.cc-play` button:
 **Privacy:** record demo content specifically for the site (Ian narrating; photos
 of toys/objects). Do not publish a real child's voice or identifiable photos.
 
-### 4. Go-live: the Play Store link
+### 4. The Play Store link
 
-When the Play Store listing is live, paste the URL into `PLAY_STORE_URL` at the
-top of `js/main.js`. Every "Get it on Google Play" button/badge updates from that
-one line. Until then the buttons are intentionally inert. (The iOS App Store badge
-shows "Coming soon.")
+Live since 2026-10-26: `https://play.google.com/store/apps/details?id=com.cheddarcam.android`.
+It lives in two places that must stay in sync: `PLAY_STORE_URL` at the top of
+`js/main.js` (applied to every `[data-play-store]` button on load) and the `href`
+of those same anchors in the HTML (no-JS fallback, crawlers, and the JSON-LD
+`installUrl` in index.html). The iOS App Store badge still shows "Coming soon."
 
 ## Design system
 
