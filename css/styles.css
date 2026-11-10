@@ -1125,9 +1125,6 @@ section { padding-block: var(--section-gap); }
    rounded Material icons the app uses, inlined.
    ============================================================ */
 .parents-panel .fp-privacy { margin-top: 18px; }
-/* The hint promises working switches, which need the script. */
-.settings-hint { display: none; margin: 20px 0 0; font-weight: 700; font-size: 0.95rem; color: rgba(255, 255, 255, 0.9); }
-.js .settings-hint { display: block; }
 
 .app-settings {
   --as-ground: #1C2A42; --as-card: #293B59; --as-chip: rgba(255, 255, 255, 0.12); --as-hair: rgba(255, 255, 255, 0.08);
