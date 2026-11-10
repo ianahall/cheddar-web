@@ -27,7 +27,7 @@
   <meta name="twitter:image" content="https://cheddar.cam/assets/img/og-image.png?v=202609121222" />
 
   <link rel="preload" href="fonts/nunito-latin.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="css/styles.css?v=202611101400" />
+  <link rel="stylesheet" href="css/styles.css?v=202611101600" />
 
   <script type="application/ld+json">
   {
@@ -224,7 +224,7 @@
 
         <div class="shelf-feature">
           <div class="shelf-feature-copy">
-            <span class="shelf-feature-mark"><img src="assets/img/binoculars.webp?v=202611101400" width="54" height="40" alt="" /></span>
+            <span class="shelf-feature-mark"><img src="assets/img/binoculars.webp?v=202611101600" width="54" height="40" alt="" /></span>
             <h3>Let's explore</h3>
             <p class="shelf-feature-lede">Cheddar hands out a mission and your kid goes to find it with the camera, in the room they're standing in.</p>
             <p>He says the mission out loud, the phone checks each photo right where it sits, and every find goes into a collection of 40.</p>
@@ -239,7 +239,7 @@
           <div class="phone shelf-phone">
             <div class="phone-screen">
               <div class="app-explorer" data-ui data-explorer-demo>
-                <span class="ex-mark"><img src="assets/img/binoculars.webp?v=202611101400" width="31" height="23" alt="" /></span>
+                <span class="ex-mark"><img src="assets/img/binoculars.webp?v=202611101600" width="31" height="23" alt="" /></span>
                 <p class="ex-title">Let's explore!</p>
                 <div class="ex-view" data-explorer-view>
                   <div class="ex-track" data-explorer-track role="group" aria-label="Pick a mission">
@@ -293,18 +293,19 @@
 
     <!-- 5. For parents: copy beside a working copy of the app's own Settings screen.
          The rows, words, icons and defaults mirror SettingsScreen.kt in the Android repo
-         (Limits + Locks); re-check them there when the app's settings change. -->
+         (Limits + Locks), shown in the site's phone frame; re-check them there when the app's settings change. -->
     <section id="parents" class="fp-section band band--blue clip reveal">
       <div class="container">
         <div class="fpanel reverse parents-panel">
           <div class="fpanel-media">
+            <div class="phone parents-phone"><div class="phone-screen">
             <div class="app-settings" data-ui data-settings-demo role="group" aria-label="A working copy of Cheddar's grown-up settings">
               <p class="as-title">Settings</p>
               <p class="as-sub">Choose what works best for your family.</p>
 
               <p class="as-head">Limits</p>
-              <div class="as-card is-on">
-                <div class="as-row"><span class="as-chip as-yellow"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12,12m-3,0a3,3 0,1 1,6 0a3,3 0,1 1,-6 0"/><path d="M20,4h-3.17l-1.24,-1.35c-0.37,-0.41 -0.91,-0.65 -1.47,-0.65L9.88,2c-0.56,0 -1.1,0.24 -1.48,0.65L7.17,4L4,4c-1.1,0 -2,0.9 -2,2v12c0,1.1 0.9,2 2,2h16c1.1,0 2,-0.9 2,-2L22,6c0,-1.1 -0.9,-2 -2,-2zM12,17c-2.76,0 -5,-2.24 -5,-5s2.24,-5 5,-5 5,2.24 5,5 -2.24,5 -5,5z"/></svg></span><span class="as-text"><span class="as-name">Photo Limit</span><span class="as-desc" data-limit-desc>Limits photos to 10 per hour.</span></span><button class="as-switch" type="button" role="switch" aria-checked="true" aria-label="Photo Limit" data-sw="limit" data-opens></button></div>
+              <div class="as-card">
+                <div class="as-row"><span class="as-chip as-yellow"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12,12m-3,0a3,3 0,1 1,6 0a3,3 0,1 1,-6 0"/><path d="M20,4h-3.17l-1.24,-1.35c-0.37,-0.41 -0.91,-0.65 -1.47,-0.65L9.88,2c-0.56,0 -1.1,0.24 -1.48,0.65L7.17,4L4,4c-1.1,0 -2,0.9 -2,2v12c0,1.1 0.9,2 2,2h16c1.1,0 2,-0.9 2,-2L22,6c0,-1.1 -0.9,-2 -2,-2zM12,17c-2.76,0 -5,-2.24 -5,-5s2.24,-5 5,-5 5,2.24 5,5 -2.24,5 -5,5z"/></svg></span><span class="as-text"><span class="as-name">Photo Limit</span><span class="as-desc" data-limit-desc>Limits photos to 10 per hour.</span></span><button class="as-switch" type="button" role="switch" aria-checked="false" aria-label="Photo Limit" data-sw="limit" data-opens></button></div>
                 <div class="as-extra"><div class="as-extra-in">
                   <div class="as-hair"></div>
                   <div class="as-picker" role="group" aria-label="Photos per hour" data-pick="limit"><button type="button" data-v="5" aria-pressed="false">5</button><button type="button" data-v="10" aria-pressed="true">10</button><button type="button" data-v="15" aria-pressed="false">15</button><button type="button" data-v="20" aria-pressed="false">20</button></div>
@@ -331,6 +332,7 @@
               <div class="as-card"><div class="as-row"><span class="as-chip as-teal"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M13,14v6c0,0.55 0.45,1 1,1h6c0.55,0 1,-0.45 1,-1v-6c0,-0.55 -0.45,-1 -1,-1h-6c-0.55,0 -1,0.45 -1,1zM4,21h6c0.55,0 1,-0.45 1,-1v-6c0,-0.55 -0.45,-1 -1,-1L4,13c-0.55,0 -1,0.45 -1,1v6c0,0.55 0.45,1 1,1zM3,4v6c0,0.55 0.45,1 1,1h6c0.55,0 1,-0.45 1,-1L11,4c0,-0.55 -0.45,-1 -1,-1L4,3c-0.55,0 -1,0.45 -1,1zM15.95,2.4L11.7,6.64c-0.39,0.39 -0.39,1.02 0,1.41l4.25,4.25c0.39,0.39 1.02,0.39 1.41,0l4.25,-4.25c0.39,-0.39 0.39,-1.02 0,-1.41L17.37,2.4c-0.39,-0.39 -1.03,-0.39 -1.42,0z"/></svg></span><span class="as-text"><span class="as-name">Activities Lock</span><span class="as-desc">Hides the Activities button. Just taking pictures.</span></span><button class="as-switch" type="button" role="switch" aria-checked="false" aria-label="Activities Lock" data-sw="activities"></button></div></div>
               <div class="as-card"><div class="as-row"><span class="as-chip as-coral"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18,8h-1L17,6c0,-2.76 -2.24,-5 -5,-5S7,3.24 7,6v2L6,8c-1.1,0 -2,0.9 -2,2v10c0,1.1 0.9,2 2,2h12c1.1,0 2,-0.9 2,-2L20,10c0,-1.1 -0.9,-2 -2,-2zM12,17c-1.1,0 -2,-0.9 -2,-2s0.9,-2 2,-2 2,0.9 2,2 -0.9,2 -2,2zM9,8L9,6c0,-1.66 1.34,-3 3,-3s3,1.34 3,3v2L9,8z"/></svg></span><span class="as-text"><span class="as-name">Delete Protection</span><span class="as-desc">Requires solving a math problem before deleting photos and stories.</span></span><button class="as-switch" type="button" role="switch" aria-checked="false" aria-label="Delete Protection" data-sw="delete"></button></div></div>
             </div>
+            </div></div>
           </div>
           <div class="fpanel-copy">
             <h2>You set the limits.</h2>
@@ -465,6 +467,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=202611101400" defer></script>
+  <script src="js/main.js?v=202611101600" defer></script>
 </body>
 </html>

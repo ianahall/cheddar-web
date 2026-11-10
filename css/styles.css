@@ -1119,14 +1119,11 @@ section { padding-block: var(--section-gap); }
 
 /* ============================================================
    Parents: a working copy of the app's own Settings screen, rebuilt
-   from the Android source (SettingsScreen.kt) at true size, 1dp = 1px.
+   from the Android source (SettingsScreen.kt), 1dp = 1px before scaling.
    It is a real interface fragment, so it keeps the app's colours,
    radii and hairlines rather than the site's. Icons are the official
    rounded Material icons the app uses, inlined.
    ============================================================ */
-.parents-panel { grid-template-columns: minmax(0, 1fr) minmax(0, 420px); align-items: start; }
-.parents-panel .fpanel-media { display: block; }
-.parents-panel .fpanel-copy { padding-top: clamp(8px, 4vw, 56px); }
 .parents-panel .fp-privacy { margin-top: 18px; }
 /* The hint promises working switches, which need the script. */
 .settings-hint { display: none; margin: 20px 0 0; font-weight: 700; font-size: 0.95rem; color: rgba(255, 255, 255, 0.9); }
@@ -1186,12 +1183,27 @@ section { padding-block: var(--section-gap); }
 .as-extra-in { overflow: hidden; min-height: 0; visibility: hidden; transition: visibility 0s 0.28s; }
 .as-card.is-on > .as-extra { grid-template-rows: 1fr; }
 .as-card.is-on > .as-extra > .as-extra-in { visibility: visible; transition-delay: 0s; }
+/* The screen sits in the site's phone frame at the other panels' size. It is laid out
+   400dp wide, as on a phone, and scaled to fit; the spacing is drawn in a little so the
+   six settings fit without scrolling. Opening a card makes the screen scroll, as it would. */
+.fpanel-media .parents-phone { width: 262px; }
+.parents-phone .phone-screen { background: #1C2A42; overflow-y: auto; scrollbar-width: none; }
+.parents-phone .phone-screen::-webkit-scrollbar { display: none; }
+.parents-phone .app-settings { zoom: 0.595; border-radius: 0; padding: 54px 20px 16px; }
+.parents-phone .as-sub { margin-bottom: 20px; }
+.parents-phone .as-head { padding: 4px 4px 8px; }
+.parents-phone .as-head--next { margin-top: 16px; }
+.parents-phone .as-card + .as-card { margin-top: 10px; }
+.parents-phone .as-card > .as-row { padding-block: 14px; }
+.parents-phone .as-switch::before { inset: -16px -10px; }   /* a thumb-sized target at this scale */
 @media (max-width: 820px) {
-  .parents-panel { grid-template-columns: 1fr; }
-  /* Here the words come first: the heading says what the screen below is. */
-  .parents-panel.reverse .fpanel-media { order: 2; }
-  .parents-panel .fpanel-copy { padding-top: 0; }
-  .app-settings { max-width: 420px; margin-inline: auto; }
+  /* Stacked, the phone can be a little bigger, so the switches are easier to hit. */
+  .fpanel-media .parents-phone { width: 300px; }
+  .parents-phone .app-settings { zoom: 0.69; }
+}
+@media (max-width: 374px) {
+  .fpanel-media .parents-phone { width: 262px; }
+  .parents-phone .app-settings { zoom: 0.595; }
 }
 @media (prefers-reduced-motion: reduce) {
   .as-extra, .as-extra-in, .as-switch, .as-switch::after, .as-picker button { transition: none; }
