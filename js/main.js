@@ -328,6 +328,107 @@
   })();
 
   /* --------------------------------------------------------
+     Parents section: a working copy of the app's Settings screen.
+     Mirrors SettingsScreen.kt: a switch opens its card's extra rows,
+     and the pickers reword the description the way the app does.
+     Nothing is stored; it resets on reload.
+     -------------------------------------------------------- */
+  (function () {
+    var demo = document.querySelector("[data-settings-demo]");
+    if (!demo) return;
+    var picked = { limit: 10, session: 5, rest: 10 };
+    function isOn(key) {
+      var s = demo.querySelector('[data-sw="' + key + '"]');
+      return !!s && s.getAttribute("aria-checked") === "true";
+    }
+    function setText(sel, text) {
+      var el = demo.querySelector(sel);
+      if (el) el.textContent = text;
+    }
+    function describe() {
+      setText("[data-limit-desc]", "Limits photos to " + picked.limit + " per hour.");
+      setText("[data-timer-desc]", isOn("timer")
+        ? "After " + picked.session + " minutes, a " + picked.rest + "-minute break."
+        : "A break after a set time of play.");
+    }
+    Array.prototype.forEach.call(demo.querySelectorAll("[data-sw]"), function (s) {
+      s.addEventListener("click", function () {
+        var on = s.getAttribute("aria-checked") !== "true";
+        s.setAttribute("aria-checked", on ? "true" : "false");
+        if (s.hasAttribute("data-opens")) {
+          var card = s.closest ? s.closest(".as-card") : null;
+          if (card) card.classList.toggle("is-on", on);
+        }
+        describe();
+      });
+    });
+    Array.prototype.forEach.call(demo.querySelectorAll("[data-pick]"), function (group) {
+      var buttons = group.querySelectorAll("button");
+      Array.prototype.forEach.call(buttons, function (b) {
+        b.addEventListener("click", function () {
+          Array.prototype.forEach.call(buttons, function (x) {
+            x.setAttribute("aria-pressed", x === b ? "true" : "false");
+          });
+          picked[group.getAttribute("data-pick")] = parseInt(b.getAttribute("data-v"), 10);
+          describe();
+        });
+      });
+    });
+  })();
+
+  /* --------------------------------------------------------
+     Games shelf: the Explorer demo. Mirrors the app's pick-a-hunt
+     carousel: settling on a mission makes Cheddar say it. The cards
+     are ordinary [data-audio] triggers, so the shared player above
+     does the playing; this only moves the carousel (by setting --i,
+     which the stylesheet turns into the track's position) and shows
+     the words he is saying.
+     -------------------------------------------------------- */
+  (function () {
+    var demo = document.querySelector("[data-explorer-demo]");
+    if (!demo) return;
+    var track = demo.querySelector("[data-explorer-track]");
+    var view = demo.querySelector("[data-explorer-view]");
+    var cards = demo.querySelectorAll(".ex-card");
+    var says = document.querySelector("[data-explorer-says]");
+    var index = 3;
+    if (!track || !cards.length) return;
+
+    function focusCard(n) {
+      index = (n + cards.length) % cards.length;
+      track.style.setProperty("--i", index);
+      if (says) says.textContent = cards[index].getAttribute("data-says");
+    }
+    function speak(n) {
+      focusCard(n);
+      // Start over rather than toggle off if he is already saying this one.
+      if (cards[index].classList.contains("is-playing")) stopCurrent();
+      cards[index].click();
+    }
+    Array.prototype.forEach.call(cards, function (card, n) {
+      card.addEventListener("click", function () { focusCard(n); });
+      card.addEventListener("focus", function () { focusCard(n); view.scrollLeft = 0; });
+    });
+    function bind(sel, fn) {
+      var el = document.querySelector(sel);
+      if (el) el.addEventListener("click", fn);
+    }
+    bind("[data-explorer-prev]", function () { speak(index - 1); });
+    bind("[data-explorer-next]", function () { speak(index + 1); });
+    bind("[data-explorer-start]", function () { speak(index); });
+
+    var startX = null;
+    view.addEventListener("pointerdown", function (e) { startX = e.clientX; });
+    view.addEventListener("pointerup", function (e) {
+      if (startX === null) return;
+      var moved = e.clientX - startX;
+      startX = null;
+      if (Math.abs(moved) > 30) speak(index + (moved < 0 ? 1 : -1));
+    });
+    view.addEventListener("pointercancel", function () { startX = null; });
+  })();
+
+  /* --------------------------------------------------------
      Scroll-in reveal (skipped entirely under reduced motion).
      -------------------------------------------------------- */
   var reveals = document.querySelectorAll(".reveal");

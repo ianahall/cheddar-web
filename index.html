@@ -27,7 +27,7 @@
   <meta name="twitter:image" content="https://cheddar.cam/assets/img/og-image.png?v=202609121222" />
 
   <link rel="preload" href="fonts/nunito-latin.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="css/styles.css?v=202610091422" />
+  <link rel="stylesheet" href="css/styles.css?v=202611101400" />
 
   <script type="application/ld+json">
   {
@@ -55,7 +55,7 @@
         "installUrl": "https://play.google.com/store/apps/details?id=com.cheddarcam.android",
         "applicationCategory": "PhotographyApplication",
         "url": "https://cheddar.cam/",
-        "description": "Cheddar is a safe, playful first camera app for kids ages 3 and up. Kids take photos by saying “cheese,” hear them described in silly character voices, record their own stories, go on scavenger hunts, and play nine games made from their own pictures. No ads, no accounts, no tracking — photos stay on the device and parents set the limits.",
+        "description": "Cheddar is a safe, playful first camera app for kids ages 3 and up. Kids take photos by saying “cheese,” hear them described in silly character voices, record their own stories, and play nine games, from scavenger hunts to puzzles made from their own pictures. No ads, no accounts, no tracking — photos stay on the device and parents set the limits.",
         "image": "https://cheddar.cam/assets/img/icon-512.png?v=202609121222",
         "screenshot": "https://cheddar.cam/assets/img/og-image.png?v=202609121222",
         "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
@@ -211,42 +211,66 @@
       </div>
     </section>
 
-    <!-- 3b. Explorer — the flagship activity -->
-    <section class="fp-section band band--green reveal">
+    <!-- 3b. The games shelf: Explorer featured with a working demo, then the other eight games.
+         Tile titles, subtitles, marks and colours mirror ActivitiesScreen.kt in the Android repo;
+         the demo mirrors SafariScreen.kt, and its missions and lines come from SafariTemplates.kt.
+         Each mission plays Cheddar's own recorded intro, copied from the app's clip library. -->
+    <section id="activities" class="shelf-section band band--peach reveal">
       <div class="container">
-        <div class="fpanel reverse">
-          <div class="fpanel-media">
-            <div class="phone"><div class="phone-screen"><img src="assets/screenshots/hunt.webp?v=202610151513" width="280" height="600" alt="Cheddar's Explorer screen handing out a mission: find 3 green things" loading="lazy" /></div></div>
-          </div>
-          <div class="fpanel-copy">
-            <span class="eyebrow">Explorer</span>
-            <h2>Send them on an adventure</h2>
-            <p class="fp-problem">Another screen that pulls kids away from the room they're standing in.</p>
-            <p class="fp-desc">Cheddar hands your kid a mission — “find three comfy chairs!” — and cheers them on out loud while they hunt. No reading needed, and the phone checks each find right where it sits. Finds are kept as trophies, and a grown-up picks how long each adventure runs.</p>
-          </div>
+        <div class="section-head shelf-head">
+          <h2>Nine games. One camera.</h2>
+          <p class="lede">Tap the corner of the camera and the shelf opens. No reading, no scores, nothing to lose. Cheddar explains every game out loud.</p>
         </div>
-      </div>
-    </section>
 
-    <!-- 3c. Things to do — the activities shelf -->
-    <section id="activities" class="more-section band band--peach reveal">
-      <div class="container">
-        <div class="section-head center">
-          <span class="eyebrow">Things to do</span>
-          <h2>Nine games, all made from their own photos</h2>
-          <p class="lede">A camera is great for about four minutes. Tap the corner of the camera and the whole app opens up — no reading, no scores, and nothing to lose.</p>
+        <div class="shelf-feature">
+          <div class="shelf-feature-copy">
+            <span class="shelf-feature-mark"><img src="assets/img/binoculars.webp?v=202611101400" width="54" height="40" alt="" /></span>
+            <h3>Let's explore</h3>
+            <p class="shelf-feature-lede">Cheddar hands out a mission and your kid goes to find it with the camera, in the room they're standing in.</p>
+            <p>He says the mission out loud, the phone checks each photo right where it sits, and every find goes into a collection of 40.</p>
+            <div class="shelf-says" aria-live="polite"><b>Cheddar says</b><q data-explorer-says>Color adventure. Find three green things. Big green, tiny green, any green.</q></div>
+            <div class="shelf-nav">
+              <button type="button" data-explorer-prev aria-label="Previous mission">‹</button>
+              <button type="button" data-explorer-next aria-label="Next mission">›</button>
+              <span>Pick a mission to hear him.</span>
+            </div>
+          </div>
+
+          <div class="phone shelf-phone">
+            <div class="phone-screen">
+              <div class="app-explorer" data-ui data-explorer-demo>
+                <span class="ex-mark"><img src="assets/img/binoculars.webp?v=202611101400" width="31" height="23" alt="" /></span>
+                <p class="ex-title">Let's explore!</p>
+                <div class="ex-view" data-explorer-view>
+                  <div class="ex-track" data-explorer-track role="group" aria-label="Pick a mission">
+                      <button class="ex-card" type="button" data-audio="assets/voices/explorer-comfy.m4a" data-says="New adventure. Find three comfy things. Go."><span class="ex-disc" aria-hidden="true">🛋️</span><span class="ex-name">Find 3 comfy things!</span></button>
+                      <button class="ex-card" type="button" data-audio="assets/voices/explorer-smiles.m4a" data-says="Smile adventure. Find three big smiles. Tickles are allowed."><span class="ex-disc" aria-hidden="true">😁</span><span class="ex-name">Find 3 big smiles!</span></button>
+                      <button class="ex-card" type="button" data-audio="assets/voices/explorer-toys.m4a" data-says="New adventure. Find three fun toys. Go."><span class="ex-disc" aria-hidden="true">🎈</span><span class="ex-name">Find 3 fun toys!</span></button>
+                      <button class="ex-card" type="button" data-audio="assets/voices/explorer-green.m4a" data-says="Color adventure. Find three green things. Big green, tiny green, any green."><span class="ex-disc" aria-hidden="true">🟢</span><span class="ex-name">Find 3 green things!</span></button>
+                      <button class="ex-card" type="button" data-audio="assets/voices/explorer-bright.m4a" data-says="Light adventure. Find three bright spots. Sunny windows, glowy lamps, shiny stuff."><span class="ex-disc" aria-hidden="true">☀️</span><span class="ex-name">Find 3 bright spots!</span></button>
+                      <button class="ex-card" type="button" data-audio="assets/voices/explorer-yummy.m4a" data-says="New adventure. Find three yummy things. Go."><span class="ex-disc" aria-hidden="true">🍎</span><span class="ex-name">Find 3 yummy things!</span></button>
+                      <button class="ex-card" type="button" data-audio="assets/voices/explorer-blue.m4a" data-says="Color adventure. Find three blue things. Big blue, tiny blue, any blue."><span class="ex-disc" aria-hidden="true">🔵</span><span class="ex-name">Find 3 blue things!</span></button>
+                      <button class="ex-card" type="button" data-audio="assets/voices/explorer-shoes.m4a" data-says="New mission. Find three shoes. Easy. Probably. Go find out."><span class="ex-disc" aria-hidden="true">👟</span><span class="ex-name">Find 3 shoes!</span></button>
+                  </div>
+                </div>
+                <div class="ex-coll"><span class="ex-trophy" aria-hidden="true">🏆</span><span>My Collection</span><span class="ex-count">3 of 40</span><span class="ex-bar"><i></i></span></div>
+                <button class="ex-start" type="button" data-explorer-start>Start Exploring</button>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="more-grid shelf-grid">
-          <div class="more-card accent-yellow"><span class="more-emoji" aria-hidden="true">🧀</span><h3>Where's Cheddar</h3><p>He's hiding in one of their photos. Tap him!</p></div>
-          <div class="more-card accent-sky"><span class="more-emoji" aria-hidden="true">🧩</span><h3>Jigsaw</h3><p>Their photo, in pieces. Drag them back together.</p></div>
-          <div class="more-card accent-coral"><span class="more-emoji" aria-hidden="true">🔍</span><h3>Spot the Difference</h3><p>Two copies of a photo, one sneaky change. Find it.</p></div>
-          <div class="more-card accent-purple"><span class="more-emoji" aria-hidden="true">❓</span><h3>What's Missing</h3><p>Look hard — then one of their photos vanishes. Which one?</p></div>
-          <div class="more-card accent-mint"><span class="more-emoji" aria-hidden="true">🙈</span><h3>Peekaboo</h3><p>One photo zoomed way in. Tap to zoom out, guess out loud, then Cheddar reveals it.</p></div>
-          <div class="more-card accent-yellow"><span class="more-emoji" aria-hidden="true">🃏</span><h3>Match Up</h3><p>A memory game dealt from their own photos. No timer, no score, no way to lose.</p></div>
-          <div class="more-card accent-pink"><span class="more-emoji" aria-hidden="true">🌈</span><h3>Rainbow</h3><p>Find something of every colour, one photo each — then Cheddar builds a rainbow from their shots.</p></div>
-          <div class="more-card accent-sky"><span class="more-emoji" aria-hidden="true">🏆</span><h3>Collection</h3><p>A trophy case with a slot for every kind of thing — each fills with their own photo.</p></div>
-          <div class="more-card accent-purple"><span class="more-emoji" aria-hidden="true">🤪</span><h3>Photo Booth</h3><p>Three silly faces on cue, then a little movie of them.</p></div>
-        </div>
+
+        <h3 class="shelf-more">Eight more on the shelf</h3>
+        <ul class="shelf-tiles" data-ui>
+          <li class="shelf-tile is-yellow"><span class="shelf-mark" aria-hidden="true">🤪</span><b>Make a funny face</b><span class="shelf-sub">Three faces, then a little movie of them</span></li>
+          <li class="shelf-tile is-navy"><span class="shelf-mark" aria-hidden="true">🌈</span><b>Make a rainbow</b><span class="shelf-sub">Find something of every color</span></li>
+          <li class="shelf-tile is-teal-deep"><span class="shelf-mark shelf-mark--pair" aria-hidden="true"><span>🃏</span><span>🃏</span></span><b>Find the matches</b><span class="shelf-sub">Turn the cards and find the twins</span></li>
+          <li class="shelf-tile is-yellow"><span class="shelf-mark" aria-hidden="true">🧩</span><b>Put it back together</b><span class="shelf-sub">Drag the pieces of your photo back together</span></li>
+          <li class="shelf-tile is-navy"><span class="shelf-mark" aria-hidden="true">❓</span><b>Which one disappeared?</b><span class="shelf-sub">Look hard before one of your photos vanishes</span></li>
+          <li class="shelf-tile is-coral"><span class="shelf-mark" aria-hidden="true">🔎</span><b>Find the sneaky change</b><span class="shelf-sub">Spot what changed between two copies</span></li>
+          <li class="shelf-tile is-teal"><span class="shelf-mark" aria-hidden="true">🙈</span><b>Guess the picture</b><span class="shelf-sub">Peek at a photo and guess what it is</span></li>
+          <li class="shelf-tile is-navy"><span class="shelf-mark" aria-hidden="true">🧀</span><b>Find the hiding cheese</b><span class="shelf-sub">He's hiding in one of your photos</span></li>
+        </ul>
       </div>
     </section>
 
@@ -267,25 +291,56 @@
       </div>
     </section>
 
-    <!-- 5. For parents (safety folded in) -->
+    <!-- 5. For parents: copy beside a working copy of the app's own Settings screen.
+         The rows, words, icons and defaults mirror SettingsScreen.kt in the Android repo
+         (Limits + Locks); re-check them there when the app's settings change. -->
     <section id="parents" class="fp-section band band--blue clip reveal">
       <div class="container">
-        <div class="fpanel reverse">
+        <div class="fpanel reverse parents-panel">
           <div class="fpanel-media">
-            <div class="phone"><div class="phone-screen"><img src="assets/screenshots/settings.webp?v=202610151513" width="280" height="600" alt="Cheddar's grown-up settings: photo limit, session timer and selfie lock" loading="lazy" /></div></div>
+            <div class="app-settings" data-ui data-settings-demo role="group" aria-label="A working copy of Cheddar's grown-up settings">
+              <p class="as-title">Settings</p>
+              <p class="as-sub">Choose what works best for your family.</p>
+
+              <p class="as-head">Limits</p>
+              <div class="as-card is-on">
+                <div class="as-row"><span class="as-chip as-yellow"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12,12m-3,0a3,3 0,1 1,6 0a3,3 0,1 1,-6 0"/><path d="M20,4h-3.17l-1.24,-1.35c-0.37,-0.41 -0.91,-0.65 -1.47,-0.65L9.88,2c-0.56,0 -1.1,0.24 -1.48,0.65L7.17,4L4,4c-1.1,0 -2,0.9 -2,2v12c0,1.1 0.9,2 2,2h16c1.1,0 2,-0.9 2,-2L22,6c0,-1.1 -0.9,-2 -2,-2zM12,17c-2.76,0 -5,-2.24 -5,-5s2.24,-5 5,-5 5,2.24 5,5 -2.24,5 -5,5z"/></svg></span><span class="as-text"><span class="as-name">Photo Limit</span><span class="as-desc" data-limit-desc>Limits photos to 10 per hour.</span></span><button class="as-switch" type="button" role="switch" aria-checked="true" aria-label="Photo Limit" data-sw="limit" data-opens></button></div>
+                <div class="as-extra"><div class="as-extra-in">
+                  <div class="as-hair"></div>
+                  <div class="as-picker" role="group" aria-label="Photos per hour" data-pick="limit"><button type="button" data-v="5" aria-pressed="false">5</button><button type="button" data-v="10" aria-pressed="true">10</button><button type="button" data-v="15" aria-pressed="false">15</button><button type="button" data-v="20" aria-pressed="false">20</button></div>
+                  <div class="as-hair as-hair--in"></div>
+                  <div class="as-sub-row"><div class="as-row"><span class="as-chip as-teal"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3,10v4c0,0.55 0.45,1 1,1h3l3.29,3.29c0.63,0.63 1.71,0.18 1.71,-0.71L12,6.41c0,-0.89 -1.08,-1.34 -1.71,-0.71L7,9L4,9c-0.55,0 -1,0.45 -1,1zM16.5,12c0,-1.77 -1.02,-3.29 -2.5,-4.03v8.05c1.48,-0.73 2.5,-2.25 2.5,-4.02zM14,4.45v0.2c0,0.38 0.25,0.71 0.6,0.85C17.18,6.53 19,9.06 19,12s-1.82,5.47 -4.4,6.5c-0.36,0.14 -0.6,0.47 -0.6,0.85v0.2c0,0.63 0.63,1.07 1.21,0.85C18.6,19.11 21,15.84 21,12s-2.4,-7.11 -5.79,-8.4c-0.58,-0.23 -1.21,0.22 -1.21,0.85z"/></svg></span><span class="as-text"><span class="as-name">Count Down Out Loud</span><span class="as-desc">Cheddar says how many photos are left (“2 more pictures!”).</span></span><button class="as-switch" type="button" role="switch" aria-checked="false" aria-label="Count Down Out Loud for photos" data-sw="limit-count"></button></div></div>
+                </div></div>
+              </div>
+              <div class="as-card">
+                <div class="as-row"><span class="as-chip as-splash"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M10,3h4c0.55,0 1,-0.45 1,-1c0,-0.55 -0.45,-1 -1,-1h-4C9.45,1 9,1.45 9,2C9,2.55 9.45,3 10,3z"/><path d="M19.03,7.39l0.75,-0.75c0.38,-0.38 0.39,-1.01 0,-1.4c0,0 -0.01,-0.01 -0.01,-0.01c-0.39,-0.39 -1.01,-0.38 -1.4,0l-0.75,0.75C16.07,4.74 14.12,4 12,4c-4.8,0 -8.88,3.96 -9,8.76C2.87,17.84 6.94,22 12,22c4.98,0 9,-4.03 9,-9C21,10.88 20.26,8.93 19.03,7.39zM13,13c0,0.55 -0.45,1 -1,1s-1,-0.45 -1,-1V9c0,-0.55 0.45,-1 1,-1s1,0.45 1,1V13z"/></svg></span><span class="as-text"><span class="as-name">Session Timer</span><span class="as-desc" data-timer-desc>A break after a set time of play.</span></span><button class="as-switch" type="button" role="switch" aria-checked="false" aria-label="Session Timer" data-sw="timer" data-opens></button></div>
+                <div class="as-extra"><div class="as-extra-in">
+                  <div class="as-hair"></div>
+                  <div class="as-picker" role="group" aria-label="Minutes of play" data-pick="session"><button type="button" data-v="5" aria-pressed="true">5 min</button><button type="button" data-v="10" aria-pressed="false">10 min</button><button type="button" data-v="15" aria-pressed="false">15 min</button><button type="button" data-v="20" aria-pressed="false">20 min</button></div>
+                  <div class="as-hair as-hair--in"></div>
+                  <div class="as-sub-row as-sub-head"><div class="as-row"><span class="as-chip as-teal"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12,6m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0"/><path d="M21,14.94L21,14.94c0,-0.5 -0.36,-0.93 -0.85,-0.98c-1.88,-0.21 -3.49,-1.13 -4.75,-2.63l-1.34,-1.6C13.68,9.26 13.12,9 12.53,9h-1.05c-0.59,0 -1.15,0.26 -1.53,0.72l-1.34,1.6c-1.25,1.5 -2.87,2.42 -4.75,2.63C3.36,14.01 3,14.44 3,14.94v0c0,0.6 0.53,1.07 1.13,1c2.3,-0.27 4.32,-1.39 5.87,-3.19V15l-3.76,1.5c-0.65,0.26 -1.16,0.83 -1.23,1.53C4.91,19.1 5.74,20 6.79,20H9v-0.5c0,-1.38 1.12,-2.5 2.5,-2.5h3c0.28,0 0.5,0.22 0.5,0.5S14.78,18 14.5,18h-3c-0.83,0 -1.5,0.67 -1.5,1.5V20l7.1,0c0.85,0 1.65,-0.54 1.85,-1.37c0.21,-0.89 -0.27,-1.76 -1.08,-2.08L14,15v-2.25c1.56,1.8 3.57,2.91 5.87,3.19C20.47,16 21,15.54 21,14.94z"/></svg></span><span class="as-text"><span class="as-name">Break Length</span><span class="as-desc">Then the camera comes back. A grown-up can end it sooner.</span></span></div></div>
+                  <div class="as-picker" role="group" aria-label="Minutes of break" data-pick="rest"><button type="button" data-v="5" aria-pressed="false">5 min</button><button type="button" data-v="10" aria-pressed="true">10 min</button><button type="button" data-v="15" aria-pressed="false">15 min</button><button type="button" data-v="30" aria-pressed="false">30 min</button></div>
+                  <div class="as-hair as-hair--in"></div>
+                  <div class="as-sub-row"><div class="as-row"><span class="as-chip as-teal"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3,10v4c0,0.55 0.45,1 1,1h3l3.29,3.29c0.63,0.63 1.71,0.18 1.71,-0.71L12,6.41c0,-0.89 -1.08,-1.34 -1.71,-0.71L7,9L4,9c-0.55,0 -1,0.45 -1,1zM16.5,12c0,-1.77 -1.02,-3.29 -2.5,-4.03v8.05c1.48,-0.73 2.5,-2.25 2.5,-4.02zM14,4.45v0.2c0,0.38 0.25,0.71 0.6,0.85C17.18,6.53 19,9.06 19,12s-1.82,5.47 -4.4,6.5c-0.36,0.14 -0.6,0.47 -0.6,0.85v0.2c0,0.63 0.63,1.07 1.21,0.85C18.6,19.11 21,15.84 21,12s-2.4,-7.11 -5.79,-8.4c-0.58,-0.23 -1.21,0.22 -1.21,0.85z"/></svg></span><span class="as-text"><span class="as-name">Count Down Out Loud</span><span class="as-desc">Cheddar calls out the time left (“one minute left!”).</span></span><button class="as-switch" type="button" role="switch" aria-checked="false" aria-label="Count Down Out Loud for breaks" data-sw="timer-count"></button></div></div>
+                </div></div>
+              </div>
+
+              <p class="as-head as-head--next">Locks</p>
+              <div class="as-card"><div class="as-row"><span class="as-chip as-teal"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9,12c0,1.66 1.34,3 3,3s3,-1.34 3,-3s-1.34,-3 -3,-3S9,10.34 9,12z"/><path d="M8,9L8,9c0,-0.55 -0.45,-1 -1,-1H5.09C6.47,5.61 9.05,4 12,4c3.49,0 6.45,2.24 7.54,5.36C19.68,9.75 20.07,10 20.48,10h0c0.68,0 1.18,-0.67 0.96,-1.31C20.07,4.79 16.36,2 12,2C8.73,2 5.82,3.58 4,6.01V5c0,-0.55 -0.45,-1 -1,-1h0C2.45,4 2,4.45 2,5v4c0,0.55 0.45,1 1,1h4C7.55,10 8,9.55 8,9z"/><path d="M16,15L16,15c0,0.55 0.45,1 1,1h1.91c-1.38,2.39 -3.96,4 -6.91,4c-3.49,0 -6.45,-2.24 -7.54,-5.36C4.32,14.25 3.93,14 3.52,14h0c-0.68,0 -1.18,0.67 -0.96,1.31C3.93,19.21 7.64,22 12,22c3.27,0 6.18,-1.58 8,-4.01V19c0,0.55 0.45,1 1,1h0c0.55,0 1,-0.45 1,-1v-4c0,-0.55 -0.45,-1 -1,-1h-4C16.45,14 16,14.45 16,15z"/></svg></span><span class="as-text"><span class="as-name">Selfie Lock</span><span class="as-desc">Back camera only. Also hides the funny-face game.</span></span><button class="as-switch" type="button" role="switch" aria-checked="false" aria-label="Selfie Lock" data-sw="selfie"></button></div></div>
+              <div class="as-card"><div class="as-row"><span class="as-chip as-cream"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M22,16L22,4c0,-1.1 -0.9,-2 -2,-2L8,2c-1.1,0 -2,0.9 -2,2v12c0,1.1 0.9,2 2,2h12c1.1,0 2,-0.9 2,-2zM11.4,12.53l1.63,2.18 2.58,-3.22c0.2,-0.25 0.58,-0.25 0.78,0l2.96,3.7c0.26,0.33 0.03,0.81 -0.39,0.81L9,16c-0.41,0 -0.65,-0.47 -0.4,-0.8l2,-2.67c0.2,-0.26 0.6,-0.26 0.8,0zM2,7v13c0,1.1 0.9,2 2,2h13c0.55,0 1,-0.45 1,-1s-0.45,-1 -1,-1L5,20c-0.55,0 -1,-0.45 -1,-1L4,7c0,-0.55 -0.45,-1 -1,-1s-1,0.45 -1,1z"/></svg></span><span class="as-text"><span class="as-name">Gallery Lock</span><span class="as-desc">Hides the gallery button. Camera-only mode.</span></span><button class="as-switch" type="button" role="switch" aria-checked="false" aria-label="Gallery Lock" data-sw="gallery"></button></div></div>
+              <div class="as-card"><div class="as-row"><span class="as-chip as-teal"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M13,14v6c0,0.55 0.45,1 1,1h6c0.55,0 1,-0.45 1,-1v-6c0,-0.55 -0.45,-1 -1,-1h-6c-0.55,0 -1,0.45 -1,1zM4,21h6c0.55,0 1,-0.45 1,-1v-6c0,-0.55 -0.45,-1 -1,-1L4,13c-0.55,0 -1,0.45 -1,1v6c0,0.55 0.45,1 1,1zM3,4v6c0,0.55 0.45,1 1,1h6c0.55,0 1,-0.45 1,-1L11,4c0,-0.55 -0.45,-1 -1,-1L4,3c-0.55,0 -1,0.45 -1,1zM15.95,2.4L11.7,6.64c-0.39,0.39 -0.39,1.02 0,1.41l4.25,4.25c0.39,0.39 1.02,0.39 1.41,0l4.25,-4.25c0.39,-0.39 0.39,-1.02 0,-1.41L17.37,2.4c-0.39,-0.39 -1.03,-0.39 -1.42,0z"/></svg></span><span class="as-text"><span class="as-name">Activities Lock</span><span class="as-desc">Hides the Activities button. Just taking pictures.</span></span><button class="as-switch" type="button" role="switch" aria-checked="false" aria-label="Activities Lock" data-sw="activities"></button></div></div>
+              <div class="as-card"><div class="as-row"><span class="as-chip as-coral"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M18,8h-1L17,6c0,-2.76 -2.24,-5 -5,-5S7,3.24 7,6v2L6,8c-1.1,0 -2,0.9 -2,2v10c0,1.1 0.9,2 2,2h12c1.1,0 2,-0.9 2,-2L20,10c0,-1.1 -0.9,-2 -2,-2zM12,17c-1.1,0 -2,-0.9 -2,-2s0.9,-2 2,-2 2,0.9 2,2 -0.9,2 -2,2zM9,8L9,6c0,-1.66 1.34,-3 3,-3s3,1.34 3,3v2L9,8z"/></svg></span><span class="as-text"><span class="as-name">Delete Protection</span><span class="as-desc">Requires solving a math problem before deleting photos and stories.</span></span><button class="as-switch" type="button" role="switch" aria-checked="false" aria-label="Delete Protection" data-sw="delete"></button></div></div>
+            </div>
           </div>
           <div class="fpanel-copy">
-            <span class="eyebrow">For parents</span>
-            <h2>You set the limits. Hand it over and relax.</h2>
-            <p class="fp-problem">It's a walled garden — no internet to wander onto, no ads to tap, nothing to buy.</p>
-            <p class="fp-desc">Everything that changes a setting, shares, or deletes sits behind a quick math gate only grown-ups can pass.</p>
+            <h2>You set the limits.</h2>
+            <p class="fp-desc">Settings and sharing sit behind a quick math gate only grown-ups can pass. Cap the photos, call a break, lock the doors you don't want open.</p>
             <ul class="fp-list">
-              <li><span class="fp-tick" aria-hidden="true">✓</span> Per-hour photo caps &amp; gentle break timers</li>
-              <li><span class="fp-tick" aria-hidden="true">✓</span> Selfie &amp; gallery locks, delete protection</li>
               <li><span class="fp-tick" aria-hidden="true">✓</span> Everything runs on the device — photos are never uploaded</li>
               <li><span class="fp-tick" aria-hidden="true">✓</span> Photos stay inside the app, not your camera roll — you save the keepers</li>
               <li><span class="fp-tick" aria-hidden="true">✓</span> No ads, no accounts, no tracking, no “just one more”</li>
             </ul>
+            <p class="settings-hint">These are Cheddar's real settings. Try the switches.</p>
             <a class="toy-btn fp-privacy" href="/privacy">Read our privacy promise</a>
           </div>
         </div>
@@ -410,6 +465,6 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=202610091422" defer></script>
+  <script src="js/main.js?v=202611101400" defer></script>
 </body>
 </html>

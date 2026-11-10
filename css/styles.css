@@ -1118,6 +1118,196 @@ section { padding-block: var(--section-gap); }
 }
 
 /* ============================================================
+   Parents: a working copy of the app's own Settings screen, rebuilt
+   from the Android source (SettingsScreen.kt) at true size, 1dp = 1px.
+   It is a real interface fragment, so it keeps the app's colours,
+   radii and hairlines rather than the site's. Icons are the official
+   rounded Material icons the app uses, inlined.
+   ============================================================ */
+.parents-panel { grid-template-columns: minmax(0, 1fr) minmax(0, 420px); align-items: start; }
+.parents-panel .fpanel-media { display: block; }
+.parents-panel .fpanel-copy { padding-top: clamp(8px, 4vw, 56px); }
+.parents-panel .fp-privacy { margin-top: 18px; }
+/* The hint promises working switches, which need the script. */
+.settings-hint { display: none; margin: 20px 0 0; font-weight: 700; font-size: 0.95rem; color: rgba(255, 255, 255, 0.9); }
+.js .settings-hint { display: block; }
+
+.app-settings {
+  --as-ground: #1C2A42; --as-card: #293B59; --as-chip: rgba(255, 255, 255, 0.12); --as-hair: rgba(255, 255, 255, 0.08);
+  --as-cream: #FFF0CE; --as-yellow: #FFD43B; --as-splash: #FFE27A; --as-teal: #2BAF9E; --as-coral: #E56A4F; --as-ink: #20283A;
+  background: var(--as-ground); border-radius: 30px; padding: 28px 20px 24px;
+  color: #fff; text-align: left; font-weight: 500; line-height: 1.3;
+}
+.app-settings p { margin: 0; }
+.as-title { text-align: center; font-size: 40px; font-weight: 800; letter-spacing: -0.01em; line-height: 1.1; }
+.app-settings .as-sub { text-align: center; font-size: 14px; color: rgba(255, 240, 206, 0.78); margin: 6px 0 32px; }
+.as-head { font-size: 19px; font-weight: 800; color: var(--as-cream); padding: 6px 4px 10px; }
+.app-settings .as-head--next { margin-top: 24px; }
+.as-card { background: var(--as-card); border-radius: 20px; }
+.as-card + .as-card { margin-top: 12px; }
+.as-row { display: flex; align-items: center; gap: 14px; padding: 18px; }
+.as-chip { flex: none; width: 46px; height: 46px; border-radius: 14px; background: var(--as-chip); display: grid; place-items: center; }
+.as-chip svg { width: 24px; height: 24px; fill: currentColor; }
+.as-yellow { color: var(--as-yellow); } .as-splash { color: var(--as-splash); } .as-teal { color: var(--as-teal); }
+.as-cream { color: var(--as-cream); } .as-coral { color: var(--as-coral); }
+.as-text { flex: 1; min-width: 0; }
+.as-name { display: block; font-size: 16px; font-weight: 700; color: #fff; }
+.as-desc { display: block; font-size: 14px; line-height: 20px; color: rgba(255, 240, 206, 0.8); margin-top: 4px; }
+.as-sub-row .as-row { padding: 15px 18px 15px 30px; gap: 12px; }
+.as-sub-head .as-row { padding-bottom: 2px; }
+.as-sub-row .as-chip { width: 38px; height: 38px; border-radius: 12px; }
+.as-sub-row .as-chip svg { width: 20px; height: 20px; }
+.as-sub-row .as-name { font-size: 15px; }
+.as-sub-row .as-desc { font-size: 13px; line-height: 18px; margin-top: 3px; }
+.as-hair { height: 1px; background: var(--as-hair); }
+.as-hair--in { margin-left: 30px; }
+.as-picker { display: flex; padding: 14px; }
+.as-picker button {
+  flex: 1; margin: 0 3px; border: 0; border-radius: 10px; padding: 10px 0; cursor: pointer;
+  font: inherit; font-size: 13px; font-weight: 700; background: var(--as-chip); color: #fff;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+.as-picker button[aria-pressed="true"] { background: var(--as-yellow); color: var(--as-ink); }
+/* CheddarSwitch: 60 by 32 track, 28 thumb, yellow when on */
+.as-switch {
+  position: relative; flex: none; width: 60px; height: 32px; border: 0; padding: 0; border-radius: 999px;
+  background: var(--as-chip); cursor: pointer; transition: background-color 0.15s ease;
+}
+.as-switch::after {
+  content: ""; position: absolute; top: 2px; left: 2px; width: 28px; height: 28px; border-radius: 50%;
+  background: #fff; transition: transform 0.25s var(--ease-toy);
+}
+.as-switch::before { content: ""; position: absolute; inset: -6px; }   /* 44px thumb target */
+.as-switch[aria-checked="true"] { background: var(--as-yellow); }
+.as-switch[aria-checked="true"]::after { transform: translateX(28px); }
+.as-switch:focus-visible { border-radius: 999px; }
+/* A card's extra rows open under it when its switch is on, as in the app. */
+.as-extra { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.28s cubic-bezier(0.22, 0.61, 0.36, 1); }
+.as-extra-in { overflow: hidden; min-height: 0; visibility: hidden; transition: visibility 0s 0.28s; }
+.as-card.is-on > .as-extra { grid-template-rows: 1fr; }
+.as-card.is-on > .as-extra > .as-extra-in { visibility: visible; transition-delay: 0s; }
+@media (max-width: 820px) {
+  .parents-panel { grid-template-columns: 1fr; }
+  /* Here the words come first: the heading says what the screen below is. */
+  .parents-panel.reverse .fpanel-media { order: 2; }
+  .parents-panel .fpanel-copy { padding-top: 0; }
+  .app-settings { max-width: 420px; margin-inline: auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .as-extra, .as-extra-in, .as-switch, .as-switch::after, .as-picker button { transition: none; }
+}
+
+/* ============================================================
+   Games shelf: Explorer featured beside a working demo, then the
+   other eight games as the app's own tiles. Tiles and demo mirror
+   the Android source (ActivitiesScreen.kt, SafariScreen.kt), so
+   they keep the app's colours and radii rather than the site's.
+   ============================================================ */
+.shelf-head {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: 16px clamp(28px, 5vw, 56px); align-items: end; margin-bottom: clamp(26px, 4vw, 44px);
+}
+.shelf-head h2, .shelf-head .lede { margin: 0; }
+.shelf-head .lede { color: var(--ink); }
+
+.shelf-feature {
+  background: #fff; border-radius: var(--r-card); padding: clamp(24px, 4.4vw, 56px);
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: clamp(28px, 5vw, 64px); align-items: center;
+}
+.shelf-feature-copy { display: grid; gap: 16px; justify-items: start; }
+.shelf-feature-copy p { margin: 0; max-width: 44ch; }
+.shelf-feature-mark { width: 92px; height: 92px; border-radius: 24px; background: #293B59; display: grid; place-items: center; }
+.shelf-feature-mark img { width: 54px; height: auto; }
+.shelf-feature h3 { font-size: clamp(2rem, 3.6vw, 2.7rem); margin: 0; }
+.shelf-feature-copy .shelf-feature-lede { font-size: clamp(1.05rem, 1.4vw, 1.25rem); font-weight: 700; }
+.shelf-says { background: var(--tint-sky); border-radius: 22px; padding: 16px 20px; display: grid; gap: 4px; max-width: 460px; }
+.shelf-says b { font-size: 0.92rem; font-weight: 800; color: var(--sky); }
+.shelf-says q { font-size: clamp(1.05rem, 1.4vw, 1.22rem); font-weight: 700; line-height: 1.35; quotes: "\201C" "\201D"; }
+/* The arrows and the hint promise sound and movement, which need the script. */
+.shelf-nav { display: none; gap: 10px; align-items: center; font-weight: 700; font-size: 0.95rem; }
+.js .shelf-nav { display: flex; }
+.shelf-nav button {
+  width: 48px; height: 48px; border: 0; border-radius: 50%; cursor: pointer;
+  background: var(--sky); color: #fff; font: inherit; font-size: 1.4rem; font-weight: 800; line-height: 1;
+  transition: transform 0.11s var(--ease-toy);
+}
+.shelf-nav button:active { transform: translateY(2px); }
+.shelf-nav button:focus-visible { border-radius: 50%; }
+
+/* The Explorer screen at about 0.7 scale, inside the site's phone frame. */
+.shelf-phone { --view: calc(min(300px, 80vw) - 24px); width: min(300px, 80vw); }
+.app-explorer {
+  height: 100%; display: flex; flex-direction: column; padding: 46px 0 18px; text-align: center; color: #fff;
+  background: #293B59 radial-gradient(120% 70% at 85% 0%, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0) 60%);
+  -webkit-user-select: none; user-select: none;
+}
+.ex-mark { flex: none; width: 54px; height: 54px; border-radius: 15px; background: #fff; display: grid; place-items: center; margin: 0 auto 10px; }
+.app-explorer .ex-mark img { width: 31px; height: auto; }
+.app-explorer .ex-title { font-size: 27px; font-weight: 800; letter-spacing: -0.01em; line-height: 1.1; margin: 0; }
+/* The carousel takes the middle of the screen, as it does in the app. */
+.ex-view { overflow: hidden; touch-action: pan-y; margin-block: auto; padding-block: 14px; }
+/* --i is the focused card; the script only ever changes that number. */
+.ex-track {
+  display: flex; gap: 10px;
+  transform: translateX(calc(var(--view) / 2 - (var(--i, 3) * 186px + 88px)));
+  transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.ex-card {
+  flex: none; width: 176px; border: 0; border-radius: 20px; padding: 26px 12px; cursor: pointer;
+  background: #fff; color: #293B59; font: inherit; display: grid; justify-items: center; gap: 18px;
+}
+.ex-disc { width: 128px; height: 128px; border-radius: 50%; background: #E8ECF4; display: grid; place-items: center; font-size: 68px; line-height: 1; }
+.ex-name { min-height: 48px; display: grid; align-items: center; font-size: 19px; font-weight: 800; line-height: 24px; }
+.ex-card:focus-visible { outline-color: #FFD43B; outline-offset: -4px; border-radius: 20px; }
+.ex-coll {
+  margin: 0 14px; padding: 9px 12px 11px; border-radius: 13px; background: rgba(255, 255, 255, 0.14);
+  display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 8px 9px; text-align: left; font-size: 13px; font-weight: 600;
+}
+.ex-trophy { width: 28px; height: 28px; border-radius: 8px; background: rgba(255, 255, 255, 0.16); display: grid; place-items: center; font-size: 15px; }
+.ex-count { font-weight: 800; }
+.ex-bar { grid-column: 1 / -1; height: 4px; border-radius: 4px; background: rgba(255, 255, 255, 0.22); overflow: hidden; }
+.ex-bar i { display: block; width: 8%; height: 100%; border-radius: 4px; background: #fff; }
+.ex-start {
+  flex: none; margin: 12px 14px 0; height: 42px; border: 0; border-radius: 999px; cursor: pointer;
+  background: #fff; color: #293B59; font: inherit; font-size: 15px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center; gap: 8px; transition: background-color 0.15s ease;
+}
+.ex-start::before { content: ""; border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent currentColor; }
+.ex-start:focus-visible { outline-color: #FFD43B; border-radius: 999px; }
+/* While Cheddar is speaking, the button the kid would press lights up. */
+.app-explorer:has(.ex-card.is-playing) .ex-start { background: #FFD43B; }
+
+.shelf-more { margin: clamp(36px, 5vw, 56px) 0 16px; font-size: clamp(1.6rem, 3vw, 2.2rem); }
+.shelf-tiles { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.shelf-tile {
+  --tile: #293B59; --on: #fff;
+  border-radius: 22px; padding: 14px; color: var(--on);
+  background: var(--tile) radial-gradient(120% 90% at 10% 0%, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0) 55%);
+}
+.shelf-tile.is-yellow { --tile: #FFD43B; --on: #20283A; }
+.shelf-tile.is-teal-deep { --tile: #15736A; }
+.shelf-tile.is-coral { --tile: #E56A4F; --on: #20283A; }
+.shelf-tile.is-teal { --tile: #2BAF9E; --on: #20283A; }
+.shelf-mark { position: relative; width: 68px; height: 68px; border-radius: 18px; background: #fff; display: grid; place-items: center; font-size: 32px; line-height: 1; margin-bottom: 12px; }
+/* Match Up's mark: the same card twice, one laid over the other, as the app draws it. */
+.shelf-mark--pair span { position: absolute; inset: 0; display: grid; place-items: center; font-size: 24px; }
+.shelf-mark--pair span:first-child { transform: translate(-6px, -5px); opacity: 0.55; }
+.shelf-mark--pair span:last-child { transform: translate(6px, 5px); }
+.shelf-tile b { display: block; font-size: 20px; font-weight: 800; line-height: 24px; }
+.shelf-sub { display: block; font-size: 15px; font-weight: 600; line-height: 20px; margin-top: 4px; }
+@media (max-width: 900px) {
+  .shelf-tiles { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 820px) {
+  .shelf-head { grid-template-columns: 1fr; }
+  .shelf-feature { grid-template-columns: 1fr; }
+  .shelf-phone { justify-self: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ex-track, .ex-start, .shelf-nav button { transition: none; }
+}
+
+/* ============================================================
    "More cool stuff" grid
    ============================================================ */
 .more-grid {
@@ -1130,19 +1320,6 @@ section { padding-block: var(--section-gap); }
 }
 .more-emoji { font-size: 2rem; display: block; margin-bottom: 10px; }
 
-/* "Things to do" shelf — chunkier cards with the emoji in an accent tile */
-/* Nine games (Explorer has its own section): three across, so no card is left alone on a row. */
-.shelf-grid { grid-template-columns: repeat(3, 1fr); }
-.shelf-grid .more-card { padding: clamp(22px, 2.4vw, 30px); }
-.shelf-grid .more-emoji {
-  font-size: 2.15rem; line-height: 1;
-  width: 62px; height: 62px; margin-bottom: 16px;
-  display: grid; place-items: center; border-radius: 18px;
-  background: color-mix(in srgb, var(--accent, var(--yellow)) 20%, #fff);
-  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--accent, var(--yellow)) 34%, transparent);
-}
-.shelf-grid .more-card h3 { font-size: 1.2rem; }
-.shelf-grid .more-card p { font-size: 0.98rem; line-height: 1.5; }
 .more-card h3 { font-size: clamp(1.08rem, 1.5vw, 1.28rem); margin-bottom: 0.3em; }
 .more-card p { margin: 0; color: var(--ink-soft); font-weight: 600; font-size: 0.96rem; }
 @media (max-width: 900px) { .more-grid { grid-template-columns: repeat(2, 1fr); } }
