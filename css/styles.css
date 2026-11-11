@@ -496,7 +496,24 @@ section { padding-block: var(--section-gap); }
   width: var(--mv-width);
   max-width: none;
 }
-@media (max-width: 900px) { .foot-mascot { display: none !important; } }
+/* Tablet and phone: the columns stack, and the space beside the top of the footer
+   belongs to the buttons above, so he moves to the one spot that is always empty: the
+   bottom-right of the link columns, standing on the footer's divider line. */
+@media (max-width: 900px) {
+  .footer-cols { position: relative; }
+  .foot-mascot {
+    top: auto;
+    bottom: calc(-1 * clamp(32px, 5vw, 48px));   /* the gap down to .footer-bottom's rule */
+    right: clamp(10px, 4vw, 40px);
+    transform: none;
+    width: clamp(118px, 23vw, 184px);
+  }
+}
+/* Two link columns side by side (481-680px): the About links run close to him, so he is a
+   little smaller and tucked right. */
+@media (min-width: 481px) and (max-width: 680px) {
+  .foot-mascot { width: clamp(104px, 20vw, 136px); right: 8px; }
+}
 
 .hcam-frame {
   position: absolute; inset: 0;
