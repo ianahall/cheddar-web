@@ -480,10 +480,21 @@ section { padding-block: var(--section-gap); }
 }
 .foot-mascot.has-shot { display: block; }
 .foot-mascot img { width: 100%; height: auto; filter: drop-shadow(0 16px 22px rgba(0, 0, 0, 0.55)); }
-/* Footer: peace-sign loop over mascot-foot.webp (663×799) */
+/* Footer: peace-sign loop. mascot-foot.webp is the loop's first frame at the same
+   800×800 size, so the still and the video sit in exactly the same place: the box
+   keeps the old 663×799 footprint and both are laid over it with the --mv geometry. */
 .foot-mascot {
   --mv-left: -29.57%; --mv-top: -12.87%; --mv-width: 154.5%;
   --mv-shadow: drop-shadow(0 16px 22px rgba(0, 0, 0, 0.55));
+  aspect-ratio: 663 / 799;
+  right: clamp(56px, 6vw, 84px);   /* his raised hand reaches past the box: keep it on the page */
+}
+.foot-mascot > img {
+  position: absolute;
+  left: var(--mv-left);
+  top: var(--mv-top);
+  width: var(--mv-width);
+  max-width: none;
 }
 @media (max-width: 900px) { .foot-mascot { display: none !important; } }
 
