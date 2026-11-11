@@ -473,7 +473,7 @@ section { padding-block: var(--section-gap); }
   position: absolute;
   right: clamp(8px, 4vw, 64px);
   top: 0;
-  transform: translateY(-32%);
+  transform: translateY(-18%);   /* was -32%: he stands lower, more in the footer than over the band */
   width: clamp(212px, 24vw, 306px);
   z-index: 5;
   pointer-events: none;
