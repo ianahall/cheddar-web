@@ -300,6 +300,15 @@
         idx = next;
       }, prefersReduced ? 0 : 120);
     });
+
+    // The "tap me" ring only loops while the camera is on screen.
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { cam.classList.toggle("is-onscreen", e.isIntersecting); });
+      }).observe(cam);
+    } else {
+      cam.classList.add("is-onscreen");
+    }
   })();
 
   /* --------------------------------------------------------
@@ -394,10 +403,25 @@
     var index = 3;
     if (!track || !cards.length) return;
 
+    var swapTimer = null;
+    // The old line fades out, the words change, the new line fades in.
+    function say(text) {
+      if (!says || says.textContent === text) return;
+      window.clearTimeout(swapTimer);
+      if (prefersReduced) { says.textContent = text; return; }
+      says.classList.add("is-swapping");
+      swapTimer = window.setTimeout(function () {
+        says.textContent = text;
+        says.classList.remove("is-swapping");
+      }, 120);
+    }
     function focusCard(n) {
       index = (n + cards.length) % cards.length;
       track.style.setProperty("--i", index);
-      if (says) says.textContent = cards[index].getAttribute("data-says");
+      Array.prototype.forEach.call(cards, function (card, i) {
+        card.classList.toggle("is-focus", i === index);
+      });
+      say(cards[index].getAttribute("data-says"));
     }
     function speak(n) {
       focusCard(n);

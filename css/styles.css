@@ -1115,12 +1115,12 @@ section { padding-block: var(--section-gap); }
 .js .reveal .download-visual,
 .js .reveal .shelf-phone {
   opacity: 0;
-  transform: translateY(24px) rotate(-2deg);
+  transform: translateY(24px) rotate(var(--set-tilt, -2deg));
   transform-origin: 50% 100%;
   transition: opacity 0.4s var(--ease-out) 0.12s, transform 0.7s var(--ease-toy) 0.12s;
 }
-.js .reveal .fpanel.reverse .fpanel-media,
-.js .reveal .shelf-phone { transform: translateY(24px) rotate(2deg); }
+/* Phones on the right lean the other way before they settle. */
+.fpanel.reverse .fpanel-media, .shelf-phone { --set-tilt: 2deg; }
 .js .reveal.is-in .fpanel-media,
 .js .reveal.is-in .download-visual,
 .js .reveal.is-in .shelf-phone { opacity: 1; transform: none; }
