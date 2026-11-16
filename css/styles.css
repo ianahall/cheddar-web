@@ -403,18 +403,6 @@ section { padding-block: var(--section-gap); }
   opacity: 1;
   font-weight: 800;
 }
-.hero-trust {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 18px;
-  margin-top: 24px;
-  font-weight: 800;
-  font-size: 0.92rem;
-  color: color-mix(in srgb, var(--ink) 88%, transparent);
-}
-.hero-trust span { display: inline-flex; align-items: center; gap: 8px; }
-.hero-trust .dot { width: 8px; height: 8px; border-radius: 50%; background: #8A6510; }
-
 /* Right-hand visual */
 .hero-visual {
   position: relative;
@@ -542,7 +530,6 @@ section { padding-block: var(--section-gap); }
   .hero h1 { margin-inline: auto; }
   .hero .subline { margin-inline: auto; }
   .hero .cta-row { justify-content: center; }
-  .hero-trust { justify-content: center; }
   .hero-copy { order: 1; }
   .hero-visual { order: 2; }
 }
