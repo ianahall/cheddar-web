@@ -1323,8 +1323,10 @@ section { padding-block: var(--section-gap); }
 .shelf-head h2, .shelf-head .lede { margin: 0; }
 .shelf-head .lede { color: var(--ink); max-width: 62ch; }
 
+/* A pale-blue card on the white band, so the Explorer demo reads as its own block
+   (it was a white card when the band was peach). */
 .shelf-feature {
-  background: #fff; border-radius: var(--r-card); padding: clamp(24px, 4.4vw, 56px);
+  background: var(--tint-sky); border-radius: var(--r-card); padding: clamp(24px, 4.4vw, 56px);
   display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: clamp(28px, 5vw, 64px); align-items: center;
 }
 .shelf-feature-copy { display: grid; gap: 16px; justify-items: start; }
@@ -1333,7 +1335,7 @@ section { padding-block: var(--section-gap); }
 .shelf-feature-mark img { width: 54px; height: auto; }
 .shelf-feature h3 { font-size: clamp(2rem, 3.6vw, 2.7rem); margin: 0; }
 .shelf-feature-copy .shelf-feature-lede { font-size: clamp(1.05rem, 1.4vw, 1.25rem); font-weight: 700; }
-.shelf-says { background: var(--tint-sky); border-radius: 22px; padding: 16px 20px; display: grid; gap: 4px; max-width: 460px; }
+.shelf-says { background: #fff; border-radius: 22px; padding: 16px 20px; display: grid; gap: 4px; max-width: 460px; }
 .shelf-says b { font-size: 0.92rem; font-weight: 800; color: var(--sky); }
 .shelf-says q { font-size: clamp(1.05rem, 1.4vw, 1.22rem); font-weight: 700; line-height: 1.35; quotes: "\201C" "\201D"; transition: opacity 0.18s var(--ease-out); }
 /* main.js fades the old line out, swaps the words, then lets this fade back in. */
