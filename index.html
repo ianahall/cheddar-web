@@ -27,7 +27,7 @@
   <meta name="twitter:image" content="https://cheddar.cam/assets/img/og-image.png?v=202609121222" />
 
   <link rel="preload" href="fonts/nunito-latin.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="css/styles.css?v=202611120900" />
+  <link rel="stylesheet" href="css/styles.css?v=202611161200" />
 
   <script type="application/ld+json">
   {
@@ -127,10 +127,27 @@
 
     <!-- FEATURE PANELS — one clear panel per main feature -->
 
-    <!-- 1. Say Cheese -->
+    <!-- 1. The camera itself (easy UI) -->
     <section id="features" class="fp-section band band--white reveal">
       <div class="container">
         <div class="fpanel">
+          <div class="fpanel-media">
+            <div class="phone"><div class="phone-screen"><img src="assets/screenshots/camera.webp?v=202610151513" width="280" height="600" alt="Cheddar's camera screen: one giant yellow shutter, the Activities button and the gallery button" loading="lazy" /></div></div>
+          </div>
+          <div class="fpanel-copy">
+            <span class="eyebrow">Made for little hands</span>
+            <h2>So simple a three-year-old can use it</h2>
+            <p class="fp-problem">Tiny buttons and menus full of words are a non-starter for pre-readers.</p>
+            <p class="fp-desc">One giant shutter, a few chunky color-coded buttons, and zero text to read. Portrait-locked, one-hand friendly, and nothing to set up — kids just point and press.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Say Cheese -->
+    <section class="fp-section band band--peach reveal">
+      <div class="container">
+        <div class="fpanel reverse">
           <div class="fpanel-media">
             <div class="phone"><div class="phone-screen"><img src="assets/screenshots/say-cheese.webp?v=202610151513" width="280" height="600" alt="Cheddar listening for the magic word: “Say cheeeeese!” with the big yellow mic button" loading="lazy" /></div></div>
           </div>
@@ -144,10 +161,10 @@
       </div>
     </section>
 
-    <!-- 2. Tell Me (with the voice picker folded in) -->
+    <!-- 3. Tell Me (with the voice picker folded in) -->
     <section class="fp-section band band--purple reveal">
       <div class="container">
-        <div class="fpanel reverse">
+        <div class="fpanel">
           <div class="fpanel-media">
             <div class="phone"><div class="phone-screen"><img src="assets/screenshots/cheddar-says.webp?v=202610151513" width="280" height="600" alt="A photo of a bowl of apples with googly eyes, with Cheddar's Tell Me card and the character voices beneath it" loading="lazy" /></div></div>
           </div>
@@ -176,10 +193,10 @@
       </div>
     </section>
 
-    <!-- 3. Stories -->
+    <!-- 4. Stories (sharing folded in) -->
     <section class="fp-section band band--pink-tint reveal">
       <div class="container">
-        <div class="fpanel">
+        <div class="fpanel reverse">
           <div class="fpanel-media">
             <div class="phone"><div class="phone-screen"><img src="assets/screenshots/gallery.webp?v=202610151513" width="280" height="600" alt="Cheddar's gallery: big photos, a heart on each one, and filter pills for Settings, Faves and Stories" loading="lazy" /></div></div>
           </div>
@@ -187,7 +204,7 @@
             <span class="eyebrow">Stories</span>
             <h2>Kids record their own storybook</h2>
             <p class="fp-problem">Your kid tells the world's best story about a photo… then forgets it by dinner.</p>
-            <p class="fp-desc">Tap record and let them narrate — up to 20 seconds in their own voice. It replays in a cosy “storytime mode” with a slow cinematic zoom, like a tiny movie they made themselves.</p>
+            <p class="fp-desc">Tap record and let them narrate — up to 20 seconds in their own voice. It replays in a cosy “storytime mode” with a slow cinematic zoom, like a tiny movie they made themselves. A grown-up can turn any Story or Tell Me into a little video to send to Grandma.</p>
           </div>
         </div>
         <div class="story-strip">
@@ -206,7 +223,7 @@
       </div>
     </section>
 
-    <!-- 3b. The games shelf: Explorer featured with a working demo, then the other eight games.
+    <!-- 5. The games shelf: Explorer featured with a working demo, then the other eight games.
          Tile titles, subtitles, marks and colours mirror ActivitiesScreen.kt in the Android repo;
          the demo mirrors SafariScreen.kt, and its missions and lines come from SafariTemplates.kt.
          Each mission plays Cheddar's own recorded intro, copied from the app's clip library. -->
@@ -269,24 +286,31 @@
       </div>
     </section>
 
-    <!-- 4. Easy UI -->
-    <section class="fp-section band band--white reveal">
+    <!-- 6. MORE COOL STUFF -->
+    <section class="more-section band band--white reveal">
       <div class="container">
-        <div class="fpanel">
-          <div class="fpanel-media">
-            <div class="phone"><div class="phone-screen"><img src="assets/screenshots/camera.webp?v=202610151513" width="280" height="600" alt="Cheddar's camera screen: one giant yellow shutter, the Activities button and the gallery button" loading="lazy" /></div></div>
-          </div>
-          <div class="fpanel-copy">
-            <span class="eyebrow">Made for little hands</span>
-            <h2>So simple a three-year-old can use it</h2>
-            <p class="fp-problem">Tiny buttons and menus full of words are a non-starter for pre-readers.</p>
-            <p class="fp-desc">One giant shutter, a few chunky color-coded buttons, and zero text to read. Portrait-locked, one-hand friendly, and nothing to set up — kids just point and press.</p>
-          </div>
+        <div class="section-head center">
+          <span class="eyebrow">And lots of little delights</span>
+          <h2>Plus a few more tricks up its sleeve</h2>
+        </div>
+        <div class="more-grid">
+          <div class="more-card accent-mint"><span class="more-emoji" aria-hidden="true">🐮</span><h3>Silly sounds</h3><p>Swap the shutter click for a random goofy noise — a moo, a ribbit, a honk.</p></div>
+          <div class="more-card accent-pink"><span class="more-emoji" aria-hidden="true">✨</span><h3>Decorate it</h3><p>Stickers, frames and filters on any photo. They never touch the original — take them all off again any time.</p></div>
+          <div class="more-card accent-orange"><span class="more-emoji" aria-hidden="true">🖼️</span><h3>Friendly gallery</h3><p>Big thumbnails, “Today” date headers, one-tap faves, and filters for Faves, Voices, Stories &amp; Explorer.</p></div>
         </div>
       </div>
     </section>
 
-    <!-- 5. For parents: copy beside a working copy of the app's own Settings screen.
+    <!-- 7. FULL-WIDTH PHOTO BAND: the hinge from kid features to the parents section -->
+    <section class="band band--photo photo-band reveal" data-photo="assets/img/dad.jpg" aria-label="Cheddar in real life">
+      <div class="pb-inner">
+        <span class="pb-eyebrow">Made for real kids</span>
+        <h2>Happiest in little hands</h2>
+        <p>Wobbly taps, silly faces, and very short attention spans — Cheddar is built for exactly how little kids really use a camera.</p>
+      </div>
+    </section>
+
+    <!-- 8. For parents: copy beside a working copy of the app's own Settings screen.
          The rows, words, icons and defaults mirror SettingsScreen.kt in the Android repo
          (Limits + Locks), shown in the site's phone frame; re-check them there when the app's settings change. -->
     <section id="parents" class="fp-section band band--blue clip reveal">
@@ -340,33 +364,6 @@
             <a class="toy-btn fp-privacy" href="/privacy">Read our privacy promise</a>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- MORE COOL STUFF -->
-    <section class="more-section band band--peach reveal">
-      <!-- Cheddar (cheesy 3) sits on the cream panel's top ledge, legs dangling,
-           body rising into the blue band above. Hidden until the image exists. -->
-      <div class="container">
-        <div class="section-head center">
-          <span class="eyebrow">And lots of little delights</span>
-          <h2>Plus a few more tricks up its sleeve</h2>
-        </div>
-        <div class="more-grid">
-          <div class="more-card accent-sky"><span class="more-emoji" aria-hidden="true">📤</span><h3>Share the magic</h3><p>Turn a Story or Tell Me into a little video — photo, gentle zoom and narration — to send to Grandma.</p></div>
-          <div class="more-card accent-mint"><span class="more-emoji" aria-hidden="true">🐮</span><h3>Silly sounds</h3><p>Swap the shutter click for a random goofy noise — a moo, a ribbit, a honk.</p></div>
-          <div class="more-card accent-pink"><span class="more-emoji" aria-hidden="true">✨</span><h3>Decorate it</h3><p>Stickers, frames and filters on any photo. They never touch the original — take them all off again any time.</p></div>
-          <div class="more-card accent-orange"><span class="more-emoji" aria-hidden="true">🖼️</span><h3>Friendly gallery</h3><p>Big thumbnails, “Today” date headers, one-tap faves, and filters for Faves, Voices, Stories &amp; Explorer.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FULL-WIDTH PHOTO BAND -->
-    <section class="band band--photo photo-band reveal" data-photo="assets/img/dad.jpg" aria-label="Cheddar in real life">
-      <div class="pb-inner">
-        <span class="pb-eyebrow">Made for real kids</span>
-        <h2>Happiest in little hands</h2>
-        <p>Wobbly taps, silly faces, and very short attention spans — Cheddar is built for exactly how little kids really use a camera.</p>
       </div>
     </section>
 
