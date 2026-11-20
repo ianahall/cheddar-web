@@ -330,7 +330,7 @@
     if (prefersReduced) return;
     var MAX_TILT = 2; // degrees at the far left/right edge
     Array.prototype.forEach.call(
-      document.querySelectorAll(".fpanel-media .phone, .download-visual .phone, .hero-phone"),
+      document.querySelectorAll(".fpanel-media .phone, .hero-phone"),
       function (el) {
         el.addEventListener("mousemove", function (e) {
           var r = el.getBoundingClientRect();
