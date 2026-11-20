@@ -29,6 +29,7 @@
 
 /* ---------- Design tokens ---------- */
 :root {
+  color-scheme: light;
   /* "Warm Camera" palette — 2026-09 rebrand: yellow · navy · cream · caramel
      + two poppers (sea-glass teal = calm cues, coral = lively cues).
      Token NAMES kept for cascade; old rainbow collapsed onto the 6 colours. */
