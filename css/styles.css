@@ -516,12 +516,12 @@ section { padding-block: var(--section-gap); }
   opacity: 0; visibility: hidden;
 }
 .hcam-frame.is-current { opacity: 1; visibility: visible; }
-/* Hero viewfinder photos — cover-cropped into the portrait screen.
+/* Camera demo photos, cover-cropped into the viewfinder and the gallery button's thumbnail.
    Swap these paths to change which photos cycle on each shutter press. */
-.hcam-frame.hf-1 { background: #d9cdae url("../assets/img/hero/hero-1.jpg") center / cover no-repeat; }
-.hcam-frame.hf-2 { background: #d9cdae url("../assets/img/hero/hero-2.jpg") center / cover no-repeat; }
-.hcam-frame.hf-3 { background: #d9cdae url("../assets/img/hero/hero-3.jpg") center / cover no-repeat; }
-.hcam-frame.hf-4 { background: #d9cdae url("../assets/img/hero/hero-4.jpg") center / cover no-repeat; }
+.hf-1 { background: #d9cdae url("../assets/img/hero/hero-1.jpg") center / cover no-repeat; }
+.hf-2 { background: #d9cdae url("../assets/img/hero/hero-2.jpg") center / cover no-repeat; }
+.hf-3 { background: #d9cdae url("../assets/img/hero/hero-3.jpg") center / cover no-repeat; }
+.hf-4 { background: #d9cdae url("../assets/img/hero/hero-4.jpg") center / cover no-repeat; }
 
 @keyframes hero-flash { 0% { opacity: 0; } 12% { opacity: 0.96; } 100% { opacity: 0; } }
 
@@ -862,63 +862,93 @@ section { padding-block: var(--section-gap); }
 }
 @keyframes photo-settle { from { scale: 1.08; } to { scale: 1; } }
 
-/* Faithful Cheddar camera UI — matches the real app (cream screen,
-   chunky yellow shutter, orange settings, blue gallery, green flip,
-   "Wizard says…" poem sheet). Used in the demo (and hero). */
+/* The app's camera screen (Cloud ground), rebuilt from the app rather than drawn to look like it.
+   Everything is sized in the app's own points: --pt is one point of its 402pt-wide layout, scaled
+   to the phone screen, so the numbers below are the app's (viewport radius 30, shutter 196, corner
+   discs 68, flip 48). Colours are its design tokens. cam-wallpaper.svg is the app's doodle field,
+   baked from its ic_doodle art with its DoodleLayout placement (seed 26). Icons are the official
+   rounded Material set. */
+.cam-screen { container-type: inline-size; }
 .appcam {
+  --pt: 0.637px;  /* without container units: right for the 280px phone */
   position: absolute; inset: 0;
-  display: flex; flex-direction: column; gap: 8px;
-  background: var(--cream); padding: 12px;
+  display: flex; flex-direction: column;
+  padding: calc(42 * var(--pt)) calc(16 * var(--pt)) calc(28 * var(--pt));
+  background: #E8ECF4 url("../assets/img/cam-wallpaper.svg?v=202611191500") top center / cover no-repeat;
+}
+@supports (width: 1cqw) {
+  .appcam { --pt: calc(100cqw / 402); }
 }
 .appcam-view {
-  position: relative; flex: 1; border-radius: 20px; overflow: hidden;
-  background: radial-gradient(120% 90% at 50% 34%, #DCEBD6 0%, #A9C9A6 55%, #7BA98C 100%);
-  box-shadow: inset 0 0 0 1px rgba(47, 42, 38, 0.06), inset 0 -46px 60px -34px rgba(0, 0, 0, 0.35);
+  position: relative; flex: 1; min-height: 0; overflow: hidden;
+  border-radius: calc(30 * var(--pt)); background: #000;
 }
+/* Flip: a dark scrim disc, ringed and glyphed in deep teal pulled 70% toward white. */
 .appcam-flip {
-  position: absolute; right: 10px; bottom: 10px; width: 40px; height: 40px;
-  border-radius: 50%; border: 3px solid var(--mint); background: rgba(255, 255, 255, 0.28);
-  color: var(--mint); display: grid; place-items: center; cursor: pointer;
+  position: absolute; right: calc(12 * var(--pt)); bottom: calc(12 * var(--pt));
+  width: calc(48 * var(--pt)); height: calc(48 * var(--pt));
+  border-radius: 50%; border: calc(2 * var(--pt)) solid #B9D5D2;
+  background: rgba(0, 0, 0, 0.5); color: #B9D5D2; display: grid; place-items: center;
 }
-.appcam-flip svg { width: 18px; height: 18px; }
+.appcam-flip svg { width: calc(27 * var(--pt)); height: calc(27 * var(--pt)); fill: currentColor; }
 .appcam-flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; }
 .appcam-flash.is-flash { animation: hero-flash 360ms ease-out; }
-.appcam-controls { display: flex; align-items: center; justify-content: space-between; padding: 2px 2px 4px; }
-.appcam-side {
-  width: 46px; height: 46px; border-radius: 50%; border: none; cursor: pointer;
-  display: grid; place-items: center; color: #fff;
-  box-shadow: 0 4px 0 var(--side-edge, rgba(0, 0, 0, 0.18)), 0 8px 14px -6px rgba(47, 42, 38, 0.4);
+.appcam-controls {
+  flex: none; margin-top: calc(4 * var(--pt));
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: end; justify-items: center;
 }
-.appcam-side svg { width: 22px; height: 22px; }
-.appcam-settings { background: var(--teal-deep); --side-edge: color-mix(in srgb, var(--teal-deep) 78%, #000); }  /* deep teal — matches the app's parent-gear */
-.appcam-gallery { background: var(--sky); --side-edge: color-mix(in srgb, var(--sky) 78%, #000); }
-/* Big yellow shutter: white ring on a raised gold base + a lighter-yellow
-   highlight, matching the real app's pressable shutter. */
+/* Corner toy discs: a face with a soft top-left sheen, a 4pt darker edge beneath (the face colour
+   24% toward black) and a shadow in the face's own hue. */
+.appcam-side {
+  position: relative; width: calc(68 * var(--pt)); height: calc(68 * var(--pt));
+  margin-bottom: calc(4 * var(--pt)); border-radius: 50%;
+  display: grid; place-items: center; color: #fff;
+  background: radial-gradient(circle calc(40.8 * var(--pt)) at 33% 28%, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0)), var(--face);
+  box-shadow: 0 calc(4 * var(--pt)) 0 var(--edge), 0 calc(9 * var(--pt)) calc(6 * var(--pt)) calc(-1 * var(--pt)) var(--cast);
+}
+.appcam-side svg { width: calc(32 * var(--pt)); height: calc(32 * var(--pt)); fill: currentColor; }
+.appcam-activities { --face: #18887C; --edge: #12675E; --cast: rgba(24, 136, 124, 0.34); }  /* teal mid */
+.appcam-gallery { --face: #4A6FA5; --edge: #38547D; --cast: rgba(74, 111, 165, 0.34); }     /* navy bright */
+/* The gallery disc shows the newest photo once one has been taken, as in the app. */
+.appcam-thumb { position: absolute; inset: 0; border-radius: 50%; opacity: 0; visibility: hidden; }
+.appcam-thumb.is-current { opacity: 1; visibility: visible; }
+.appcam-gallery.is-catch { animation: cam-catch 420ms var(--ease-toy); }
+@keyframes cam-catch { 0% { transform: scale(1); } 35% { transform: scale(1.16); } 100% { transform: scale(1); } }
+/* The giant shutter: an 8pt white ring, a 6pt gap showing the gold edge, the yellow face with one
+   soft highlight, all riding 8pt above its gold edge disc. Pressing sinks the whole edge. */
 .appcam-shutter {
-  position: relative;
-  width: clamp(78px, 36%, 100px); aspect-ratio: 1; flex: none; border-radius: 50%; cursor: pointer; padding: 0;
-  background: radial-gradient(circle at 42% 34%, #FFEFA6 0%, var(--yellow) 64%, #EEB534 100%);
-  border: 6px solid #fff;
-  box-shadow: 0 7px 0 -1px var(--gold), 0 12px 18px -7px rgba(47, 42, 38, 0.5);
+  position: relative; flex: none; padding: 0; border: 0; border-radius: 50%; cursor: pointer;
+  width: calc(196 * var(--pt)); height: calc(196 * var(--pt));
+  margin: calc(8 * var(--pt)) calc(12 * var(--pt)) calc(16 * var(--pt));
+  background:
+    radial-gradient(circle at calc(50% - 21.8 * var(--pt)) calc(50% - 23.5 * var(--pt)),
+      rgba(255, 255, 255, 0.24) calc(38.6 * var(--pt) - 0.5px), rgba(255, 255, 255, 0) calc(38.6 * var(--pt))),
+    radial-gradient(circle closest-side,
+      #FFD43B calc(84 * var(--pt) - 0.5px), #C2A12D calc(84 * var(--pt)),
+      #C2A12D calc(90 * var(--pt) - 0.5px), #fff calc(90 * var(--pt)));
+  box-shadow: 0 calc(8 * var(--pt)) 0 #C2A12D, 0 calc(18 * var(--pt)) calc(9 * var(--pt)) calc(-2 * var(--pt)) rgba(0, 0, 0, 0.24);
   transition: transform 0.1s var(--ease-toy), box-shadow 0.1s var(--ease-toy);
 }
 /* Gentle "tap me" pulse — a ring blooms outward every few seconds */
 .appcam-shutter::after {
-  content: ""; position: absolute; inset: -5px; border-radius: 50%;
-  border: 3px solid var(--mint); opacity: 0; pointer-events: none;  /* teal — the app's "listening for cheese" ring */
+  content: ""; position: absolute; inset: calc(-9 * var(--pt)); border-radius: 50%;
+  border: calc(6 * var(--pt)) solid var(--mint); opacity: 0; pointer-events: none;  /* teal — the app's "listening for cheese" ring */
   animation: shutter-hint 3.8s var(--ease-toy) infinite;
 }
 /* With the script running, the hint only loops while the camera is on screen
    (main.js toggles .is-onscreen); without it, it loops as before. */
 .js .appcam:not(.is-onscreen) .appcam-shutter::after { animation-play-state: paused; }
 @keyframes shutter-hint {
-  0%   { transform: scale(0.92); opacity: 0; }
+  0%   { transform: scale(0.94); opacity: 0; }
   10%  { opacity: 0.6; }
-  38%  { transform: scale(1.32); opacity: 0; }
-  100% { transform: scale(1.32); opacity: 0; }
+  38%  { transform: scale(1.2); opacity: 0; }
+  100% { transform: scale(1.2); opacity: 0; }
 }
 .appcam-shutter:hover { transform: translateY(-1px); }
-.appcam-shutter:active { transform: translateY(5px); box-shadow: 0 2px 0 -1px var(--gold), 0 6px 12px -7px rgba(47, 42, 38, 0.5); }
+.appcam-shutter:active {
+  transform: translateY(calc(8 * var(--pt)));
+  box-shadow: 0 0 0 #C2A12D, 0 calc(10 * var(--pt)) calc(9 * var(--pt)) calc(-2 * var(--pt)) rgba(0, 0, 0, 0.24);
+}
 
 /* ============================================================
    Redesigned footer (aqua-style columns)

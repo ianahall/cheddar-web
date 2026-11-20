@@ -274,8 +274,9 @@
   );
 
   /* --------------------------------------------------------
-     Hero camera: pressing the shutter flashes the screen white
-     and advances to the next photo frame (placeholders for now).
+     Camera demo: pressing the shutter flashes the viewfinder white
+     and moves on to the next photo. The photo just taken lands on
+     the gallery button, as the newest photo does in the app.
      -------------------------------------------------------- */
   (function () {
     var cam = document.querySelector("[data-hero-cam]");
@@ -283,6 +284,8 @@
     var frames = Array.prototype.slice.call(cam.querySelectorAll(".hcam-frame"));
     var shutter = cam.querySelector("[data-hero-shutter]");
     var flash = cam.querySelector("[data-hero-flash]");
+    var roll = cam.querySelector("[data-hero-roll]");
+    var thumbs = Array.prototype.slice.call(cam.querySelectorAll(".appcam-thumb"));
     if (frames.length < 2 || !shutter) return;
     var idx = 0;
 
@@ -292,12 +295,18 @@
         void flash.offsetWidth; // restart the flash animation
         flash.classList.add("is-flash");
       }
-      var next = (idx + 1) % frames.length;
       // Swap the photo at the peak of the flash so the change is hidden.
       window.setTimeout(function () {
-        frames[idx].classList.remove("is-current");
-        frames[next].classList.add("is-current");
-        idx = next;
+        var taken = idx;
+        idx = (idx + 1) % frames.length;
+        frames[taken].classList.remove("is-current");
+        frames[idx].classList.add("is-current");
+        thumbs.forEach(function (t, i) { t.classList.toggle("is-current", i === taken); });
+        if (roll) {
+          roll.classList.remove("is-catch");
+          void roll.offsetWidth; // restart the catch pop
+          roll.classList.add("is-catch");
+        }
       }, prefersReduced ? 0 : 120);
     });
 
