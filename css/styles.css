@@ -819,18 +819,6 @@ section { padding-block: var(--section-gap); }
   padding-bottom: clamp(44px, 7vw, 88px);
   max-width: 760px;
 }
-.photo-band .pb-eyebrow {
-  display: inline-block;
-  font-weight: 800;
-  font-size: 0.8rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  background: rgba(255, 255, 255, 0.9);
-  color: var(--ink);
-  border-radius: var(--r-pill);
-  padding: 7px 16px;
-  margin-bottom: 16px;
-}
 .photo-band h2 { color: #fff; text-shadow: 0 2px 18px rgba(0, 0, 0, 0.28); }
 .photo-band p {
   font-weight: 700;
@@ -1106,25 +1094,20 @@ section { padding-block: var(--section-gap); }
    (eyebrow, then heading, then body), a beat apart. Small distance, short
    delays and no overshoot keep it felt-not-seen: text settles, it never bounces. */
 .js .reveal .fpanel-copy > *,
-.js .reveal .section-head > *,
-.js .reveal .more-card {
+.js .reveal .section-head > * {
   opacity: 0;
   transform: translateY(12px);
   transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
 }
 .js .reveal .fpanel-copy > :nth-child(2),
-.js .reveal .section-head > :nth-child(2),
-.js .reveal .more-card:nth-child(2) { transition-delay: 0.06s; }
+.js .reveal .section-head > :nth-child(2) { transition-delay: 0.06s; }
 .js .reveal .fpanel-copy > :nth-child(3),
-.js .reveal .section-head > :nth-child(3),
-.js .reveal .more-card:nth-child(3) { transition-delay: 0.12s; }
-.js .reveal .fpanel-copy > :nth-child(4),
-.js .reveal .more-card:nth-child(4) { transition-delay: 0.18s; }
+.js .reveal .section-head > :nth-child(3) { transition-delay: 0.12s; }
+.js .reveal .fpanel-copy > :nth-child(4) { transition-delay: 0.18s; }
 .js .reveal .fpanel-copy > :nth-child(5) { transition-delay: 0.24s; }
 .js .reveal .fpanel-copy > :nth-child(6) { transition-delay: 0.3s; }
 .js .reveal.is-in .fpanel-copy > *,
-.js .reveal.is-in .section-head > *,
-.js .reveal.is-in .more-card { opacity: 1; transform: none; }
+.js .reveal.is-in .section-head > * { opacity: 1; transform: none; }
 
 /* Phones are "set down": each one rises a little, settles out of a slight
    tilt and lands a beat after the copy starts. This is the one entrance that
@@ -1160,10 +1143,6 @@ section { padding-block: var(--section-gap); }
 .fpanel.reverse .fpanel-media { order: 2; }
 .fpanel-copy { max-width: 480px; }
 .fpanel-copy h2 { margin-bottom: 0.28em; }
-.fp-problem {
-  font-weight: 800; font-style: italic; color: var(--ink-soft);
-  font-size: clamp(1rem, 1.3vw, 1.15rem); margin: 0 0 0.7em;
-}
 .fp-desc {
   color: var(--ink-soft); font-weight: 600;
   font-size: clamp(1.02rem, 1.3vw, 1.18rem); margin: 0;
@@ -1177,11 +1156,10 @@ section { padding-block: var(--section-gap); }
 }
 .fp-privacy { margin-top: 22px; }
 /* Bold-band panels (grape / blue) — light text */
-.band--purple .fp-problem, .band--blue .fp-problem, .band--green .fp-problem { color: rgba(255, 255, 255, 0.8); }
 .band--purple .fp-desc, .band--blue .fp-desc, .band--green .fp-desc,
 .band--purple .fp-list li, .band--blue .fp-list li, .band--green .fp-list li { color: rgba(255, 255, 255, 0.95); }
 /* Feature panels on the yellow ground: ink-soft is too faint there (see --ink-on-yellow). */
-.band--yellow .fp-problem, .band--yellow .fp-desc { color: var(--ink-on-yellow); }
+.band--yellow .fp-desc { color: var(--ink-on-yellow); }
 .band--blue .fp-privacy { --btn-face: #fff; --btn-edge: rgba(0, 0, 0, 0.22); --btn-text: var(--ink); }
 /* Cheddar Says voice picker, folded into its panel */
 .cs-voices { text-align: center; margin-top: clamp(28px, 4vw, 44px); }
@@ -1348,11 +1326,8 @@ section { padding-block: var(--section-gap); }
    the Android source (ActivitiesScreen.kt, SafariScreen.kt), so
    they keep the app's colours and radii rather than the site's.
    ============================================================ */
-/* Heading on its own full-width row, intro underneath (the title is too long
-   to share a row with the intro without wrapping to three lines). */
-.shelf-head { display: grid; gap: 14px; margin-bottom: clamp(26px, 4vw, 44px); }
-.shelf-head h2, .shelf-head .lede { margin: 0; }
-.shelf-head .lede { color: var(--ink); max-width: 62ch; }
+.shelf-head { margin-bottom: clamp(26px, 4vw, 44px); }
+.shelf-head h2 { margin: 0; }
 
 /* A pale-blue card on the white band, so the Explorer demo reads as its own block
    (it was a white card when the band was peach). */
@@ -1456,24 +1431,6 @@ section { padding-block: var(--section-gap); }
 @media (prefers-reduced-motion: reduce) {
   .ex-track, .ex-start, .shelf-nav button, .js .ex-card, .shelf-says q { transition: none; }
 }
-
-/* ============================================================
-   "More cool stuff" grid
-   ============================================================ */
-.more-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr);
-  gap: clamp(16px, 2vw, 24px); max-width: 1040px; margin-inline: auto;
-}
-.more-card {
-  background: #fff; border-radius: var(--r-card);
-  padding: clamp(20px, 2.4vw, 28px); box-shadow: var(--shadow-card);
-}
-.more-emoji { font-size: 2rem; display: block; margin-bottom: 10px; }
-
-.more-card h3 { font-size: clamp(1.08rem, 1.5vw, 1.28rem); margin-bottom: 0.3em; }
-.more-card p { margin: 0; color: var(--ink-soft); font-weight: 600; font-size: 0.96rem; }
-@media (max-width: 900px) { .more-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 480px) { .more-grid { grid-template-columns: 1fr; max-width: 360px; } }
 
 /* ============================================================
    Dark footer — anchors the page under the yellow download panel
@@ -1588,7 +1545,6 @@ section { padding-block: var(--section-gap); }
 .store-badge--lg svg { width: 26px; height: 26px; }
 .store-badge--lg .sb-top { font-size: 0.75rem; }
 .store-badge--lg .sb-name { font-size: 1.08rem; }
-.download-note { margin-top: 16px; font-weight: 800; font-size: 0.9rem; color: var(--ink-on-yellow); }
 .download-visual { display: flex; justify-content: center; }
 .download-visual .phone { width: clamp(200px, 30vw, 280px); }
 /* Showcase phones lift + tilt toward the cursor, pivoting from the base.
@@ -1625,7 +1581,6 @@ section { padding-block: var(--section-gap); }
   .js .reveal { opacity: 1; transform: none; }
   .js .reveal .fpanel-copy > *,
   .js .reveal .section-head > *,
-  .js .reveal .more-card,
   .js .reveal .fpanel-media,
   .js .reveal .download-visual,
   .js .reveal .shelf-phone { opacity: 1; transform: none; }
