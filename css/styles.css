@@ -560,6 +560,8 @@ section { padding-block: var(--section-gap); }
   background: rgba(255, 255, 255, 0.16);
   z-index: 3;
 }
+/* Screenshots taken on an iPhone carry their own status bar and Dynamic Island. */
+.phone--ios::before { display: none; }
 .phone-screen {
   width: 100%; height: 100%;
   border-radius: 30px;
@@ -851,10 +853,10 @@ section { padding-block: var(--section-gap); }
 }
 @keyframes photo-settle { from { scale: 1.08; } to { scale: 1; } }
 
-/* The app's camera screen (Cloud ground), rebuilt from the app rather than drawn to look like it.
+/* The app's camera screen (Night ground), rebuilt from the app rather than drawn to look like it.
    Everything is sized in the app's own points: --pt is one point of its 402pt-wide layout, scaled
    to the phone screen, so the numbers below are the app's (viewport radius 30, shutter 196, corner
-   discs 68, flip 48). Colours are its design tokens. cam-wallpaper.svg is the app's doodle field,
+   discs 68, flip 48). Colours are its design tokens. cam-wallpaper-night.svg is the app's doodle field,
    baked from its ic_doodle art with its DoodleLayout placement (seed 26). Icons are the official
    rounded Material set. */
 .cam-screen { container-type: inline-size; }
@@ -863,7 +865,7 @@ section { padding-block: var(--section-gap); }
   position: absolute; inset: 0;
   display: flex; flex-direction: column;
   padding: calc(42 * var(--pt)) calc(16 * var(--pt)) calc(28 * var(--pt));
-  background: #E8ECF4 url("../assets/img/cam-wallpaper.svg?v=202611191500") top center / cover no-repeat;
+  background: #1C2A42 url("../assets/img/cam-wallpaper-night.svg?v=202611201100") top center / cover no-repeat;
 }
 @supports (width: 1cqw) {
   .appcam { --pt: calc(100cqw / 402); }
@@ -886,18 +888,18 @@ section { padding-block: var(--section-gap); }
   flex: none; margin-top: calc(4 * var(--pt));
   display: grid; grid-template-columns: 1fr auto 1fr; align-items: end; justify-items: center;
 }
-/* Corner toy discs: a face with a soft top-left sheen, a 4pt darker edge beneath (the face colour
-   24% toward black) and a shadow in the face's own hue. */
+/* Corner toy discs: a face with a soft top-left sheen and a 4pt darker edge beneath (the face colour
+   24% toward black). On Night the glyphs are ink, the sheen is dialled back and the shadow is black. */
 .appcam-side {
   position: relative; width: calc(68 * var(--pt)); height: calc(68 * var(--pt));
   margin-bottom: calc(4 * var(--pt)); border-radius: 50%;
-  display: grid; place-items: center; color: #fff;
-  background: radial-gradient(circle calc(40.8 * var(--pt)) at 33% 28%, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0)), var(--face);
+  display: grid; place-items: center; color: #20283A;
+  background: radial-gradient(circle calc(40.8 * var(--pt)) at 33% 28%, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0)), var(--face);
   box-shadow: 0 calc(4 * var(--pt)) 0 var(--edge), 0 calc(9 * var(--pt)) calc(6 * var(--pt)) calc(-1 * var(--pt)) var(--cast);
 }
 .appcam-side svg { width: calc(32 * var(--pt)); height: calc(32 * var(--pt)); fill: currentColor; }
-.appcam-activities { --face: #18887C; --edge: #12675E; --cast: rgba(24, 136, 124, 0.34); }  /* teal mid */
-.appcam-gallery { --face: #4A6FA5; --edge: #38547D; --cast: rgba(74, 111, 165, 0.34); }     /* navy bright */
+.appcam-activities { --face: #2BAF9E; --edge: #218578; --cast: rgba(0, 0, 0, 0.34); }  /* sea-glass teal */
+.appcam-gallery { --face: #fff; --edge: #C2C2C2; --cast: rgba(0, 0, 0, 0.34); }
 /* The gallery disc shows the newest photo once one has been taken, as in the app. */
 .appcam-thumb { position: absolute; inset: 0; border-radius: 50%; opacity: 0; visibility: hidden; }
 .appcam-thumb.is-current { opacity: 1; visibility: visible; }
