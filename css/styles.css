@@ -746,13 +746,6 @@ section { padding-block: var(--section-gap); }
   background: color-mix(in srgb, var(--yellow) 62%, var(--gold));
   box-shadow: inset 2px 4px 9px rgba(120, 84, 12, 0.28),
               0 1px 0 rgba(255, 255, 255, 0.35);
-  /* The hero's load moment: the holes pop in one after another (delays below).
-     It animates `scale`, leaving `translate` free for the scroll drift. */
-  animation: hole-pop 0.5s var(--ease-toy) both;
-}
-@keyframes hole-pop {
-  from { scale: 0.4; opacity: 0; }
-  to   { scale: 1; opacity: 1; }
 }
 /* Depth on scroll: as the hero scrolls away the holes drift at different rates
    (--drift, set per hole below), big ones faster, small ones lagging, so the
@@ -761,22 +754,22 @@ section { padding-block: var(--section-gap); }
 @keyframes hole-drift { to { translate: 0 var(--drift, 0px); } }
 @supports (animation-timeline: scroll()) {
   .cheese-holes span {
-    animation: hole-pop 0.5s var(--ease-toy) both, hole-drift linear both;
-    animation-timeline: auto, scroll(root);
-    animation-range: normal, 0px 100vh;
+    animation: hole-drift linear both;
+    animation-timeline: scroll(root);
+    animation-range: 0px 100vh;
   }
 }
 .hero > .container { position: relative; z-index: 1; }
 
 /* Scattered hole positions/sizes (kept away from the headline column) */
-.cheese-holes span:nth-child(1) { top: 11%; left: 6%;  width: 48px; height: 46px; animation-delay: 0.05s, 0s; --drift: -30px; }
-.cheese-holes span:nth-child(2) { top: 33%; left: 13%; width: 26px; height: 25px; animation-delay: 0.3s, 0s;  --drift: 36px; }
-.cheese-holes span:nth-child(3) { top: 60%; left: 4%;  width: 62px; height: 58px; animation-delay: 0.15s, 0s; --drift: -64px; }
-.cheese-holes span:nth-child(4) { bottom: 12%; left: 18%; width: 30px; height: 30px; animation-delay: 0.45s, 0s; --drift: 28px; }
-.cheese-holes span:nth-child(5) { top: 9%;  right: 8%;  width: 42px; height: 40px; animation-delay: 0.2s, 0s;  --drift: -20px; }
-.cheese-holes span:nth-child(6) { top: 42%; right: 5%;  width: 56px; height: 54px; animation-delay: 0.1s, 0s;  --drift: -52px; }
-.cheese-holes span:nth-child(7) { bottom: 16%; right: 13%; width: 26px; height: 26px; animation-delay: 0.5s, 0s;  --drift: 40px; }
-.cheese-holes span:nth-child(8) { top: 66%; right: 19%; width: 34px; height: 32px; animation-delay: 0.35s, 0s; --drift: 12px; }
+.cheese-holes span:nth-child(1) { top: 11%; left: 6%;  width: 48px; height: 46px; --drift: -30px; }
+.cheese-holes span:nth-child(2) { top: 33%; left: 13%; width: 26px; height: 25px; --drift: 36px; }
+.cheese-holes span:nth-child(3) { top: 60%; left: 4%;  width: 62px; height: 58px; --drift: -64px; }
+.cheese-holes span:nth-child(4) { bottom: 12%; left: 18%; width: 30px; height: 30px; --drift: 28px; }
+.cheese-holes span:nth-child(5) { top: 9%;  right: 8%;  width: 42px; height: 40px; --drift: -20px; }
+.cheese-holes span:nth-child(6) { top: 42%; right: 5%;  width: 56px; height: 54px; --drift: -52px; }
+.cheese-holes span:nth-child(7) { bottom: 16%; right: 13%; width: 26px; height: 26px; --drift: 40px; }
+.cheese-holes span:nth-child(8) { top: 66%; right: 19%; width: 34px; height: 32px; --drift: 12px; }
 @media (max-width: 680px) {
   .cheese-holes span:nth-child(2),
   .cheese-holes span:nth-child(4),
